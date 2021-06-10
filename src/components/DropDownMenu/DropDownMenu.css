@@ -1,0 +1,42 @@
+.dropdown {
+  border: 1px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgba(0, 0, 0, 0.897);
+  border-radius: 10px;
+  width: 15rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  animation: fade-in 300ms linear;
+  margin-right: 0.3rem;
+  user-select: none;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dropdown-div {
+  display: inline-block;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0.5rem;
+  padding: 0.2rem;
+}
+
+#nav-icon-drop {
+  font-size: 1.6rem;
+  color: rgb(255, 251, 251);
+  transition: 200ms;
+  display: block;
+  margin: auto;
+  overflow: hidden;
+  padding: 0.7rem;
+}
