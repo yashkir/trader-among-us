@@ -1,0 +1,30 @@
+.icon-contain-drop {
+  border: 1px solid transparent;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.356);
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  transition: 200ms;
+  margin-right: 1rem;
+}
+
+.drop-contain {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  border: solid 0.5px rgba(117, 117, 117, 0.178);
+  transition: 200ms;
+}
+
+.drop-contain:hover {
+  background-color: rgba(180, 180, 180, 0.199);
+  cursor: pointer;
+}
+
+#drop-h1 {
+  color: rgb(184, 184, 184);
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  font-family: "Oleo Script", cursive;
+}

@@ -1,0 +1,63 @@
+#nav-icon {
+  font-size: 1.6rem;
+  color: rgb(255, 173, 228);
+  transition: 200ms;
+  display: block;
+  margin: auto;
+  overflow: hidden;
+  padding: 0.7rem;
+}
+
+#nav-icon:hover {
+  transform: scale(1.05);
+}
+
+.icon-contain {
+  border: 1px solid transparent;
+  background-color: rgba(129, 129, 129, 0.199);
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  transition: 200ms;
+  margin-right: 1rem;
+}
+
+.icon-contain:hover {
+  background-color: rgba(196, 195, 195, 0.212);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.navbar > div:first-child {
+  margin-right: auto;
+  margin-left: 0.5rem;
+}
+
+.navbar {
+  border: 1px solid transparent;
+  width: 100%;
+  padding: 0.4rem;
+  background-color: rgba(0, 0, 0, 0.925);
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#trader > h1 {
+  color: rgb(255, 173, 228);
+  font-family: "Lilita One", cursive;
+  font-size: 2.2rem;
+  user-select: none;
+}
+
+#shake {
+  animation: chop 2s step-end;
+  transform: rotate(-40deg);
+}
+
+#dash {
+  color: rgb(243, 243, 243);
+  margin-left: 0.3rem;
+  margin-right: 0rem;
+}
