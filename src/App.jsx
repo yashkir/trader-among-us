@@ -14,7 +14,7 @@ import Posts from './components/Posts/Posts'
 const App = () => {
   const [open, setOpen] = useState(false);
   const [menuTwo, setMenuTwo] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(null);
 
   const handleMenu = () => {
     setOpen(!open);
