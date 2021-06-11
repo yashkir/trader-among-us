@@ -36,7 +36,7 @@ const App = () => {
       {/*if state is truthy, dropdownMenus will render on click*/}
       {open ? <DropDownMenu /> : ""}
       {menuTwo ? <DropDownMenuTwo /> : ""}
-      <Form/>
+      <Form name={"Name"} description={"Description"} image={"Choose An Image"} />
     </div>
   );
 };

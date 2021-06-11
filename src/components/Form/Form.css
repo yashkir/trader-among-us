@@ -1,29 +1,46 @@
+@media only screen and (max-width: 300px) {
+  #form-sec {
+    width: 100%;
+  }
+  #form-border {
+    width: 90%;
+  }
+}
+
+.form-container {
+  width: 100vw;
+}
+
 #form-sec {
-  height: 50vh;
+  /* height: 50vh; */
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  /* margin-bottom: 0.5rem; */
   /* border: 1px solid red; */
 }
-.div-border {
+.form-border {
   border: 1px solid transparent;
   border-radius: 10px;
   height: auto;
-  width: 25rem;
+  min-width: 25rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: rgba(253, 253, 253, 0.712);
   text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.title {
+.form-title {
   padding-top: 2.5rem;
   margin-bottom: auto;
   text-align: center;
   display: block;
-  width: 100vw;
+  width: 100%;
 }
 
-.title > h1 {
+.form-title > h1 {
   font-family: "Lilita One", cursive;
   font-size: 2.8rem;
 }
@@ -38,6 +55,7 @@
   font-family: "Oleo Script", cursive;
   font-size: 1.3rem;
   color: rgb(82, 82, 82);
+  margin-bottom: 0.5rem;
 }
 
 #form-span {
@@ -72,6 +90,8 @@ textarea {
   resize: none;
   font-family: "Rubik", sans-serif;
   padding: 0.2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .submit-btn {
@@ -101,7 +121,8 @@ input[type="file"] {
 }
 
 .btn-div {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .submit-btn {
