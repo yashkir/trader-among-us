@@ -3,6 +3,7 @@ import DropDownMenu from "./components/DropDownMenu/DropDownMenu";
 import DropDownMenuTwo from "./components/DropDownMenu/DropDownMenuTwo";
 import React, { useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
+import Form from "./components/Form/Form"
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -35,6 +36,7 @@ const App = () => {
       {/*if state is truthy, dropdownMenus will render on click*/}
       {open ? <DropDownMenu /> : ""}
       {menuTwo ? <DropDownMenuTwo /> : ""}
+      <Form/>
     </div>
   );
 };

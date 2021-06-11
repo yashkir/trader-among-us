@@ -1,0 +1,123 @@
+#form-sec {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+.div-border {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  height: auto;
+  width: 25rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: rgba(253, 253, 253, 0.712);
+  text-align: center;
+}
+
+.title {
+  padding-top: 2.5rem;
+  margin-bottom: auto;
+  text-align: center;
+  display: block;
+  width: 100vw;
+}
+
+.title > h1 {
+  font-family: "Lilita One", cursive;
+  font-size: 2.8rem;
+}
+
+#shake-pink {
+  animation: chop 2s step-end;
+  transform: rotate(-40deg);
+  color: rgb(240, 168, 216);
+}
+
+#form-p {
+  font-family: "Oleo Script", cursive;
+  font-size: 1.3rem;
+  color: rgb(82, 82, 82);
+}
+
+#form-span {
+  font-size: 1.3rem;
+  color: rgb(209, 145, 188);
+  font-family: "Lilita One", cursive;
+}
+
+.form-label {
+  display: block;
+  font-family: "Oleo Script", cursive;
+  font-size: 1.3rem;
+  color: rgb(82, 82, 82);
+  margin-left: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 23rem;
+  height: 2.5rem;
+  border: 1px solid rgba(46, 46, 46, 0.295);
+  border-radius: 5px;
+  font-family: "Rubik", sans-serif;
+  padding: 0.2rem;
+}
+
+textarea {
+  border: 1px solid rgba(46, 46, 46, 0.295);
+  border-radius: 5px;
+  width: 23rem;
+  resize: none;
+  font-family: "Rubik", sans-serif;
+  padding: 0.2rem;
+}
+
+.submit-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.custom-file-upload {
+  margin-top: 0.5rem;
+  font-size: 2.3rem;
+  color: rgb(209, 145, 188);
+}
+
+#upload {
+  cursor: pointer;
+  transition: 300ms;
+}
+
+#upload:hover {
+  transform: scale(1.2);
+  color: rgb(230, 166, 207);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.btn-div {
+  text-align: center;
+}
+
+.submit-btn {
+  font-family: "Lilita One", cursive;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: 4px solid transparent;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.938);
+  color: rgb(230, 166, 207);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 300ms;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.87);
+  transform: scale(1.05);
+}
