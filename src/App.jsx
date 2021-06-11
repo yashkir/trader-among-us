@@ -3,6 +3,7 @@ import DropDownMenu from "./components/DropDownMenu/DropDownMenu";
 import DropDownMenuTwo from "./components/DropDownMenu/DropDownMenuTwo";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import { getUser } from './utils/users-service';
 import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import TradeListPage from "./pages/TradeListPage/TradeListPage";
@@ -11,7 +12,7 @@ import NewTradePage from "./pages/NewTradePage/NewTradePage";
 const App = () => {
   const [open, setOpen] = useState(false);
   const [menuTwo, setMenuTwo] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getUser());
 
   const handleMenu = () => {
     setOpen(!open);
@@ -54,7 +55,7 @@ const App = () => {
             </Switch>
           </>
         ) : (
-          <AuthPage />
+          <AuthPage setUser={setUser}/>
         )}
       </section>
     </div>
