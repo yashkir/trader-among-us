@@ -1,21 +1,48 @@
-function index(req, res) {
-  res.json("hit posts/index");
+const Post = require('../../models/post')
+
+async function index(req, res) {
+  try {
+    const posts = await Post.find({})
+    res.json(posts);
+  } catch (err) {
+    res.status(400).json("database query failed");
+  }
 }
 
-function show(req, res) {
-  res.json("hit posts/show");
+async function show(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId)
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(404).json("database query failed");
+  }
 }
 
-function create(req, res) {
-  res.json("hit posts/create");
+async function create(req, res) {
+  try {
+    const newPost = await Post.create(req.body)
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(400).json("database query failed");
+  }
 }
 
-function update(req, res) {
-  res.json("hit posts/update");
+async function update(req, res) {
+  try {
+    const result = await Post.update({_id: req.params.postId}, req.body)
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json("database query failed");
+  }
 }
 
-function _delete(req, res) {
-  res.json("hit posts/delete");
+async function _delete(req, res) {
+  try {
+    const result = await Post.deleteOne({_id: req.params.postId})
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json("database query failed");
+  }
 }
 
 module.exports = {
