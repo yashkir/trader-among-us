@@ -2,7 +2,8 @@ import DropDownMenuItem from "../DropDownMenuItem/DropDownMenuItem";
 import { FaUser, FaShare, FaUserEdit } from "react-icons/fa";
 import "./DropDownMenu.css";
 
-const DropDownMenu = () => {
+const DropDownMenu = ({ myFunction }) => {
+
   return (
     <div className="dropdown">
       <DropDownMenuItem
@@ -13,7 +14,7 @@ const DropDownMenu = () => {
         icon={<FaUserEdit id="nav-icon-drop" />}
         text={"Edit Profile"}
       />
-      <DropDownMenuItem icon={<FaShare id="nav-icon-drop" />} text={"Logout"} />
+      <DropDownMenuItem onClick={myFunction} icon={<FaShare id="nav-icon-drop" />} text={"Logout"} />
     </div>
   );
 };
