@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const postSchema = mongoose.Schema({
+const replySchema = mongoose.Schema({
   text: {
     type: String,
     required: true,
@@ -13,4 +13,4 @@ const postSchema = mongoose.Schema({
   timestamps: true,
 });
 
-module.exports = mongoose.model("reply", postSchema)
+module.exports = mongoose.model("reply", replySchema)
