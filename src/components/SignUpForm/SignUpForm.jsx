@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import signUp from '../../utils/users-service';
 
 export default class SignUpForm extends Component {
   state = {
@@ -16,17 +17,25 @@ export default class SignUpForm extends Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    alert(JSON.stringify(this.state));
-  }
+    try {
+      const { name, password, email } = { ...this.state };
+      const userData = { name, password, email };
+      const user = await signUp(userData);
+      console.log(user);
+
+    } catch {
+      this.setState({ error: "Sign up Failed" });
+    }
+  };
 
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div>
         <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit} >
+          <form autoComplete="off" onSubmit={this.handleSubmit}>
             <label>Name</label>
             <input
               type="text"
@@ -62,7 +71,9 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            <button type="submit" disabled={disable}>Sign Up</button>
+            <button type="submit" disabled={disable}>
+              Sign Up
+            </button>
           </form>
         </div>
         <p className="error-message">{this.state.error}</p>

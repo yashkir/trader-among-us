@@ -7,13 +7,13 @@ require('./config/database');
 
 const app = express();
 
-app.use(logger('dev'));
 app.use(express.json());
+app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 //API routes
-
+app.use('/api/users', require('./routes/api/users'));
 //Catch all route
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
