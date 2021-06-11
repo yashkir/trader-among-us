@@ -34,22 +34,18 @@ const App = () => {
     setMenuTwo(!menuTwo);
   };
 
-  const consoleLog = () => {
-    console.log('text')
-  }
-
-  //DROP DOWN DISAPPEARS WHEN CLICKED OUTSIDE
-  // const appGlobalClick = () => {
-  //   if (open) {
-  //     setOpen(!open);
-  //   }
-  //   if (menuTwo) {
-  //     setMenuTwo(!menuTwo);
-  //   }
-  // };
+  // DROP DOWN DISAPPEARS WHEN CLICKED OUTSIDE
+  const appGlobalClick = () => {
+    if (open) {
+      setOpen(!open);
+    }
+    if (menuTwo) {
+      setMenuTwo(!menuTwo);
+    }
+  };
 
   return (
-    <div  className="App">
+    <div onClick={appGlobalClick} className="App">
       <NavBar handleMenu={handleMenu} handleSecondMenu={handleSecondMenu} />
 
       {/*if state is truthy, dropdownMenus will render on click*/}

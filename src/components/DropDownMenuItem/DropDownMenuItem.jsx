@@ -1,6 +1,5 @@
 import "./DropDownMenuItem.css";
 
-
 const DropDownMenuItem = (props) => {
   return (
     <div className="drop-contain" onClick={props.handleLogout}>
@@ -13,3 +12,4 @@ const DropDownMenuItem = (props) => {
 };
 
 export default DropDownMenuItem;
+
