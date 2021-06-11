@@ -1,7 +1,6 @@
 import "./DropDownMenuItem.css";
 
 const DropDownMenuItem = (props) => {
-  
   return (
     <div className="drop-contain" onClick={props.handleLogout}>
       <div className="icon-contain-drop">{props.icon}</div>
