@@ -4,7 +4,7 @@ export async function signUp(userData) {
   
   const res = await fetch(BASE_URL, {
     method: "POST",
-    header: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
   });
   if (res.ok) {
