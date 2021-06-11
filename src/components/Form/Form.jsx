@@ -1,15 +1,13 @@
 import "./Form.css"
-import { FaHandshake, FaFileUpload } from "react-icons/fa";
+import { FaFileUpload } from "react-icons/fa";
+import PageTitle from "../../components/PageTitle/PageTitle"
 
 
 const Form = ({ name, description, image }) => {
   return (
     <div className="form-container">
-      <div className="form-title">
-        <h1>NEW <FaHandshake id="shake-pink" /> TRADE</h1>
-        <p id="form-p">Please be respectful of Trade eR's strict<br />
-          no currency policy... <span id="form-span">HAPPY TRADING!</span></p>
-      </div>
+
+      <PageTitle titleOne={"NEW"} titleTwo={"TRADE"} />
 
       <section id="form-sec">
         <form>
@@ -30,6 +28,7 @@ const Form = ({ name, description, image }) => {
       <div className="btn-div">
         <input className="submit-btn" type="submit" value="SUBMIT"></input>
       </div>
+
     </div>
   )
 }

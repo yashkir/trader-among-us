@@ -48,6 +48,12 @@
   text-align: center;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  transition: 300ms;
+}
+
+.post-btn:hover {
+  transform: scale(1.05);
+  background-color: rgb(228, 166, 207);
 }
 
 .row {
