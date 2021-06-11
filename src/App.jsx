@@ -6,6 +6,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { getUser } from './utils/users-service';
 import * as userService from "./utils/users-service";
 import NavBar from "./components/NavBar/NavBar";
+import Form from "./components/Form/Form"
 import AuthPage from "./pages/AuthPage/AuthPage";
 import TradeListPage from "./pages/TradeListPage/TradeListPage";
 import NewTradePage from "./pages/NewTradePage/NewTradePage";
@@ -48,6 +49,7 @@ const App = () => {
       {/*if state is truthy, dropdownMenus will render on click*/}
       {open ? <DropDownMenu handleLogout={handleLogout} /> : ""}
       {menuTwo ? <DropDownMenuTwo /> : ""}
+      <Form name={"Name"} description={"Description"} image={"Choose An Image"} />
       <section>
         {user ? (
           <>
