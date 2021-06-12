@@ -54,6 +54,7 @@
 .post-btn:hover {
   transform: scale(1.05);
   background-color: rgb(228, 166, 207);
+  cursor: pointer;
 }
 
 .row {

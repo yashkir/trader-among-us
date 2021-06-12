@@ -1,5 +1,6 @@
 import DropDownMenuItem from "../DropDownMenuItem/DropDownMenuItem";
 import { FaUser, FaShare, FaUserEdit } from "react-icons/fa";
+import { useHistory } from 'react-router-dom'
 
 import "./DropDownMenu.css";
 
@@ -15,7 +16,7 @@ const DropDownMenu = ({ handleLogout }) => {
         icon={<FaUserEdit id="nav-icon-drop" />}
         text={"Edit Profile"}
       />
-      <DropDownMenuItem icon={<FaShare id="nav-icon-drop" />} text={"Logout"} handleLogout={handleLogout}/>
+      <DropDownMenuItem icon={<FaShare id="nav-icon-drop" />} text={"Logout"} handleLogout={handleLogout} />
     </div>
   );
 };

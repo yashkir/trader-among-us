@@ -51,13 +51,14 @@ const App = () => {
       {/*if state is truthy, dropdownMenus will render on click*/}
       {open ? <DropDownMenu handleLogout={handleLogout} /> : ""}
       {menuTwo ? <DropDownMenuTwo /> : ""}
-      <Route exact path="/forms">
-        <Form name={"Name"} description={"Description"} image={"Choose An Image"} />
-      </Route>
+
       <section>
         {user ? (
           <>
             <Switch>
+              <Route exact path="/forms">
+                <Form name={"Name"} description={"Description"} image={"Choose An Image"} />
+              </Route>
               <Route path="/trades/new">
                 <NewTradePage />
               </Route>
@@ -71,7 +72,7 @@ const App = () => {
             </Switch>
           </>
         ) : (
-          <AuthPage setUser={setUser}/>
+          <AuthPage setUser={setUser} />
         )}
       </section>
     </div>
