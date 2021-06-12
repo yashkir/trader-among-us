@@ -9,12 +9,12 @@ export default function AuthPage({ setUser }) {
 
   return (
     <div>
-      {!showLogin ? <PageTitle titleOne={"SIGN"} titleTwo={"UP"} /> : <PageTitle titleOne={"LOG"} titleTwo={"IN"} />}
-      {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
-      {!showLogin ? <p className="AuthPage log-p">Already Have an Account?</p> : <p className="AuthPage log-p">Don't Have an Account?</p>}
+      {showLogin ? <PageTitle titleOne={"SIGN"} titleTwo={"UP"} /> : <PageTitle titleOne={"LOG"} titleTwo={"IN"} />}
+      {!showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
+      {showLogin ? <p className="AuthPage log-p">Already Have an Account?</p> : <p className="AuthPage log-p">Don't Have an Account?</p>}
       <div className='AuthPage btn-contain-flex'>
         <div className='AuthPage ctr-btn'>
-          <button className="AuthPage log-toggle" onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'Sign Up' : 'Log In'}</button>
+          <button className="AuthPage log-toggle" onClick={() => setShowLogin(!showLogin)}>{!showLogin ? 'Sign Up' : 'Log In'}</button>
         </div>
       </div>
     </div>
