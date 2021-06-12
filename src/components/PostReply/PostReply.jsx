@@ -16,7 +16,7 @@ export default function PostReply() {
   return (
     <div className="reply-container">
       <div className="reply-header" onClick={handleHidden}>
-        <h3>Item Name</h3>
+        <h3>User is Offering Item Name</h3>
         <span>{icon}</span>
       </div>
 

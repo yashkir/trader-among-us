@@ -1,11 +1,12 @@
-.reply-container{
+.reply-container {
   margin: auto;
-  margin-top:10px;
+  margin-top: 10px;
   width: 75vw;
 }
 
 .reply-header {
-  border: 1px solid black;
+  font-family: "Rubik", sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,6 +18,13 @@
 
 .reply-body {
   border: 1px solid black;
+  background-color: white;
+  background: rgba(255, 83, 246, 0.068);
+  box-shadow: 0 8px 32px 0 rgba(135, 31, 104, 0.288);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-top: 0px;
   height: 0;
   overflow: hidden;
