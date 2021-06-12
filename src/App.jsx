@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import NewPostPage from "./pages/NewPostPage/NewPostPage";
 import Posts from './components/Posts/Posts'
+import PostReply from './components/PostReply/PostReply';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -52,8 +53,11 @@ const App = () => {
               <Route path="/posts">
                 <Posts title={'OLD BIKE FROM MY GRANDMA'} />
               </Route>
-            </Switch>
+              <Route path="/tests">
+                <PostReply />
+              </Route>
             <Redirect to="/posts" />
+            </Switch>
           </div>
         ) : (
           <Route exact path='/login' render={(props) => (
