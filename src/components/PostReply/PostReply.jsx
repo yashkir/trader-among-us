@@ -1,9 +1,28 @@
-import React from 'react'
+import React, {useState} from "react";
+import "./PostReply.css";
 
 export default function PostReply() {
+
+  const [hidden, setHidden] = useState("");
+  const [icon, setIcon] = useState("+");
+
+  const handleHidden = () => {
+    if (hidden === "hidden") setHidden("");
+    if (hidden === "") setHidden("hidden");
+    if (icon === "+") setIcon("-");
+    if (icon === "-") setIcon("+");
+  };
+
   return (
-    <div>
-      <h1>TEST</h1>
+    <div className="reply-container">
+      <div className="reply-header" onClick={handleHidden}>
+        <h3>Item Name</h3>
+        <span>{icon}</span>
+      </div>
+
+      <div className={`reply-body ${hidden}`}>
+        <p>Description: Lorem Ipsum</p>
+      </div>
     </div>
-  )
+  );
 }
