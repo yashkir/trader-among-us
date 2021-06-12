@@ -10,6 +10,16 @@ export async function signUp(userData) {
   }
 }
 
+export async function login(credentials) {
+  try {
+    const token = await usersAPI.login(credentials);
+    localStorage.setItem('token', token);
+    return getUser();
+  } catch {
+    throw new Error('Invalid Credentials - Try Again');
+  }
+}
+
 export function getToken() {
   const token = localStorage.getItem('token');
   if (!token) return null;
