@@ -4,25 +4,15 @@ import DropDownMenuTwo from "./components/DropDownMenu/DropDownMenuTwo";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { getUser } from './utils/users-service';
-import * as userService from "./utils/users-service";
 import NavBar from "./components/NavBar/NavBar";
-import Form from "./components/Form/Form"
 import AuthPage from "./pages/AuthPage/AuthPage";
-import TradeListPage from "./pages/TradeListPage/TradeListPage";
-import NewTradePage from "./pages/NewTradePage/NewTradePage";
+import NewPostPage from "./pages/NewPostPage/NewPostPage";
 import Posts from './components/Posts/Posts'
-
 
 const App = () => {
   const [open, setOpen] = useState(false);
   const [menuTwo, setMenuTwo] = useState(false);
   const [user, setUser] = useState(getUser());
-
-  const handleLogout = () => {
-    console.log("clicked");
-    userService.logOut();
-    setUser(null);
-  }
 
   const handleMenu = () => {
     setOpen(!open);
@@ -46,33 +36,29 @@ const App = () => {
 
   return (
     <div onClick={appGlobalClick} className="App">
-      <NavBar handleMenu={handleMenu} handleSecondMenu={handleSecondMenu} />
+      <NavBar user={user} handleMenu={handleMenu} handleSecondMenu={handleSecondMenu} />
 
       {/*if state is truthy, dropdownMenus will render on click*/}
-      {open ? <DropDownMenu handleLogout={handleLogout} /> : ""}
+      {open ? <DropDownMenu setUser={setUser} /> : ""}
       {menuTwo ? <DropDownMenuTwo /> : ""}
 
       <section>
         {user ? (
-          <>
+          <div>
             <Switch>
-              <Route exact path="/forms">
-                <Form name={"Name"} description={"Description"} image={"Choose An Image"} />
-              </Route>
-              <Route path="/trades/new">
-                <NewTradePage />
-              </Route>
-              <Route path="/trades">
-                <TradeListPage />
-              </Route>
-              <Route exact path="/posts">
+              <Route path="/posts/new" render={(props) => (
+                <NewPostPage {...props} />
+              )} />
+              <Route path="/posts">
                 <Posts title={'OLD BIKE FROM MY GRANDMA'} />
               </Route>
-              <Redirect to="/trades" />
             </Switch>
-          </>
+            <Redirect to="/posts" />
+          </div>
         ) : (
-          <AuthPage setUser={setUser} />
+          <Route exact path='/login' render={(props) => (
+            <AuthPage {...props} setUser={setUser} />
+          )} />
         )}
       </section>
     </div>

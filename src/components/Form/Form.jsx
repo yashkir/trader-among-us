@@ -7,16 +7,16 @@ const Form = ({ name, description, image }) => {
   return (
     <div className="form-container">
 
-      <PageTitle titleOne={"NEW"} titleTwo={"TRADE"} />
+      <PageTitle titleOne={"NEW"} titleTwo={"POST"} />
 
       <section id="form-sec">
         <form>
           <div className="form-border">
-            <label for="" className="form-label">{name}</label>
+            <label for="" className="form-label">Name</label>
             <input type="text" className="form-input" />
-            <label for="" className="form-label">{description}</label>
+            <label for="" className="form-label">Description</label>
             <textarea rows="6" name="des" />
-            <label for="" className="form-label">{image}</label>
+            <label for="" className="form-label">Image</label>
             <label class="custom-file-upload">
               <input type="file" />
               <FaFileUpload id="upload" />

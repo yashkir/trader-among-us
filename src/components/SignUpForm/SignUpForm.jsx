@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { signUp } from "../../utils/users-service";
 
-
 export default class SignUpForm extends Component {
   state = {
     name: "",
@@ -10,6 +9,7 @@ export default class SignUpForm extends Component {
     confirm: "",
     error: "",
   };
+
 
   handleChange = (e) => {
     this.setState({
@@ -26,6 +26,8 @@ export default class SignUpForm extends Component {
       const user = await signUp(userData);
       this.props.setUser(user);
 
+
+
     } catch {
       this.setState({ error: "Sign up Failed" });
     }
@@ -36,9 +38,10 @@ export default class SignUpForm extends Component {
     return (
       <div>
 
+
         <div className="form-container">
           <section id="form-sec">
-            <form autoComplete="off" onSubmit={this.handleSubmit}>
+            <form autoComplete="off" onSubmit={this.handleSubmit} >
               <div className="form-border">
                 <label className="form-label">Username</label>
                 <input
@@ -83,7 +86,7 @@ export default class SignUpForm extends Component {
               <div className="btn-div">
                 <button className="submit-btn" type="submit" disabled={disable}>
                   SIGN UP
-            </button>
+                </button>
               </div>
             </form>
           </section>
