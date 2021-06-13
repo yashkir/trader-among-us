@@ -1,5 +1,6 @@
 import './Posts.css'
 import PageTitle from "../../components/PageTitle/PageTitle"
+import { Link } from "react-router-dom"
 
 const Posts = ({ title, description, image }) => {
   return (
@@ -16,7 +17,9 @@ const Posts = ({ title, description, image }) => {
           <p className='flex-p'>My grandmas bike is the best guys. THE BEST EVER!!</p>
         </div>
         <div className="column-btn">
-          <div className="post-btn">View More</div>
+          <Link id="link" to='/posts/someid'>
+            <div className="post-btn">View More</div>
+          </Link>
         </div>
       </div>
       <hr />
