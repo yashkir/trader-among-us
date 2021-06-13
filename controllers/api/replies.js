@@ -1,9 +1,9 @@
 const Reply = require("../../models/reply");
 
-function index(req, res) {
-  res.send("reply index");
+function create(req, res) {
+  res.send("reply created");
 }
 
 module.exports = {
-  index,
+  create,
 };
