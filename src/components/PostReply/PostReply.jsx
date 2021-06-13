@@ -16,12 +16,18 @@ export default function PostReply() {
   return (
     <div className="reply-container">
       <div className="reply-header" onClick={handleHidden}>
-        <h3>User is Offering Item Name</h3>
+        <h3>User is Offering Fountain of Youth</h3>
         <span>{icon}</span>
       </div>
 
       <div className={`reply-body ${hidden}`}>
-        <p>Description: Lorem Ipsum</p>
+        <div className="post-item-description">
+          <h4>Description</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum temporibus, eaque blanditiis ut commodi odit placeat quae soluta amet magni natus ex quia exercitationem praesentium deleniti quo cum architecto aperiam ullam sequi et. Eius, laudantium earum facere ad amet harum laborum eveniet, odit similique quo quae, culpa quibusdam ipsa sunt.</p>
+        </div>
+        <div className="post-image">
+          <img src="https://i.imgur.com/aPRlorH.jpeg"></img>
+        </div>
       </div>
     </div>
   );
