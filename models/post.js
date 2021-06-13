@@ -9,6 +9,10 @@ const postSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   deal: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Deal",
@@ -25,4 +29,4 @@ const postSchema = mongoose.Schema({
   timestamps: true,
 });
 
-module.exports = mongoose.model("post", postSchema)
+module.exports = mongoose.model("Post", postSchema);
