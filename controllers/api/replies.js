@@ -1,14 +1,6 @@
 const Reply = require("../../models/reply");
 const debug = require("debug")("api");
 
-<<<<<<< HEAD
-function create(req, res) {
-  res.send("reply created");
-}
-
-module.exports = {
-  create,
-=======
 async function show(req, res) {
   try {
     const reply = await Reply.findById(req.params.replyId);
@@ -68,5 +60,4 @@ module.exports = {
   show,
   update,
   delete: _delete,
->>>>>>> 04fc31b6f0f8f991c8c994de097e939367c38dfc
 };
