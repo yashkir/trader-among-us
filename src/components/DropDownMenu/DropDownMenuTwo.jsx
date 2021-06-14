@@ -9,6 +9,10 @@ const DropDownMenuTwo = () => {
   const handleHistory = () => {
     history.push('/posts/new')
   }
+
+  const handleNewItem = () => {
+    history.push('/items/new')
+  }
   return (
     <div className="dropdown">
       <DropDownMenuItem
@@ -17,8 +21,9 @@ const DropDownMenuTwo = () => {
         handleLogout={handleHistory}
       />
       <DropDownMenuItem
-        icon={<FaListUl id="nav-icon-drop" />}
-        text={"View Posts"}
+        icon={<FaPlusCircle id="nav-icon-drop" />}
+        text={"New Item"}
+        handleLogout={handleNewItem}
       />
     </div>
   );
