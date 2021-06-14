@@ -3,8 +3,10 @@ import "./Form.css"
 import { FaFileUpload } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle/PageTitle"
 import postsApi from "../../utils/posts-api";
+import { useHistory } from 'react-router';
 
 const Form = ({ name, description, image }) => {
+  const history = useHistory()
   const [inputValues, setInputValues] = useState({
     title: "",
     text: "",
@@ -15,7 +17,7 @@ const Form = ({ name, description, image }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    setInputValues({...inputValues, [e.target.name]: e.target.value});
+    setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
   /* FIXME we are not doing any client-side verification here, just calling the API*/
@@ -25,15 +27,18 @@ const Form = ({ name, description, image }) => {
       const response = await postsApi.create({
         title: inputValues.title,
         text: inputValues.text,
+
       });
+      history.push('/posts')
       setStatus(response);
     } catch (err) {
       setStatus(err.message);
     }
+
   }
 
   return (
-    <div className="form-container">
+    <div className="Form form-container">
 
       <PageTitle titleOne={"NEW"} titleTwo={"POST"} />
 

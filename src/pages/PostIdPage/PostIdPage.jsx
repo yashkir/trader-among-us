@@ -1,11 +1,14 @@
 import React from 'react'
 import PageTitle from "../../components/PageTitle/PageTitle"
 import Reply from "../../components/Reply/Reply"
-import PostReply from "../../components/PostReply/PostReply"
 import "./PostIdPage.css"
+import Bid from "../../components/Bid/Bid"
 
 
 export default function PostIdPage() {
+
+
+
   return (
     <>
       <div>
@@ -19,13 +22,13 @@ export default function PostIdPage() {
           <p id="form-p-pink">Posted On (someDate)</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <img id="post-img" src="https://i.stack.imgur.com/BOSno.jpg"></img>
+          <img id="post-img" alt="#" src="https://i.stack.imgur.com/BOSno.jpg"></img>
         </div>
         <div class="PostIdPage post-page-row">
           <p className="flex-p">My grandmas bike is the best guys. THE BEST EVER!!</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <PostReply />
+          <Bid />
         </div>
       </div>
       <div class='PostIdPage post-page-column'>
