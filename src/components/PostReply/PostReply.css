@@ -12,7 +12,7 @@
   align-items: center;
   padding: 10px 20px;
   /* background-color: #d191bc; */
-  background-image: linear-gradient(to right bottom, #ebb5d3fb, #d191bc);
+  background-image: linear-gradient(to right top, #f5a5d1fb, #d191bc);
   color: white;
   cursor: pointer;
 }

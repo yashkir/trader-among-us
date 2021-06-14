@@ -1,6 +1,7 @@
 import React from 'react'
 import PageTitle from "../../components/PageTitle/PageTitle"
 import Reply from "../../components/Reply/Reply"
+import PostReply from "../../components/PostReply/PostReply"
 import "./PostIdPage.css"
 
 
@@ -24,7 +25,7 @@ export default function PostIdPage() {
           <p className="flex-p">My grandmas bike is the best guys. THE BEST EVER!!</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <button className="post-btn">Make A Bid</button>
+          <PostReply />
         </div>
       </div>
       <div class='PostIdPage post-page-column'>

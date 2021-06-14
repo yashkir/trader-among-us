@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import "./PostReply.css";
+import "./PostBid.css";
 
-export default function PostReply() {
+export default function PostBid() {
 
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
@@ -14,14 +14,14 @@ export default function PostReply() {
   };
 
   return (
-    <div className="reply-container">
-      <div className="reply-header" onClick={handleHidden}>
+    <div className="bid-container">
+      <div className="bid-header" onClick={handleHidden}>
         <h3>Make a Bid</h3>
         <span>{icon}</span>
       </div>
 
-      <div className={`reply-body ${hidden}`}>
-        <div className="post-item-description">
+      <div className={`bid-body ${hidden}`}>
+        <div className="post-bid-items">
           <h4>Description</h4>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum temporibus, eaque blanditiis ut commodi odit placeat quae soluta amet magni natus ex quia exercitationem praesentium deleniti quo cum architecto aperiam ullam sequi et. Eius, laudantium earum facere ad amet harum laborum eveniet, odit similique quo quae, culpa quibusdam ipsa sunt.</p>
         </div>

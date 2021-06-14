@@ -4,7 +4,6 @@ import { FaFileUpload } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle/PageTitle"
 import postsApi from "../../utils/posts-api";
 
-
 const Form = ({ name, description, image }) => {
   const [inputValues, setInputValues] = useState({
     title: "",
