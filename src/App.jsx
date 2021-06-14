@@ -10,6 +10,7 @@ import NewPostPage from "./pages/NewPostPage/NewPostPage";
 import Posts from './components/Posts/Posts'
 import PostIdPage from './pages/PostIdPage/PostIdPage'
 import PostReply from './components/PostReply/PostReply';
+import ItemCreateForm from './components/ItemCreateForm/ItemCreateForm';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -59,6 +60,7 @@ const App = () => {
               </Route>
               <Route path="/tests">
                 <PostReply />
+                <ItemCreateForm />
               </Route>
               <Redirect to="/posts" />
             </Switch>
