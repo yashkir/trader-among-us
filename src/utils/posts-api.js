@@ -30,7 +30,9 @@ async function create(data) {
   }
 }
 
-module.exports = {
+const postsApi = {
   getAllPosts,
   create,
-}
+};
+
+export default postsApi;
