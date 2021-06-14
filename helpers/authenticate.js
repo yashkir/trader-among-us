@@ -12,7 +12,7 @@ function authenticate(req, res, next) {
   let token = req.get("Authorization") || req.query.token || req.body.token;
 
   if (token) {
-    token.replace("Bearer ", "");
+    token = token.replace("Bearer ", "");
 
     jwt.verify(token, SECRET, (err, decoded) => {
       if (err) {
