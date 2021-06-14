@@ -1,3 +1,5 @@
+import { getToken } from './users-service';
+
 const BASE_URL = "/api/posts";
 
 async function getAllPosts() {
@@ -11,15 +13,18 @@ async function getAllPosts() {
   }
 }
 
-async function create(data) {
+async function create(data, token) {
   const payload = {
     title: data.title,
     text: data.text,
-  }
+  };
 
   const res = await fetch(BASE_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken(),
+    },
     body: JSON.stringify(payload),
   });
 

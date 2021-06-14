@@ -5,18 +5,23 @@ const itemSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  image: { //todo
+  image: {
     type: String,
   },
   description: {
     type: String,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   isSold: {
     type: Boolean,
     required: true,
+    default: false,
   },
 }, {
   timestamps: true,
 });
 
-module.exports = mongoose.model("item", itemSchema)
+module.exports = mongoose.model("Item", itemSchema);

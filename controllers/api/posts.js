@@ -26,6 +26,7 @@ async function create(req, res) {
     const newPost = await Post.create(req.body);
     res.status(200).json(newPost);
   } catch (err) {
+    debug(err);
     res.status(400).json("post creation failed");
   }
 }
