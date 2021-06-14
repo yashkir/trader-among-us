@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Reply.css";
 
-export default function Reply({ name, des, img }) {
+export default function Reply({ }) {
     const [hidden, setHidden] = useState("");
     const [icon, setIcon] = useState("+");
 
@@ -21,7 +21,7 @@ export default function Reply({ name, des, img }) {
 
             <div className={`Reply-body ${hidden}`}>
                 <div className="Reply-page-row">
-                    <img className="Reply-img" src="https://i.ebayimg.com/images/g/6~YAAOSwBrhe5-O4/s-l300.jpg"></img>
+                    <img className="Reply-img" alt="reply" src="https://i.ebayimg.com/images/g/6~YAAOSwBrhe5-O4/s-l300.jpg"></img>
                 </div>
                 <div className="Reply-page-row">
                     <p id="Reply-p">Stolen back in 1991, need to dispose quickly.</p>

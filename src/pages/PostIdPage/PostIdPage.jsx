@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PageTitle from "../../components/PageTitle/PageTitle"
 import Reply from "../../components/Reply/Reply"
 import "./PostIdPage.css"
@@ -6,15 +6,6 @@ import Bid from "../../components/Bid/Bid"
 
 
 export default function PostIdPage() {
-  const [hidden, setHidden] = useState("");
-  const [icon, setIcon] = useState("+");
-
-  const handleHidden = () => {
-    if (hidden === "hidden") setHidden("");
-    if (hidden === "") setHidden("hidden");
-    if (icon === "+") setIcon("-");
-    if (icon === "-") setIcon("+");
-  };
 
 
 
@@ -31,7 +22,7 @@ export default function PostIdPage() {
           <p id="form-p-pink">Posted On (someDate)</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <img id="post-img" src="https://i.stack.imgur.com/BOSno.jpg"></img>
+          <img id="post-img" alt="#" src="https://i.stack.imgur.com/BOSno.jpg"></img>
         </div>
         <div class="PostIdPage post-page-row">
           <p className="flex-p">My grandmas bike is the best guys. THE BEST EVER!!</p>

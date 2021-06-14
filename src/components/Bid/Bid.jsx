@@ -1,9 +1,51 @@
 import React, { useState } from "react";
-import Board from "../../components/Board/Board"
-import ItemCard from "../../components/ItemCard/ItemCard"
+import { DragDropContext } from "react-beautiful-dnd";
 import "./Bid.css";
+import Column from "../../components/Column/Column"
 
-export default function Reply(props) {
+const data = {
+  items: {
+    'itm-1': {
+      id: "itm-1",
+      name: "item1",
+      description: "somedes",
+      img: 'https://cdn.greatlifepublishing.net/wp-content/uploads/sites/4/2015/10/23150611/coffee-grinder-715170_960_720.jpg'
+    },
+    'itm-2': {
+      id: "itm-2",
+      name: "item2",
+      description: "somedes",
+      img: 'https://wl-brightside.cf.tsp.li/resize/728x/jpg/181/4fb/2a0b6e52e29e3ba58697034db7.jpg'
+    },
+    'itm-3': {
+      id: "itm-3",
+      name: "item3",
+      description: "somedes",
+      img: 'https://thumbs.dreamstime.com/b/kitchen-antique-items-rural-life-composition-objects-dark-background-194158844.jpg'
+    },
+  },
+  columns: {
+    'col-1': {
+      id: 'col-1',
+      title: 'Your Items',
+      itemIds: ['itm-1', 'itm-2', 'itm-3']
+    },
+    'col-2': {
+      id: 'col-2',
+      title: 'Bid Items',
+      itemIds: [],
+    },
+  },
+  columnOrder: ['col-1', 'col-2'],
+}
+
+
+export default function Reply() {
+
+  const [items, setItems] = useState(data);
+  const columns = items.columnOrder;
+
+
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
 
@@ -14,34 +56,102 @@ export default function Reply(props) {
     if (icon === "-") setIcon("+");
   };
 
+
+  // <div className="Bid-flex-row">
+  //         <h5>Drag and drop to make a bid</h5>
+  //       </div>
+  //       <div className="Bid-items-text">
+  //         <div className="Bid-flex-row">
+  //           <h2>Your Items</h2>
+  //         </div>
+  //         <div className="Bid-flex-row">
+  //           <h2>Bid Items</h2>
+  //         </div>
+  //       </div>
+
+  const onDragEnd = result => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) return;
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const start = items.columns[source.droppableId];
+    const end = items.columns[destination.droppableId];
+
+    if (start === end) {
+      const newItemIds = Array.from(start.itemIds);
+
+      newItemIds.splice(source.index, 1);
+      newItemIds.splice(destination.index, 0, draggableId);
+
+      const newStartColumn = {
+        ...start,
+        itemIds: newItemIds,
+      };
+
+      const newState = {
+        ...items,
+        columns: {
+          ...items.columns,
+          [newStartColumn.id]: newStartColumn,
+        }
+      };
+
+      setItems(newState);
+      return;
+    }
+
+    //Moving to different list
+    const startItemIds = Array.from(start.itemIds);
+    startItemIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      itemIds: startItemIds,
+    }
+
+    const endItemIds = Array.from(end.itemIds);
+    endItemIds.splice(destination.index, 0, draggableId);
+    const newEnd = {
+      ...end,
+      itemIds: endItemIds,
+    };
+
+
+    const newState = {
+      ...items,
+      columns: {
+        ...items.columns,
+        [newStart.id]: newStart,
+        [newEnd.id]: newEnd,
+      }
+    }
+
+    setItems(newState);
+
+  }
+
+
   return (
     <>
       <div className="PostIdPage post-page-row">
         <h3 onClick={handleHidden} className="post-btn">Make A Bid</h3>
-
       </div>
 
       <div className={`Bid-body-row ${hidden}`}>
-        <div className="Bid-flex-row"><h5>Drag and drop to make a bid</h5></div>
-        <div className="Bid-items-text">
-          <div className="Bid-flex-row"><h2>Your Items</h2></div>
-          <div className="Bid-flex-row"><h2>Bid Items</h2></div>
-        </div>
-        <div className="Bid-container">
-          <Board id="board-1" className="Bid-page-column Item-board">
-            <ItemCard id="card-1" className="item-card" draggable="true">
-              <p className="item-card p">Item 1 Name</p>
-            </ItemCard>
-
-          </Board>
-
-          <Board id="board-2" className="Bid-page-column Bid-board">
-            <ItemCard id="card-2" className="item-card" draggable="true">
-              <p className="item-card p">Item 2 Name</p>
-            </ItemCard>
-          </Board>
-        </div>
-
+        <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
+          {columns.map((colId) => {
+            const column = items.columns[colId];
+            console.log("HERE!!", items.columns);
+            const res = column.itemIds.map(itemId => items.items[itemId]);
+            return <Column key={column.id} column={column} res={res} />;
+          })}
+        </DragDropContext>
       </div>
     </>
   );
