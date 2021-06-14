@@ -7,8 +7,6 @@ import Bid from "../../components/Bid/Bid"
 
 export default function PostIdPage() {
 
-
-
   return (
     <>
       <div>
