@@ -57,7 +57,7 @@ const App = () => {
               <Route path="/posts">
                 <Posts title={'OLD BIKE FROM MY GRANDMA'} />
               </Route>
-              <Route path="/tests">
+              <Route path="/items/new">
                 <ItemCreateForm />
               </Route>
               <Redirect to="/posts" />
