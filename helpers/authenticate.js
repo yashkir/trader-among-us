@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
+const debug = require('debug')('auth');
 
 /**
  * Middleware that checks for a json web token and adds a user object to the
@@ -9,6 +10,7 @@ const SECRET = process.env.SECRET;
  * running an api server, this behaviour is sufficient.
  */
 function authenticate(req, res, next) {
+  debug(req);
   let token = req.get("Authorization") || req.query.token || req.body.token;
 
   if (token) {
@@ -16,6 +18,7 @@ function authenticate(req, res, next) {
 
     jwt.verify(token, SECRET, (err, decoded) => {
       if (err) {
+        debug(err);
         res.status(403).json({ message: "Invalid token." });
       } else {
         req.user = decoded.user;
