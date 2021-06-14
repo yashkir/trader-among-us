@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-.post-item-description{
+.post-item-description {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -31,7 +31,7 @@
   width: 300px;
 }
 
-.post-image img{
+.post-image img {
   width: 60%;
   height: auto;
   border-radius: 5px;
@@ -44,7 +44,7 @@
 
 .reply-body {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   align-items: center;
   border: 1px solid black;
   background-color: white;
@@ -60,22 +60,21 @@
   transition: all 300ms ease-in-out;
 }
 
-.hidden {
+.Post-reply-hidden {
   height: 250px;
 }
 
-@media screen and (max-width:550px) {
-  .post-item-description{
+@media screen and (max-width: 550px) {
+  .post-item-description {
     width: 200px;
     height: auto;
   }
-  .reply-body{
+  .reply-body {
     display: flex;
     flex-direction: column;
   }
 
-  .hidden{
+  .Post-reply-hidden {
     height: 500px;
   }
-
 }

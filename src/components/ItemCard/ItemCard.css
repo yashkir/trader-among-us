@@ -1,0 +1,26 @@
+.item-card-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: 2.5rem;
+  margin: 0.5rem auto;
+}
+
+.item-card-image {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.item-card-image image {
+  width: 100%;
+}
+
+.item-card p {
+  font-family: "Oleo Script", cursive;
+  font-size: 1.3rem;
+  color: rgb(219, 163, 201);
+}

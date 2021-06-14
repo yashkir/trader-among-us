@@ -1,0 +1,122 @@
+.Bid-header {
+  border: 1px solid transparent;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  width: 70vw;
+  align-items: center;
+  background-color: rgb(219, 163, 201);
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 0.5rem;
+  transition: 300ms;
+}
+
+.Bid-header:hover {
+  transform: scale(1.02);
+  background-color: rgb(235, 190, 219);
+  cursor: pointer;
+}
+
+.Bid-body-row {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+
+  border-top: 0px;
+  height: 0;
+  width: 100vw;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+  background-color: transparent;
+}
+
+.Bid-container {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  border-radius: 35px;
+  border-top: 0px;
+  height: 15.5rem;
+
+  overflow: hidden;
+  /* transition: all 300ms ease-in-out;
+  background-color: transparent; */
+}
+
+.Bid-page-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  border-top: 3px solid rgba(99, 99, 99, 0.082);
+  border-bottom: 3px solid rgba(99, 99, 99, 0.082);
+}
+
+.Item-board {
+  border-right: 4px solid rgba(99, 99, 99, 0.082);
+  border-left: 3px solid rgba(99, 99, 99, 0.082);
+}
+
+.Bid-board {
+  border-right: 3px solid rgba(99, 99, 99, 0.082);
+}
+.hidden {
+  height: auto;
+}
+
+.Bid-h3 {
+  font-family: "Lilita One", cursive;
+  font-size: 1.3rem;
+  color: rgb(44, 44, 44);
+}
+
+#Bid-icon {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  color: rgb(37, 37, 37);
+}
+
+#Bid-p {
+  text-align: center;
+  font-family: "Oleo Script", cursive;
+  font-size: 1.4rem;
+}
+
+.Bid-img {
+  height: 9rem;
+  width: 8rem;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.Bid-flex-row > h5 {
+  font-size: 1.5rem;
+  margin: 0.5rem auto;
+  font-family: "Lilita One", cursive;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+}
+
+.Bid-flex-row > h2 {
+  font-size: 1.3rem;
+  margin: 0.5rem auto;
+  font-family: "Lilita One", cursive;
+  text-transform: uppercase;
+  color: rgb(56, 56, 56);
+}
+
+.Bid-page-column > h4 {
+  margin: 0.5rem auto;
+  font-family: "Lilita One", cursive;
+  color: rgb(73, 73, 73);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.Bid-items-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
