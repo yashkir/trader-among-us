@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { getToken } from "../../utils/users-service";
+import PageTitle from "../PageTitle/PageTitle";
+import { FaFileUpload } from 'react-icons/fa'
 
 export default function ItemCreateForm() {
   const [file, setFile] = useState({ preview: "", raw: "" });
@@ -10,6 +12,7 @@ export default function ItemCreateForm() {
     const formData = new FormData();
     formData.append("title", "myitem");
     formData.append("image", file.raw);
+    formData.append("description",)
 
     // TODO move this out to a service or api file
     const res = await fetch("/api/items", {
@@ -20,7 +23,7 @@ export default function ItemCreateForm() {
       body: formData
     });
 
-    if(res.ok) {
+    if (res.ok) {
       setMessage("done");
     } else {
       setMessage(res.message || "Could not upload");
@@ -39,33 +42,49 @@ export default function ItemCreateForm() {
 
   return (
     <div className="ImageUpload">
-      <h1>Add a new item</h1>
+      <PageTitle titleOne={"NEW"} titleTwo={"ITEM"} />
       <p>{message}</p>
       <form
         action="/api/items"
         method="post"
         onSubmit={handleSubmit}
       >
-        <label htmlFor="title">Item Name</label>
-        <input type="text" name="title" id="title"/>
-        <br />
-        <label htmlFor="image">
-          {file.preview ? (
-            <img alt="preview" src={file.preview} width="300" height="300" />
-          ) : (
-            <span style={{border: "2px solid black"}}>Choose Image</span>
-          )}
-        </label>
-        <input
-          style={{display: "none"}}
-          type="file"
-          name="image"
-          id="image"
-          accept="image/png, image/jpeg"
-          onChange={handleChange}
-        />
-        <br />
-        <button type="submit">Add Item</button>
+        <section id="form-sec">
+          <div className="form-border">
+            <label className="form-label" htmlFor="title">Item Name</label>
+            <input className="form-input" type="text" name="title" id="title" />
+            <br />
+            <label for="description" className="form-label">Description</label>
+            <textarea
+              id="text"
+              rows="6"
+              name="text"
+              value=''
+              onChange={handleSubmit}
+            />
+            <label for="image" className="form-label">Image</label>
+            <label htmlFor="image" >
+              {file.preview ? (
+                <img alt="preview" src={file.preview} width="300" height="300" />
+              ) : (
+                <FaFileUpload id="upload" class="custom-file-upload" />
+              )}
+            </label>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              name="image"
+              id="image"
+              accept="image/png, image/jpeg"
+              onChange={handleChange}
+            />
+
+            <br />
+          </div>
+        </section>
+        <div className="btn-div">
+          <button className="submit-btn" type="submit">ADD ITEM</button>
+        </div>
       </form>
     </div>
   );
