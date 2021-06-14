@@ -23,7 +23,7 @@ function authenticate(req, res, next) {
       }
     });
   } else {
-    next();
+    res.status(403).json({ message: "Token required." });
   }
 }
 

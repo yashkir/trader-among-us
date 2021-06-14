@@ -1,4 +1,6 @@
 const Post = require('../../models/post');
+const Reply = require('../../models/reply');
+const debug = require("debug")("api");
 
 async function index(req, res) {
   try {
@@ -11,7 +13,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const post = await Post.findById(req.params.postId);
+    const post = await Post.findById(req.params.postId).populate('replies');
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json("database query failed");
@@ -64,10 +66,40 @@ async function _delete(req, res) {
   }
 }
 
+/* FIXME This may be redundant as we already have the index() but let's
+ * leave it here in case we need it. */
+async function indexReplies(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId).populate('replies');
+    res.status(200).json(post.replies);
+  } catch (err) {
+    debug(err);
+    res.status(500).json("Unable to index Replies.");
+  }
+}
+
+async function createReply(req, res) {
+  try {
+    req.body.author = req.user._id;
+    let post = await Post.findById(req.params.postId);
+    const newReply = await Reply.create(req.body);
+
+    post.replies.push(newReply);
+    await post.save();
+
+    res.status(200).json(newReply);
+  } catch (err) {
+    debug(err);
+    res.status(500).json("Reply creation failed.");
+  }
+}
+
 module.exports = {
   index,
   show,
   create,
   update,
   delete: _delete,
+  indexReplies,
+  createReply,
 };

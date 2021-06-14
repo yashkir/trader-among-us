@@ -5,6 +5,10 @@ const replySchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   itemsOffered: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Item",
@@ -13,4 +17,4 @@ const replySchema = mongoose.Schema({
   timestamps: true,
 });
 
-module.exports = mongoose.model("reply", replySchema)
+module.exports = mongoose.model("Reply", replySchema);
