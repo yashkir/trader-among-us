@@ -34,7 +34,7 @@ const Form = ({ name, description, image }) => {
   }
 
   return (
-    <div className="form-container">
+    <div className="Form form-container">
 
       <PageTitle titleOne={"NEW"} titleTwo={"POST"} />
 

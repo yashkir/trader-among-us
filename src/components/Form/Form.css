@@ -111,7 +111,7 @@ textarea {
   color: rgb(230, 166, 207);
 }
 
-input[type="file"] {
+.Form input[type="file"] {
   display: none;
 }
 
