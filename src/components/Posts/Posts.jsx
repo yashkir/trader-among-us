@@ -36,7 +36,7 @@ const Posts = (props) => {
                   <div><img id="post-img" src="https://i.stack.imgur.com/BOSno.jpg" alt="placeholder"></img></div>
                 </div>
                 <div className="column-text">
-                  <div className="post-title">{post.title}</div>
+                  <div className="post-title">{post.title.toUpperCase()}</div>
                   <p className='flex-p'>{post.text}</p>
                 </div>
                 <div className="column-btn">
