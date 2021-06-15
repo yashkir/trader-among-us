@@ -51,7 +51,7 @@ const App = () => {
               <Route path="/posts/new" render={(props) => (
                 <NewPostPage {...props} />
               )} />
-              <Route path="/posts/someid" render={(props) => (
+              <Route path="/posts/:id" render={(props) => (
                 <PostIdPage {...props} />
               )} />
               <Route path="/posts">

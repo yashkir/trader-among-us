@@ -20,6 +20,7 @@ async function show(req, res) {
   }
 }
 
+
 async function create(req, res) {
   try {
     req.body.author = req.user._id;
@@ -43,7 +44,7 @@ async function update(req, res) {
       });
     }
 
-    const result = await Post.updateOne({_id: req.params.postId}, req.body);
+    const result = await Post.updateOne({ _id: req.params.postId }, req.body);
     return res.status(200).json(result);
   } catch (err) {
     return res.status(500).json("Update failed. Internal error.");
@@ -60,7 +61,7 @@ async function _delete(req, res) {
       });
     }
 
-    const result = await Post.deleteOne({_id: req.params.postId});
+    const result = await Post.deleteOne({ _id: req.params.postId });
     return res.status(200).json(result);
   } catch (err) {
     return res.status(500).json("Delete Failed. Internal Error.");

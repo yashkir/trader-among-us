@@ -7,8 +7,9 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-background-color: ${props => (props.isDragging ? 'lightgreen' : 'transparent')} ;
+opacity: ${props => (props.isDragging ? '0.6' : '1')} ;
 border-radius: 25px;
+margin-bottom: 0.5rem;
 
 
 `;
