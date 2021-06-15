@@ -47,7 +47,7 @@ export default function PostIdPage({ match }) {
           <p className="flex-p">{post.text}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <Bid />
+          <Bid postId={match.params.id} />
         </div>
       </div>
       <div class='PostIdPage post-page-column'>
