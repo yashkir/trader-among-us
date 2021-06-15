@@ -7,12 +7,14 @@ const dealSchema = mongoose.Schema({
   },
   posterHasConfirmed: {
     type: Boolean,
+    default: false,
   },
   replierHasConfirmed: {
     type: Boolean,
+    default: false,
   },
 }, {
   timestamps: true,
 });
 
-module.exports = mongoose.model("deal", dealSchema)
+module.exports = mongoose.model("Deal", dealSchema);

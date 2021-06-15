@@ -13,10 +13,10 @@ const postSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  deal: {
+  deals: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Deal",
-  },
+  }],
   replies: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Reply",

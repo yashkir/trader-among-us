@@ -1,5 +1,6 @@
 const Post = require('../../models/post');
 const Reply = require('../../models/reply');
+const Deal = require('../../models/deal');
 const debug = require("debug")("api");
 
 async function index(req, res) {
@@ -102,6 +103,77 @@ async function createReply(req, res) {
   }
 }
 
+/* Deals */
+
+async function indexDeals(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId)
+      .populate("deals");
+    res.json(post.deals);
+  } catch (err) {
+    debug(err);
+    res.status(500).json("database query failed");
+  }
+}
+
+async function createDeal(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId);
+    const reply = await Reply.findById(req.params.replyId);
+
+    if (req.user._id !== String(post.author._id)) {
+      return res.status(403).json({
+        message: "Deal failed. You are not the author of this post."
+      });
+    }
+
+    const deal = await Deal.create({ reply });
+    post.deal = deal;
+
+    post.deals.push(deal);
+    await post.save();
+    await deal.save();
+
+    res.status(200).json(deal);
+  } catch (err) {
+    debug(err);
+    res.status(500).json("Deal creation failed.");
+  }
+}
+
+async function confirmDeal(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId)
+      .populate("author")
+      .populate("deals");
+
+    const reply = await Reply.findById(req.params.replyId)
+      .populate("author");
+
+    // FIXME there may be a better way of doing the below query
+    const deal = post.deals.find(deal => {
+      return deal.reply == String(reply._id);
+    });
+
+    if (req.user._id === String(post.author._id)) {
+      deal.posterHasConfirmed = true;
+    } else if (req.user._id === String(reply.author._id)) {
+      deal.replierHasConfirmed = true;
+    } else {
+      return res.status(403).json({
+        message: "Update failed. You are not the author of this post or the author of the reply."
+      });
+    }
+
+    await deal.save();
+
+    return res.status(200).json("Deal confirmed.");
+  } catch (err) {
+    debug(err);
+    return res.status(500).json("Update failed. Internal error.");
+  }
+}
+
 module.exports = {
   index,
   show,
@@ -110,4 +182,7 @@ module.exports = {
   delete: _delete,
   indexReplies,
   createReply,
+  indexDeals,
+  createDeal,
+  confirmDeal,
 };
