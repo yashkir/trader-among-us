@@ -5,7 +5,6 @@ import PageTitle from "../../components/PageTitle/PageTitle"
 import postsApi from "../../utils/posts-api";
 import { useHistory } from 'react-router';
 
-
 const Form = ({ name, description, image }) => {
   const history = useHistory()
   const [inputValues, setInputValues] = useState({

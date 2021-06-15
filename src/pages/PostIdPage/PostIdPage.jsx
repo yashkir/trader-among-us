@@ -5,10 +5,6 @@ import Reply from "../../components/Reply/Reply"
 import "./PostIdPage.css"
 import Bid from "../../components/Bid/Bid"
 
-
-
-// TODO API Calls and posts state are temporarily here, but should be moved up to a Page
-
 export default function PostIdPage({ match }) {
   // TODO API Calls and posts state are temporarily here, but should be moved up to a Page
   const [post, setPost] = useState([]);
@@ -23,7 +19,6 @@ export default function PostIdPage({ match }) {
     hour12: true,
     timeZone: 'EST'
   });
-
 
   // Load posts here with an API call on component mount.
   // Using a promise since useEffect must be synchronous.
