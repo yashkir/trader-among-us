@@ -51,11 +51,13 @@ export default function PostIdPage({ match }) {
         </div>
       </div>
       <div class='PostIdPage post-page-column'>
-        <div className="Post-post-title">{post.title} CURRENTLY HAS (.LENGTH) BIDS</div>
-        <Reply />
-        <Reply />
-        <Reply />
-        <Reply />
+        <div className="Post-post-title">
+          {post.title} currently has {post.replies ? post.replies.length : 0} bid(s)</div>
+        {post.replies ? post.replies.map(reply => {
+          return (
+            <Reply reply={reply} />
+          );
+        }) : null}
       </div>
     </>
   )
