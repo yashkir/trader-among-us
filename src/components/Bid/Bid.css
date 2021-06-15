@@ -132,7 +132,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   /* padding: 0.2rem auto; */
   /* border: 1px solid red; */
 }
@@ -158,4 +157,26 @@
   flex-wrap: wrap;
   height: 100%;
   border-radius: 25px;
+}
+
+.txt-area-col {
+  display: none;
+}
+
+.bid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-bid-form {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 0.5rem auto;
+}
+
+.bid-message {
+  font-family: "Oleo Script", cursive;
+  font-size: 1.3rem;
+  color: rgb(71, 71, 71);
 }

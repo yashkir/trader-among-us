@@ -6,8 +6,8 @@ export default function Reply(props) {
   const [icon, setIcon] = useState("+");
 
   const handleHidden = () => {
-    if (hidden === "hidden") setHidden("");
-    if (hidden === "") setHidden("hidden");
+    if (hidden === "reply-hidden") setHidden("");
+    if (hidden === "") setHidden("reply-hidden");
     if (icon === "+") setIcon("-");
     if (icon === "-") setIcon("+");
   };

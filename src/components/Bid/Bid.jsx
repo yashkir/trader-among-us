@@ -45,18 +45,23 @@ export default function Bid(props) {
 
   const [bid, setBid] = useState({
     items: [],
-    description: "" 
+    description: ""
   });
 
   const [message, setMessage] = useState("");
 
+
   async function handleSubmit(e) {
     e.preventDefault();
-
-    const res = await postsApi.makeBid(props.postId, bid);
-
-    props.loadPosts();
-    handleHidden();
+    if (!bid.description) {
+      setMessage("Please enter a description");
+      return;
+    } else {
+      const res = await postsApi.makeBid(props.postId, bid);
+      props.loadPosts();
+      handleHidden();
+      setMessage("")
+    }
   }
 
   function handleBidChange(e) {
@@ -71,12 +76,15 @@ export default function Bid(props) {
 
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
+  const [block, setBlock] = useState('');
 
   const handleHidden = () => {
     if (hidden === "hidden") setHidden("");
     if (hidden === "") setHidden("hidden");
     if (icon === "+") setIcon("-");
     if (icon === "-") setIcon("+");
+    if (block === "show-bid-form") setBlock("");
+    if (block === "") setBlock("show-bid-form");
   };
 
   const onDragEnd = result => {
@@ -132,7 +140,6 @@ export default function Bid(props) {
       itemIds: endItemIds,
     };
 
-
     const newState = {
       ...items,
       columns: {
@@ -141,9 +148,7 @@ export default function Bid(props) {
         [newEnd.id]: newEnd,
       }
     }
-
     setItems(newState);
-
   }
 
 
@@ -153,7 +158,7 @@ export default function Bid(props) {
         <h3 onClick={handleHidden} className="post-btn">Make A Bid</h3>
       </div>
 
-      <div className={hidden}>
+      <div className={`bid-container `}>
         <div className={`Bid-body-row ${hidden}`}>
           <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
             {columns.map((colId) => {
@@ -162,18 +167,22 @@ export default function Bid(props) {
               return <Column key={column.id} column={column} res={res} />;
             })}
           </DragDropContext>
-          <div>
-            <textarea
-              onChange={handleBidChange}
-              value={bid.description}
-              style={{width: "80%"}}
-              placeholder="Describe your bid."
-              name="description"
-              id="description"
-            />
-            <h3 onClick={handleSubmit} className={`post-btn`}>Confirm Bid</h3>
-          </div>
         </div>
+        <div className={`txt-area-col ${block}`}>
+          <textarea
+
+            onChange={handleBidChange}
+            value={bid.description}
+            style={{ height: "15vh" }}
+            placeholder="Now's your chance, make your pitch!"
+            name="description"
+            id="description"
+          />
+        </div>
+        <div className={`txt-area-col ${block}`}>
+          <h3 onClick={handleSubmit} className={`post-btn`}>Confirm Bid</h3>
+        </div>
+        <h3 className="bid-message">{message}</h3>
       </div>
     </>
   );
