@@ -22,10 +22,9 @@ export default function UserProfilePage() {
             <Link to="/users/items/new">Add Items</Link>
           </div>
         </div>
-        <div className="user-profile-heading">
-          {/* <h1>Test</h1> */}
-        </div>
-
+        {/* <div className="user-profile-heading">
+          <h1>Test</h1>
+        </div> */}
         <div className="user-profile-body">
           <Switch>
             <Route path="/users/items/new" component={ItemCreateForm} />
