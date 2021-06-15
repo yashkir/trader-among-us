@@ -2,51 +2,78 @@
 /* font-family: "Oleo Script", cursive; */
 
 .user-profile-container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 8fr;
-  border: 1px solid black;
-  height: 60vh;
+  grid-template-rows: 1fr 8fr; */
+  /* border: 2px solid rgba(56, 56, 56, 0.267); */
+  /* border-radius: 15px; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
   width: 80vw;
   margin: 4rem auto;
 }
 
 .user-profile-heading {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 2/3;
-  grid-row: 1/2;
 }
 
 .user-profile-nav {
   display: flex;
-  justify-content: center;
-  line-height: 4rem;
+  justify-content: space-evenly;
+  padding: 1rem;
   font-size: 1.5rem;
-  border: 1px solid black;
+  border-right: 5px solid #D191BC;
+  border-left: 5px solid #D191BC;
+  width: 60vw;
+  background-image: linear-gradient(to left bottom, #414141, #242424);
+  /* border: 1px solid black; */
+  font-family: "Oleo Script", cursive;
   align-items: center;
-  grid-column: 1/2;
-  grid-row: 2/3;
 }
 
-.user-profile-nav ul {
-  border: 5px solid black;
-  border-radius: 10px;
-  padding: 2rem;
-  color: #525252;
-  list-style: none;
-  font-family: "Oleo Script", cursive;
-}
 
 .user-profile-nav a {
   text-decoration: none;
-  color: #525252;
+  color: #8a8a8a;
+  transition: 300ms;
+  padding: 10px;
+}
+
+.user-profile-nav a:hover {
+  color: rgb(228, 180, 212);
+  border: 1px solid rgb(228, 180, 212);
+  border-radius: 10px;
+  /* transform: scale(1.5); */
+  cursor: pointer;
 }
 
 .user-profile-body {
-  grid-column: 2/3;
-  grid-row: 2/3;
-  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  width: 40vw;
+}
+
+@media screen and (max-width:850px) {
+  .user-profile-container{
+    margin: 4rem auto;
+
+  }
+  .user-profile-nav{
+    font-size: 20px;
+    /* border: 0; */
+  }
+}
+
+@media screen and (max-width:550px) {
+  .user-profile-nav{
+    font-size: 17px;
+    /* border: 0; */
+  }
 }
