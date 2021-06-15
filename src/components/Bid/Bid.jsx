@@ -56,19 +56,6 @@ export default function Reply() {
     if (icon === "-") setIcon("+");
   };
 
-
-  // <div className="Bid-flex-row">
-  //         <h5>Drag and drop to make a bid</h5>
-  //       </div>
-  //       <div className="Bid-items-text">
-  //         <div className="Bid-flex-row">
-  //           <h2>Your Items</h2>
-  //         </div>
-  //         <div className="Bid-flex-row">
-  //           <h2>Bid Items</h2>
-  //         </div>
-  //       </div>
-
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
 
@@ -147,7 +134,6 @@ export default function Reply() {
         <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
           {columns.map((colId) => {
             const column = items.columns[colId];
-            console.log("HERE!!", items.columns);
             const res = column.itemIds.map(itemId => items.items[itemId]);
             return <Column key={column.id} column={column} res={res} />;
           })}

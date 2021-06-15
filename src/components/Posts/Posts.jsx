@@ -27,6 +27,7 @@ const Posts = (props) => {
       {/* Showing all posts */}
       <div>
         {posts.length ? posts.map(post => {
+          console.log(post)
           return (
             <div key={post._id}>
               <div className="row">
@@ -39,13 +40,15 @@ const Posts = (props) => {
                   <p className='flex-p'>{post.text}</p>
                 </div>
                 <div className="column-btn">
-                  <div className="post-btn">View More</div>
+                  <Link id="link" to={`/posts/${post._id}`}>
+                    <div className="post-btn">View More</div>
+                  </Link>
                 </div>
               </div>
               <hr />
             </div>
           )
-        }) : null }
+        }) : null}
       </div>
 
       {/* TODO these are sample posts, remove them */}

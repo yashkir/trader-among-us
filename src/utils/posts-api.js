@@ -13,6 +13,18 @@ async function getAllPosts() {
   }
 }
 
+
+async function getOnePost(id) {
+  const res = await fetch(`${BASE_URL}/${id}`,
+    { method: "GET" }
+  );
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Unable to retrieve posts.");
+  }
+}
+
 async function create(data, token) {
   const payload = {
     title: data.title,
@@ -38,6 +50,7 @@ async function create(data, token) {
 const postsApi = {
   getAllPosts,
   create,
+  getOnePost,
 };
 
 export default postsApi;

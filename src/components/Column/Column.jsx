@@ -5,6 +5,7 @@ import Item from "../../components/Item/Item"
 
 const Col = styled.div`
 background-color: 'blue'
+margin-bottom: '1rem'
 background-color: ${props => (props.isDragging ? 'lightblue' : 'transparent')}
 `;
 export default function Column({ res, column }) {
