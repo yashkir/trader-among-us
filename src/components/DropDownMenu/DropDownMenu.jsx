@@ -14,6 +14,10 @@ const DropDownMenu = ({ setUser }) => {
     history.push('/login')
   }
 
+  const handleUserProfile = () => {
+    history.push('/users')
+  }
+
 
   return (
     <div className="dropdown">
@@ -21,6 +25,7 @@ const DropDownMenu = ({ setUser }) => {
       <DropDownMenuItem
         icon={<FaUser id="nav-icon-drop" />}
         text={"View Profile"}
+        handleLogout={handleUserProfile}
       />
 
       <DropDownMenuItem
