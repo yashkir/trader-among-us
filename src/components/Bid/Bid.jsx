@@ -55,7 +55,8 @@ export default function Reply(props) {
 
     const res = await postsApi.makeBid(props.postId, bid);
 
-    alert("bid made: " + res); //TODO DELTE ME PLEASE
+    props.loadPosts();
+    handleHidden();
   }
 
   function handleBidChange(e) {

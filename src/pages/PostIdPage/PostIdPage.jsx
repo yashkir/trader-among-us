@@ -22,10 +22,17 @@ export default function PostIdPage({ match }) {
 
   // Load posts here with an API call on component mount.
   // Using a promise since useEffect must be synchronous.
-  useEffect(() => {
+  function loadPosts() {
     PostsApi.getOnePost(match.params.id)
-      .then(data => setPost({ ...data, title: data.title.toUpperCase(), date: formatter.format(Date.parse(data.createdAt)) }))
-      .catch(err => setErrorMsg(err.message))
+      .then(data => setPost({
+        ...data,
+        title: data.title.toUpperCase(),
+        date: formatter.format(Date.parse(data.createdAt))
+      }))
+      .catch(err => setErrorMsg(err.message));
+  }
+  useEffect(() => {
+    loadPosts();
   }, []);
 
   return (
@@ -47,7 +54,7 @@ export default function PostIdPage({ match }) {
           <p className="flex-p">{post.text}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <Bid postId={match.params.id} />
+          <Bid loadPosts={loadPosts} postId={match.params.id} />
         </div>
       </div>
       <div class='PostIdPage post-page-column'>
