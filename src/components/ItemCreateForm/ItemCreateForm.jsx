@@ -42,7 +42,6 @@ export default function ItemCreateForm() {
 
   return (
     <div className="ImageUpload">
-      <PageTitle titleOne={"NEW"} titleTwo={"ITEM"} />
       <p>{message}</p>
       <form
         action="/api/items"

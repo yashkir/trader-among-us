@@ -63,8 +63,9 @@
   flex-wrap: wrap;
   width: 80%;
   height: auto;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-around;
+
+  align-items: center;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
 }
@@ -74,4 +75,26 @@
   width: 8rem;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#Reply-deal {
+  color: rgb(214, 146, 191);
+  height: 3.5rem;
+  width: 3.5rem;
+  transform: rotate(-20deg);
+  cursor: pointer;
+}
+
+.Reply-page-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.Reply-txt {
+  font-size: 1.2rem;
+  font-family: "Oleo Script", cursive;
+  color: rgb(214, 146, 191);
 }
