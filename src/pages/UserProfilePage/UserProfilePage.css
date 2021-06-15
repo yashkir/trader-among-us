@@ -1,9 +1,12 @@
-.user-profile-container{
+/* font-family: "Lilita One", cursive; */
+/* font-family: "Oleo Script", cursive; */
+
+.user-profile-container {
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 8fr;
   border: 1px solid black;
-  height: 80vh;
+  height: 60vh;
   width: 80vw;
   margin: 4rem auto;
 }
@@ -14,24 +17,36 @@
   justify-content: center;
   align-items: center;
   grid-column: 2/3;
-  grid-row:1/2;
+  grid-row: 1/2;
 }
 
 .user-profile-nav {
   display: flex;
   justify-content: center;
-  line-height: 2rem;
-  align-items: center;
+  line-height: 4rem;
+  font-size: 1.5rem;
   border: 1px solid black;
+  align-items: center;
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
 .user-profile-nav ul {
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 2rem;
+  color: #525252;
   list-style: none;
+  font-family: "Oleo Script", cursive;
+}
+
+.user-profile-nav a {
+  text-decoration: none;
+  color: #525252;
 }
 
 .user-profile-body {
   grid-column: 2/3;
   grid-row: 2/3;
+  height: 250px;
 }
