@@ -23,6 +23,7 @@ module.exports = {
   "plugins": [
     "react"
   ],
+  "ignorePatterns": ["build/*"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
