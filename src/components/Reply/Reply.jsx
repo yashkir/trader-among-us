@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaHandshake } from "react-icons/fa";
 import "./Reply.css";
 
 export default function Reply(props) {
@@ -25,8 +26,12 @@ export default function Reply(props) {
         <div className="Reply-page-row">
           {/* TODO Items will go here */}
           <img className="Reply-img" alt="reply-img" src="https://i.ebayimg.com/images/g/6~YAAOSwBrhe5-O4/s-l300.jpg"></img>
+          <div className="Reply-page-col">
+            <FaHandshake id="Reply-deal" />
+            <div className="Reply-txt">Make Deal</div>
+          </div>
         </div>
-        <div className="Reply-page-row">
+        <div className="Reply-page-row-twt">
           <p id="Reply-p">{props.reply.text}</p>
         </div>
       </div>
