@@ -3,7 +3,8 @@ const debug = require("debug")("api");
 
 async function show(req, res) {
   try {
-    const reply = await Reply.findById(req.params.replyId);
+    const reply = await Reply.findById(req.params.replyId)
+      .populate('author', 'name');
 
     if (!reply) {
       return res.status(404).json("Reply not found");

@@ -4,7 +4,8 @@ const debug = require("debug")("api");
 
 async function index(req, res) {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({})
+      .populate("author", "name");
     res.json(posts);
   } catch (err) {
     res.status(400).json("database query failed");
@@ -13,7 +14,12 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const post = await Post.findById(req.params.postId).populate('replies');
+    const post = await Post.findById(req.params.postId)
+      .populate("author", "name")
+      .populate({
+        path: "replies", populate: {
+          path: "author", select: "name",
+        }});
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json("database query failed");
