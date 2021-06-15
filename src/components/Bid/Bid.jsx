@@ -41,7 +41,7 @@ const data = {
 }
 
 
-export default function Reply(props) {
+export default function Bid(props) {
 
   const [bid, setBid] = useState({
     items: [],
