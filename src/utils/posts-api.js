@@ -25,7 +25,7 @@ async function getOnePost(id) {
   }
 }
 
-async function create(data, token) {
+async function create(data) {
   const payload = {
     title: data.title,
     text: data.text,
