@@ -25,7 +25,7 @@ async function getOnePost(id) {
   }
 }
 
-async function create(data, token) {
+async function create(data) {
   const payload = {
     title: data.title,
     text: data.text,
@@ -47,10 +47,33 @@ async function create(data, token) {
   }
 }
 
+async function makeBid(postId, data) {
+  const payload = {
+    items: data.items,
+    text: data.description,
+  };
+
+  const res = await fetch(`${BASE_URL}/${postId}/reply`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken(),
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (res.ok) {
+    return "Bid created successfully.";
+  } else {
+    throw new Error("Unable to create bid.");
+  }
+}
+
 const postsApi = {
   getAllPosts,
   create,
   getOnePost,
+  makeBid,
 };
 
 export default postsApi;

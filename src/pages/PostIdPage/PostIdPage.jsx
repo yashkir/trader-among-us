@@ -22,10 +22,17 @@ export default function PostIdPage({ match }) {
 
   // Load posts here with an API call on component mount.
   // Using a promise since useEffect must be synchronous.
-  useEffect(() => {
+  function loadPosts() {
     PostsApi.getOnePost(match.params.id)
-      .then(data => setPost({ ...data, title: data.title.toUpperCase(), date: formatter.format(Date.parse(data.createdAt)) }))
-      .catch(err => setErrorMsg(err.message))
+      .then(data => setPost({
+        ...data,
+        title: data.title.toUpperCase(),
+        date: formatter.format(Date.parse(data.createdAt))
+      }))
+      .catch(err => setErrorMsg(err.message));
+  }
+  useEffect(() => {
+    loadPosts();
   }, []);
 
   return (
@@ -47,15 +54,17 @@ export default function PostIdPage({ match }) {
           <p className="flex-p">{post.text}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <Bid />
+          <Bid loadPosts={loadPosts} postId={match.params.id} />
         </div>
       </div>
       <div class='PostIdPage post-page-column'>
-        <div className="Post-post-title">{post.title} CURRENTLY HAS (.LENGTH) BIDS</div>
-        <Reply />
-        <Reply />
-        <Reply />
-        <Reply />
+        <div className="Post-post-title">
+          {post.title} currently has {post.replies ? post.replies.length : 0} bid(s)</div>
+        {post.replies ? post.replies.map(reply => {
+          return (
+            <Reply reply={reply} />
+          );
+        }) : null}
       </div>
     </>
   )

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import "./Bid.css";
 import Column from "../../components/Column/Column"
+import postsApi from "../../utils/posts-api";
 
 const data = {
   items: {
@@ -40,7 +41,29 @@ const data = {
 }
 
 
-export default function Reply() {
+export default function Bid(props) {
+
+  const [bid, setBid] = useState({
+    items: [],
+    description: "" 
+  });
+
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const res = await postsApi.makeBid(props.postId, bid);
+
+    props.loadPosts();
+    handleHidden();
+  }
+
+  function handleBidChange(e) {
+    e.preventDefault();
+
+    setBid({ ...bid, [e.target.name]: e.target.value });
+  }
 
   const [items, setItems] = useState(data);
   const columns = items.columnOrder;
@@ -130,14 +153,27 @@ export default function Reply() {
         <h3 onClick={handleHidden} className="post-btn">Make A Bid</h3>
       </div>
 
-      <div className={`Bid-body-row ${hidden}`}>
-        <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
-          {columns.map((colId) => {
-            const column = items.columns[colId];
-            const res = column.itemIds.map(itemId => items.items[itemId]);
-            return <Column key={column.id} column={column} res={res} />;
-          })}
-        </DragDropContext>
+      <div className={hidden}>
+        <div className={`Bid-body-row ${hidden}`}>
+          <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
+            {columns.map((colId) => {
+              const column = items.columns[colId];
+              const res = column.itemIds.map(itemId => items.items[itemId]);
+              return <Column key={column.id} column={column} res={res} />;
+            })}
+          </DragDropContext>
+          <div>
+            <textarea
+              onChange={handleBidChange}
+              value={bid.description}
+              style={{width: "80%"}}
+              placeholder="Describe your bid."
+              name="description"
+              id="description"
+            />
+            <h3 onClick={handleSubmit} className={`post-btn`}>Confirm Bid</h3>
+          </div>
+        </div>
       </div>
     </>
   );

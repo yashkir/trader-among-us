@@ -10,7 +10,6 @@ const debug = require('debug')('auth');
  * running an api server, this behaviour is sufficient.
  */
 function authenticate(req, res, next) {
-  debug(req);
   let token = req.get("Authorization") || req.query.token || req.body.token;
 
   if (token) {
