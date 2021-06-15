@@ -68,9 +68,12 @@ const App = () => {
             </Switch>
           </div>
         ) : (
-          <Route exact path='/login' render={(props) => (
-            <AuthPage {...props} setUser={setUser} />
-          )} />
+          <Switch>
+            <Route path='/login' render={(props) => (
+              <AuthPage {...props} setUser={setUser} />
+            )} />
+            <Redirect to="/login" />
+          </Switch>
         )}
       </section>
     </div>
