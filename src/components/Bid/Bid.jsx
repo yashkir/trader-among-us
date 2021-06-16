@@ -45,12 +45,12 @@ const data = {
 
 export default function Bid(props) {
   const userId = props.user._id;
-  
+
   const [bid, setBid] = useState({
     itemsOffered: [],
     description: ""
   });
-  
+
 
   const [message, setMessage] = useState("");
 
@@ -79,7 +79,7 @@ export default function Bid(props) {
         id: item._id,
         name: item.title,
         img: item.image,
-      };     
+      };
     })
   }
 
@@ -108,8 +108,8 @@ export default function Bid(props) {
   }
 
   const [items, setItems] = useState(data);
- 
-  
+
+
   const columns = items.columnOrder;
 
 
@@ -198,6 +198,7 @@ export default function Bid(props) {
       </div>
 
       <div className={`bid-container `}>
+        <p className={`txt-area-col ${block}`}>Drag and drop to make a bid</p>
         <div className={`Bid-body-row ${hidden}`}>
           <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
             {columns.map((colId) => {
