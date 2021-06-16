@@ -9,7 +9,7 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import NewPostPage from "./pages/NewPostPage/NewPostPage";
 import Posts from './components/Posts/Posts'
 import PostIdPage from './pages/PostIdPage/PostIdPage'
-import ItemCreateForm from './components/ItemCreateForm/ItemCreateForm';
+import NewItemPage from "./pages/NewItemPage/NewItemPage"
 import UserProfilePage from './pages/UserProfilePage/UserProfilePage';
 
 const App = () => {
@@ -59,7 +59,7 @@ const App = () => {
                 <Posts title={'OLD BIKE FROM MY GRANDMA'} />
               </Route>
               <Route path="/items/new">
-                <ItemCreateForm user={user} />
+                <NewItemPage user={user} />
               </Route>
               <Route path={`/users`}>
                 <UserProfilePage user={user} />
