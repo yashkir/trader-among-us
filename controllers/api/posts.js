@@ -149,6 +149,27 @@ async function createDeal(req, res) {
   }
 }
 
+async function checkIfDealDone(deal) {
+  if (deal.posterHasConfirmed && deal.replierHasConfirmed) {
+    const post = await Post.findOne({ deals: deal._id});
+    const reply = await Reply.findById(deal.reply)
+      .populate("itemsOffered");
+
+    // set all items to be sold, we are not handling locking of the Deal
+    // it can stil be toggled TODO
+    post.itemsOffered.forEach(item => {
+      item.isSold = true;
+      item.save();
+    });
+
+    reply.itemsOffered.forEach(item => {
+      item.isSold = true;
+      item.save();
+    });
+
+  }
+}
+
 async function confirmDealToggle(req, res) {
   try {
     const post = await Post.findById(req.params.postId)
@@ -165,8 +186,12 @@ async function confirmDealToggle(req, res) {
 
     if (req.user._id === String(post.author._id)) {
       deal.posterHasConfirmed = !deal.posterHasConfirmed;
+      await deal.save();
+      checkIfDealDone(deal);
     } else if (req.user._id === String(reply.author._id)) {
       deal.replierHasConfirmed = !deal.replierHasConfirmed;
+      await deal.save();
+      checkIfDealDone(deal);
     } else {
       return res.status(403).json({
         message: "Update failed. You are not the author of this post or the author of the reply."
