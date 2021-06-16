@@ -5,7 +5,8 @@ import Reply from "../../components/Reply/Reply"
 import "./PostIdPage.css"
 import Bid from "../../components/Bid/Bid"
 
-export default function PostIdPage({ match }) {
+export default function PostIdPage({ match, user }) {
+
   // TODO API Calls and posts state are temporarily here, but should be moved up to a Page
   const [post, setPost] = useState([]);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -54,7 +55,7 @@ export default function PostIdPage({ match }) {
           <p className="flex-p">{post.text}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <Bid loadPosts={loadPosts} postId={match.params.id} />
+          <Bid user={user} loadPosts={loadPosts} postId={match.params.id} />
         </div>
       </div>
       <div class='PostIdPage post-page-column'>

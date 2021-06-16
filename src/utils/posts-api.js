@@ -49,7 +49,7 @@ async function create(data) {
 
 async function makeBid(postId, data) {
   const payload = {
-    items: data.items,
+    itemsOffered: data.itemsOffered,
     text: data.description,
   };
 

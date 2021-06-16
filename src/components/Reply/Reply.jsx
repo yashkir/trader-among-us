@@ -13,6 +13,7 @@ export default function Reply(props) {
     if (icon === "-") setIcon("+");
   };
 
+  console.log(props);
   return (
     <>
       <div className="Reply-header" onClick={handleHidden}>
@@ -21,19 +22,22 @@ export default function Reply(props) {
         </h3>
         <span id="Reply-icon">{icon}</span>
       </div>
-
+    
       <div className={`Reply-body ${hidden}`}>
-        <div className="Reply-page-row">
-          {/* TODO Items will go here */}
-          <img className="Reply-img" alt="reply-img" src="https://i.ebayimg.com/images/g/6~YAAOSwBrhe5-O4/s-l300.jpg"></img>
-          <div className="Reply-page-col">
-            <FaHandshake id="Reply-deal" />
-            <div className="Reply-txt">Make Deal</div>
+        {props.reply.itemsOffered.map((item) => 
+        (
+          <div className="Reply-page-row">
+            {/* TODO Items will go here */}         
+            <img className="Reply-img" alt="reply-img" src={`/${item.image}`}></img>
           </div>
+        ))}        
+        <div className="Reply-page-col">
+          <FaHandshake id="Reply-deal" />
+          <div className="Reply-txt">Make Deal</div>
         </div>
-        <div className="Reply-page-row-twt">
-          <p id="Reply-p">{props.reply.text}</p>
-        </div>
+      </div>
+      <div className="Reply-page-row-twt">
+        <p id="Reply-p">{props.reply.text}</p>
       </div>
     </>
   );

@@ -79,7 +79,7 @@
 @media screen and (max-width: 440px) {
   .user-profile-nav {
     width: 80vw;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .user-profile-body {
     width: 60vw;
