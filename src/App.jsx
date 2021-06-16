@@ -59,10 +59,10 @@ const App = () => {
                 <Posts title={'OLD BIKE FROM MY GRANDMA'} />
               </Route>
               <Route path="/items/new">
-                <ItemCreateForm />
+                <ItemCreateForm user={user} />
               </Route>
               <Route path={`/users`}>
-                <UserProfilePage user={user}/>
+                <UserProfilePage user={user} />
               </Route>
               <Redirect to="/posts" />
             </Switch>

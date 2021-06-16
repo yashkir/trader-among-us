@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import itemsApi from "../../utils/items-api";
 
-export default function Carousel( {user} ) {
-  const userId = user.state._id;
+export default function Carousel({ user }) {
+  const userId = user._id;
   const [itemData, setItemData] = useState([]);
-  
+
   const [current, setCurrent] = useState(0);
   const length = itemData.length;
 
@@ -21,7 +21,6 @@ export default function Carousel( {user} ) {
   const getItems = async () => {
     const items = await itemsApi.show(userId);
     setItemData(items.item);
-    console.log("TESTINGG ---->", itemData);
   }
 
   useEffect(() => {
@@ -39,8 +38,9 @@ export default function Carousel( {user} ) {
           >
             {index === current && (
               <>
-                <div id="title">{item.title}</div>
+                <div id="Carousel-title">{item.title}</div>
                 <img id="image" alt="test" src={`/${item.image}`}></img>
+                <div id="Carousel-txt">{item.description}</div>
               </>
             )}
           </div>

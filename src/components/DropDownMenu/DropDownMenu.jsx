@@ -2,10 +2,12 @@ import DropDownMenuItem from "../DropDownMenuItem/DropDownMenuItem";
 import { FaUser, FaShare, FaUserEdit } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import * as userService from "../../utils/users-service";
+import { getUser } from "../../utils/users-service"
 
 import "./DropDownMenu.css";
 
 const DropDownMenu = ({ setUser }) => {
+  const user = getUser()
   const history = useHistory()
 
   const handleLogout = () => {
@@ -15,7 +17,7 @@ const DropDownMenu = ({ setUser }) => {
   }
 
   const handleUserProfile = () => {
-    history.push('/users')
+    history.push(`/users/${user._id}/items`)
   }
 
 
