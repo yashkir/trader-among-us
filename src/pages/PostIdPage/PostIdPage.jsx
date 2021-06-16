@@ -63,7 +63,7 @@ export default function PostIdPage({ match, user }) {
           {post.title} currently has {post.replies ? post.replies.length : 0} bid(s)</div>
         {post.replies ? post.replies.map(reply => {
           return (
-            <Reply reply={reply} />
+            <Reply post={post} reply={reply} />
           );
         }) : null}
       </div>

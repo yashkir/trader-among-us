@@ -69,11 +69,77 @@ async function makeBid(postId, data) {
   }
 }
 
+/* postId is acually not used here, but keeping it for consistency
+ * with the api route */
+async function getOneDeal(postId, replyId) {
+  const res = await fetch(`${BASE_URL}/${postId}/deals/${replyId}`,
+    { method: "GET" }
+  );
+  if (res.ok) {
+    return res.json();
+  } else {
+    return null;
+  }
+}
+
+async function startDeal(postId, replyId) {
+  const res = await fetch(`${BASE_URL}/${postId}/deals/${replyId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken(),
+    },
+  });
+
+  console.log(res);
+  if (res.ok) {
+    return true;
+  } else {
+    throw new Error("Unable to start deal.");
+  }
+}
+
+async function confirmDealToggle(postId, replyId) {
+  const res = await fetch(`${BASE_URL}/${postId}/deals/${replyId}/confirm`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken(),
+    },
+  });
+
+  if (res.ok) {
+    return true;
+  } else {
+    throw new Error("Unable to confirm deal.");
+  }
+}
+
+async function deleteDeal(postId, replyId) {
+  const res = await fetch(`${BASE_URL}/${postId}/deals/${replyId}/delete`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken(),
+    },
+  });
+
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Unable to confirm deal.");
+  }
+}
+
 const postsApi = {
   getAllPosts,
   create,
   getOnePost,
   makeBid,
+  getOneDeal,
+  startDeal,
+  confirmDealToggle,
+  deleteDeal,
 };
 
 export default postsApi;
