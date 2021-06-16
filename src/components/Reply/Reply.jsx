@@ -12,6 +12,7 @@ export default function Reply(props) {
     if (icon === "-") setIcon("+");
   };
 
+  console.log(props);
   return (
     <>
       <div className="Reply-header" onClick={handleHidden}>
@@ -24,7 +25,7 @@ export default function Reply(props) {
       <div className={`Reply-body ${hidden}`}>
         <div className="Reply-page-row">
           {/* TODO Items will go here */}
-          <img className="Reply-img" alt="reply-img" src="https://i.ebayimg.com/images/g/6~YAAOSwBrhe5-O4/s-l300.jpg"></img>
+          <img className="Reply-img" alt="reply-img" src={`/${props.reply.itemsOffered[0].image}`}></img>
         </div>
         <div className="Reply-page-row">
           <p id="Reply-p">{props.reply.text}</p>

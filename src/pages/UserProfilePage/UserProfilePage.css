@@ -24,13 +24,13 @@
 
 .user-profile-nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1rem;
   font-size: 1.5rem;
-  border-right: 5px solid #D191BC;
-  border-left: 5px solid #D191BC;
+  /* border-right: 5px solid #D191BC; */
+  /* border-left: 5px solid #D191BC; */
   width: 60vw;
-  background-image: linear-gradient(to left bottom, #414141, #242424);
+  /* background-image: linear-gradient(to left bottom, #414141, #242424); */
   /* border: 1px solid black; */
   font-family: "Oleo Script", cursive;
   align-items: center;
@@ -74,17 +74,18 @@
 
 @media screen and (max-width:550px) {
   .user-profile-nav{
-    font-size: 1rem;
+    width: 80vw;
+    font-size: 1.1rem;
   }
   .user-profile-body{
     width: 50vw;
   }
 }
 
-@media screen and (max-width:440px) {
+@media screen and (max-width:475px) {
   .user-profile-nav{
     width: 80vw;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .user-profile-body{
     width: 60vw;

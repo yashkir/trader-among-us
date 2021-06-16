@@ -13,9 +13,10 @@ margin-bottom: 0.5rem;
 
 
 `;
-export default function Item({ item, index }) {
+export default function Item({ item, index}) {
   return (
     <Draggable draggableId={item.id} index={index}>
+
       {(provided, snapshot) => (
         <Container
           {...provided.draggableProps}
@@ -23,7 +24,7 @@ export default function Item({ item, index }) {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          <img className="Bid-image" src={item.img} />
+          <img className="Bid-image" alt="" src={`/${item.img}`} />
           <div className="Bid-name-txt ">{item.name}</div>
         </Container>
       )}

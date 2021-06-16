@@ -15,11 +15,16 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
+    // TODO there may be a way to populate replies in one line
     const post = await Post.findById(req.params.postId)
       .populate("author", "name")
       .populate({
         path: "replies", populate: {
           path: "author", select: "name",
+        }})
+      .populate({
+        path: "replies", populate: {
+          path: "itemsOffered",
         }});
     res.status(200).json(post);
   } catch (err) {
