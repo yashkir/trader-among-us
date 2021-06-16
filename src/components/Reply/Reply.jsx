@@ -21,12 +21,15 @@ export default function Reply(props) {
         </h3>
         <span id="Reply-icon">{icon}</span>
       </div>
-
+    
       <div className={`Reply-body ${hidden}`}>
+      {props.reply.itemsOffered.map((item) => (
+        
         <div className="Reply-page-row">
-          {/* TODO Items will go here */}
-          <img className="Reply-img" alt="reply-img" src={`/${props.reply.itemsOffered[0].image}`}></img>
-        </div>
+          {/* TODO Items will go here */}         
+          <img className="Reply-img" alt="reply-img" src={`/${item.image}`}></img>
+          </div>
+          ))}
         <div className="Reply-page-row">
           <p id="Reply-p">{props.reply.text}</p>
         </div>
