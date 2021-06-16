@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { getToken } from "../../utils/users-service";
-import PageTitle from "../PageTitle/PageTitle";
 import { FaFileUpload } from "react-icons/fa";
 import itemsApi from "../../utils/items-api.js"
+import { useHistory } from "react-router-dom";
+import { getUser } from "../../utils/users-service"
+import "./ItemCreateForm.css"
 
 export default function ItemCreateForm() {
+  let user = getUser()
+  console.log(user)
+  const history = useHistory()
+
   const [inputValues, setInputValues] = useState({
     title: "",
     description: "",
@@ -22,6 +27,8 @@ export default function ItemCreateForm() {
     try {
       await itemsApi.create(formData);
       setMessage("Item created");
+
+      history.push(`/users/${user._id}/items`)
     } catch (err) {
       setMessage("Error creating Item");
     }
@@ -47,10 +54,10 @@ export default function ItemCreateForm() {
             <label className="form-label" htmlFor="title">
               Item Name
             </label>
-            <input 
-              className="form-input" 
-              type="text" 
-              name="title" 
+            <input
+              className="form-input"
+              type="text"
+              name="title"
               id="title"
               value={inputValues.title}
               onChange={handleChange}
@@ -72,10 +79,10 @@ export default function ItemCreateForm() {
             <label htmlFor="image">
               {file.preview ? (
                 <img
+                  className="Item-create-form-image"
                   alt="preview"
                   src={file.preview}
-                  width="300"
-                  height="300"
+
                 />
               ) : (
                 <FaFileUpload id="upload" class="custom-file-upload" />

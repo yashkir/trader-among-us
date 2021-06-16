@@ -124,7 +124,7 @@
 .Bid-name-txt {
   font-family: "Oleo Script", cursive;
   font-size: 1.3rem;
-  color: rgb(219, 163, 201);
+  color: rgb(83, 83, 83);
 }
 
 .Bid-list {
@@ -156,6 +156,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   height: 100%;
+  width: 50%;
+  border: 1px solid green;
   border-radius: 25px;
 }
 
@@ -173,10 +175,16 @@
   flex-direction: column;
   height: auto;
   margin: 0.5rem auto;
+  font-family: "Oleo Script", cursive;
+  font-size: 1.2rem;
+  color: rgb(187, 139, 170);
 }
 
 .bid-message {
   font-family: "Oleo Script", cursive;
   font-size: 1.3rem;
   color: rgb(71, 71, 71);
+}
+.Bid-prompt {
+  display: none;
 }
