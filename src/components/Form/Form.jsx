@@ -4,8 +4,9 @@ import { FaFileUpload } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle/PageTitle"
 import postsApi from "../../utils/posts-api";
 import { useHistory } from 'react-router';
+import ItemDrag from '../ItemDrag/ItemDrag';
 
-const Form = ({ name, description, image }) => {
+const Form = ({ name, description, image, user }) => {
 const history = useHistory()
 const [inputValues, setInputValues] = useState({
   title: "",
@@ -75,6 +76,7 @@ return (
             <FaFileUpload id="upload" />
           </label><br />
         </div>
+        <ItemDrag user={user} />
       </form>
     </section>
 

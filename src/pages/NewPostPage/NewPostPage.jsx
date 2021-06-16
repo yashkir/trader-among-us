@@ -1,10 +1,10 @@
 import React from 'react'
 import Form from '../../components/Form/Form'
 
-export default function NewPostPage() {
+export default function NewPostPage({ user }) {
   return (
     <div>
-      <Form />
+      <Form user={user}/>
     </div>
   )
 }

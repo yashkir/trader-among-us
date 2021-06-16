@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import "./Bid.css";
 import Column from "../../components/Column/Column"
-import postsApi from "../../utils/posts-api";
 import itemsApi from "../../utils/items-api";
-
 
 const data = {
   items: {
@@ -42,36 +39,15 @@ const data = {
   columnOrder: ['col-1', 'col-2'],
 }
 
+export default function ItemDrag(props) {
 
-export default function Bid(props) {
   const userId = props.user._id;
-  
-  const [bid, setBid] = useState({
-    itemsOffered: [],
-    description: ""
-  });
-  
-
-  const [message, setMessage] = useState("");
+  const [items, setItems] = useState(data);
+  const columns = items.columnOrder;
 
   const loadItems = async () => {
     const res = await itemsApi.show(userId);
     const itemsForDrag = res.item;
-
-    // console.log(items.item);
-    // setItemData(items.item);
-    console.log("TESTINGG ---->", itemsForDrag);
-
-    /** here we transform the database array to our object for the dragging
-      items = [
-        {id: "60c9656bdb21932de0551b9e", name: "WOWOW", img: "2084aec2257e16c1dea5d9054cb1e286"},
-      ]
-      TO
-      itemsHere = {
-        "60c9656bdb21932de0551b9e": { id: "60c9656bdb21932de0551b9e", name: "WOWOW", img: "2084aec2257e16c1dea5d9054cb1e286"}
-      }
-    */
-
     let itemIds = itemsForDrag.map(item => item._id);
     data.columns['col-1'].itemIds = itemIds;
     itemsForDrag.forEach(item => {
@@ -86,43 +62,6 @@ export default function Bid(props) {
   useEffect(() => {
     loadItems();
   }, [])
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!bid.description) {
-      setMessage("Please enter a description");
-      return;
-    } else {
-      bid.itemsOffered = items.columns["col-2"].itemIds;
-      const res = await postsApi.makeBid(props.postId, bid);
-      props.loadPosts();
-      handleHidden();
-      setMessage("")
-    }
-  }
-
-  function handleBidChange(e) {
-    e.preventDefault();
-
-    setBid({ ...bid, [e.target.name]: e.target.value });
-  }
-
-  const [items, setItems] = useState(data);
- 
-  const columns = items.columnOrder;
-
-  const [hidden, setHidden] = useState("");
-  const [icon, setIcon] = useState("+");
-  const [block, setBlock] = useState('');
-
-  const handleHidden = () => {
-    if (hidden === "hidden") setHidden("");
-    if (hidden === "") setHidden("hidden");
-    if (icon === "+") setIcon("-");
-    if (icon === "-") setIcon("+");
-    if (block === "show-bid-form") setBlock("");
-    if (block === "") setBlock("show-bid-form");
-  };
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -189,14 +128,8 @@ export default function Bid(props) {
   }
 
   return (
-    <>
-      <div className="PostIdPage post-page-row">
-        <h3 onClick={handleHidden} className="post-btn">Make A Bid</h3>
-      </div>
-
-      <div className={`bid-container `}>
-        <div className={`Bid-body-row ${hidden}`}>
-          <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
+    <div>
+      <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
             {columns.map((colId) => {
               const column = items.columns[colId];
               const res = column.itemIds.map(itemId => items.items[itemId]);
@@ -204,23 +137,6 @@ export default function Bid(props) {
               return <Column key={column.id} column={column} res={res} />;
             })}
           </DragDropContext>
-        </div>
-        <div className={`txt-area-col ${block}`}>
-          <textarea
-
-            onChange={handleBidChange}
-            value={bid.description}
-            style={{ height: "15vh" }}
-            placeholder="Now's your chance, make your pitch!"
-            name="description"
-            id="description"
-          />
-        </div>
-        <div className={`txt-area-col ${block}`}>
-          <h3 onClick={handleSubmit} className={`post-btn`}>Confirm Bid</h3>
-        </div>
-        <h3 className="bid-message">{message}</h3>
-      </div>
-    </>
-  );
+    </div>
+  )
 }
