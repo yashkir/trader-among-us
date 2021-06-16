@@ -11,8 +11,9 @@ const history = useHistory()
 const [inputValues, setInputValues] = useState({
   title: "",
   text: "",
-  image: "",
 });
+
+const [itemsOffered, setItemsOffered] = useState(null);
 
 const [status, setStatus] = useState(null);
 
@@ -28,7 +29,7 @@ const handleSubmit = async (e) => {
     const response = await postsApi.create({
       title: inputValues.title,
       text: inputValues.text,
-
+      itemsOffered
     });
     history.push('/posts')
     setStatus(response);
@@ -65,7 +66,7 @@ return (
             value={inputValues.text}
             onChange={handleChange}
           />
-          <label for="image" className="form-label">Image</label>
+          {/* <label for="image" className="form-label">Image</label>
           <label id="image" class="custom-file-upload">
             <input
               type="file"
@@ -74,9 +75,9 @@ return (
               onChange={handleChange}
             />
             <FaFileUpload id="upload" />
-          </label><br />
+          </label><br /> */}
+          <ItemDrag setItemsOffered={setItemsOffered} user={user} />
         </div>
-        <ItemDrag user={user} />
       </form>
     </section>
 

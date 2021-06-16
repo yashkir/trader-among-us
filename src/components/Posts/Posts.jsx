@@ -12,9 +12,10 @@ const Posts = (props) => {
   // Load posts here with an API call on component mount.
   // Using a promise since useEffect must be synchronous.
   useEffect(() => {
-    postsApi.getAllPosts()
+    const fetchedPosts = postsApi.getAllPosts()
       .then(data => setPosts(data))
       .catch(err => setErrorMsg(err.message))
+    console.log(fetchedPosts);
   }, []);
 
   return (

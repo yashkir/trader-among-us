@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "../../components/Column/Column"
 import itemsApi from "../../utils/items-api";
+import { getUser } from '../../utils/users-service';
+import "./ItemDrag.css";
 
 const data = {
   items: {
@@ -28,22 +30,20 @@ const data = {
     'col-1': {
       id: 'col-1',
       title: 'Your Items',
-      itemIds: ['itm-1', 'itm-2', 'itm-3']
+      itemIds: []
     },
     'col-2': {
       id: 'col-2',
-      title: 'Bid Items',
+      title: 'Post Items',
       itemIds: [],
     },
   },
   columnOrder: ['col-1', 'col-2'],
 }
 
-export default function ItemDrag(props) {
-
-  const userId = props.user._id;
-  const [items, setItems] = useState(data);
-  const columns = items.columnOrder;
+export default function ItemDrag({ setItemsOffered }) {
+  const user = getUser();
+  const userId = user._id;
 
   const loadItems = async () => {
     const res = await itemsApi.show(userId);
@@ -57,11 +57,24 @@ export default function ItemDrag(props) {
         img: item.image,
       };     
     })
+    
+    setItems(data);
+    
   }
+
+  const [items, setItems] = useState(data);
+  const columns = items.columnOrder;
 
   useEffect(() => {
     loadItems();
+    
   }, [])
+
+  useEffect(() => {
+    const itemsoffered = items.columns['col-2'].itemIds;
+    console.log(itemsoffered);
+    setItemsOffered(itemsoffered);
+  }, [items])
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -125,16 +138,17 @@ export default function ItemDrag(props) {
       }
     }
     setItems(newState);
+    
+
   }
 
   return (
     <div>
-      <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
+      <DragDropContext  onDragEnd={onDragEnd}>
             {columns.map((colId) => {
               const column = items.columns[colId];
               const res = column.itemIds.map(itemId => items.items[itemId]);
-              console.log(res);
-              return <Column key={column.id} column={column} res={res} />;
+              return (<div className="Bid-list"><Column key={column.id} column={column} res={res} /></div>);
             })}
           </DragDropContext>
     </div>

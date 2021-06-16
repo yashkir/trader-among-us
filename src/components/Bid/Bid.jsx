@@ -5,7 +5,6 @@ import Column from "../../components/Column/Column"
 import postsApi from "../../utils/posts-api";
 import itemsApi from "../../utils/items-api";
 
-
 const data = {
   items: {
     'itm-1': {
@@ -57,10 +56,6 @@ export default function Bid(props) {
   const loadItems = async () => {
     const res = await itemsApi.show(userId);
     const itemsForDrag = res.item;
-
-    // console.log(items.item);
-    // setItemData(items.item);
-    console.log("TESTINGG ---->", itemsForDrag);
 
     /** here we transform the database array to our object for the dragging
       items = [
@@ -209,7 +204,6 @@ export default function Bid(props) {
         </div>
         <div className={`txt-area-col ${block}`}>
           <textarea
-
             onChange={handleBidChange}
             value={bid.description}
             style={{ height: "15vh" }}

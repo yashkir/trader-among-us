@@ -29,6 +29,7 @@ async function create(data) {
   const payload = {
     title: data.title,
     text: data.text,
+    itemsOffered: data.itemsOffered,
   };
 
   const res = await fetch(BASE_URL, {
