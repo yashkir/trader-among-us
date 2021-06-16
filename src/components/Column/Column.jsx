@@ -1,12 +1,14 @@
 import React from 'react'
 import { Droppable } from "react-beautiful-dnd";
-import styled from 'styled-components';
 import Item from "../../components/Item/Item"
+import styled from 'styled-components'
 
 const Col = styled.div`
-background-color: 'blue';
-margin-bottom: '1rem';
-background-color: ${props => (props.isDragging ? 'lightblue' : 'transparent')}
+
+height: 100%;
+background-color: ${props => (props.isDraggingOver ? 'rgba(42, 195, 73, 0.1)' : 'transparent')} ;
+padding: .5rem;
+border-radius: 20px
 `;
 export default function Column({ res, column }) {
 
@@ -19,7 +21,7 @@ export default function Column({ res, column }) {
           <Col
             ref={provided.innerRef}
             {...provided.droppableProps}
-            isDraggingOver={snapshot.isDragging}
+            isDraggingOver={snapshot.isDraggingOver}
           >
             {res.map((item, index) => <Item key={item.id} item={item} index={index} />)}
             {provided.placeholder}

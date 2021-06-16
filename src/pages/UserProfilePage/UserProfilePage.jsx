@@ -5,18 +5,16 @@ import { Route, Link, Switch } from 'react-router-dom';
 import './UserProfilePage.css';
 import Carousel from '../../components/Carousel/Carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import userEvent from '@testing-library/user-event';
 
 export default function UserProfilePage({ user }) {
   return (
     <>
-      <PageTitle titleOne={"USER"} titleTwo={"PROFILE"} />  
+      <PageTitle titleOne={"WELCOME"} titleTwo={user.name.toUpperCase()} />
       <div className="user-profile-container">
         <div className="user-profile-nav">
           <div>
-            <Link to="/users/profile">View Profile</Link>
-          </div>
-          <div>
-            <Link to={{pathname:`/users/${user._id}/items`, state:user}} exact >View Items</Link>
+            <Link to={{ pathname: `/users/${user._id}/items`, state: user }} exact >View Items</Link>
           </div>
           <div>
             <Link to="/users/items/new">Add Items</Link>
@@ -28,11 +26,11 @@ export default function UserProfilePage({ user }) {
         <div className="user-profile-body">
           <Switch>
             <Route path="/users/items/new" component={ItemCreateForm} />
-            <Route path={`/users/:id/items`} render={({location}) => <Carousel user={location}/>} />
+            <Route path={`/users/:id/items`} render={() => <Carousel user={user} />} />
           </Switch>
         </div>
       </div>
-      
+
     </>
   )
 }
