@@ -12,7 +12,7 @@
   flex-direction: column;
   height: auto;
   width: 80vw;
-  margin: 3rem auto;
+  margin: 1rem auto;
 }
 
 .user-profile-heading {
@@ -24,31 +24,27 @@
 
 .user-profile-nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1rem;
-  font-size: 1.5rem;
-  border-right: 5px solid #D191BC;
-  border-left: 5px solid #D191BC;
+  font-size: 1.7rem;
   width: 60vw;
-  background-image: linear-gradient(to left bottom, #414141, #242424);
-  /* border: 1px solid black; */
   font-family: "Oleo Script", cursive;
   align-items: center;
+  user-select: none;
 }
-
 
 .user-profile-nav a {
   text-decoration: none;
   color: #8a8a8a;
   transition: 300ms;
-  padding: 10px;
+  user-select: none;
+  font-size: 1.5rem;
 }
 
 .user-profile-nav a:hover {
   color: rgb(228, 180, 212);
-  border: 1px solid rgb(228, 180, 212);
   border-radius: 10px;
-  /* transform: scale(1.5); */
+  user-select: none;
   cursor: pointer;
 }
 
@@ -61,32 +57,31 @@
   height: auto;
 }
 
-@media screen and (max-width:850px) {
-
-  .user-profile-body{
+@media screen and (max-width: 850px) {
+  .user-profile-body {
     width: 50vw;
   }
 
-  .user-profile-nav{
-    font-size: 20px;
+  .user-profile-nav {
+    font-size: 40px;
   }
 }
 
-@media screen and (max-width:550px) {
-  .user-profile-nav{
+@media screen and (max-width: 550px) {
+  .user-profile-nav {
     font-size: 1rem;
   }
-  .user-profile-body{
+  .user-profile-body {
     width: 50vw;
   }
 }
 
-@media screen and (max-width:440px) {
-  .user-profile-nav{
+@media screen and (max-width: 440px) {
+  .user-profile-nav {
     width: 80vw;
     font-size: 1rem;
   }
-  .user-profile-body{
+  .user-profile-body {
     width: 60vw;
   }
 }

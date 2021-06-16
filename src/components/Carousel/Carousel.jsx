@@ -49,6 +49,7 @@ export default function Carousel( {user} ) {
   }, [])
 
   return (
+
     <div className="col-2-pics">
       {itemData.map((item, index) => {
         return (
