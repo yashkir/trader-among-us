@@ -58,7 +58,9 @@ export default function Deal({ user, post, reply }) {
                 }
               </span>
               <br />
-              <button onClick={handleCancelDeal}>Cancel</button>
+              {user._id === post.author._id
+                ? <button onClick={handleCancelDeal}>Cancel</button>
+                : null}
               <button onClick={confirmDealToggle}>Confirm</button>
             </>
           }
