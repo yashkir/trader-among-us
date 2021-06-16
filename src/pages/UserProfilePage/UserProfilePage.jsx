@@ -6,7 +6,7 @@ import './UserProfilePage.css';
 import Carousel from '../../components/Carousel/Carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-export default function UserProfilePage() {
+export default function UserProfilePage({ user }) {
   return (
     <>
       <PageTitle titleOne={"USER"} titleTwo={"PROFILE"} />  
@@ -16,7 +16,7 @@ export default function UserProfilePage() {
             <Link to="/users/profile">View Profile</Link>
           </div>
           <div>
-            <Link to="/users/items" exact >View Items</Link>
+            <Link to={{pathname:`/users/${user._id}/items`, state:user}} exact >View Items</Link>
           </div>
           <div>
             <Link to="/users/items/new">Add Items</Link>
@@ -28,7 +28,7 @@ export default function UserProfilePage() {
         <div className="user-profile-body">
           <Switch>
             <Route path="/users/items/new" component={ItemCreateForm} />
-            <Route path="/users/items" component={Carousel} />
+            <Route path={`/users/:id/items`} render={({location}) => <Carousel user={location}/>} />
           </Switch>
         </div>
       </div>

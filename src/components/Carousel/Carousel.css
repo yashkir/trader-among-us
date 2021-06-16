@@ -1,14 +1,51 @@
-.user-profile-item-img {
-  position: relative;
+
+#image {
+  width: 20rem;
+  height: 20rem;
+  margin-top: 1rem;
+  user-select: none;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  object-fit: fill;
 }
 
-.user-profile-item-img img {
-  max-width: 100%;
-  height: auto;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+.right-arr {
+  font-size: 2.5rem;
+  color: rgb(49, 49, 49);
+  transition: 200ms;
+  margin: 0.5rem;
 }
+
+.right-arr:hover {
+  color: rgb(88, 88, 88);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 300ms ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 300ms;
+}
+
+#title {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  user-select: none;
+  font-family: "Oleo Script", cursive;
+  color: rgb(192, 114, 166);
+}
+
+.img-slider-arrows{
+  margin: 2rem auto;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+

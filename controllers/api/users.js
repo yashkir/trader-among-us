@@ -1,8 +1,20 @@
 const User = require("../../models/user");
+const Item = require("../../models/item");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 
 const secret = process.env.SECRET;
+
+async function showItem(req,res) {
+  const userId = req.params.id;
+  console.log(userId);
+  try {
+    const item = await Item.find({user: userId})
+    res.status(200).json({item});
+  }catch(err){
+    res.status(400).json("Query failed")
+  }
+}
 
 const create = async (req, res) => {
   try {
@@ -33,4 +45,5 @@ function createJWT(user) {
 module.exports = {
   create,
   login,
+  showItem,
 };

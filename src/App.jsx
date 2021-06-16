@@ -61,8 +61,8 @@ const App = () => {
               <Route path="/items/new">
                 <ItemCreateForm />
               </Route>
-              <Route path="/users">
-                <UserProfilePage />
+              <Route path={`/users`}>
+                <UserProfilePage user={user}/>
               </Route>
               <Redirect to="/posts" />
             </Switch>
