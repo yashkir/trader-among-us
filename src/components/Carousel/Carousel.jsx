@@ -70,7 +70,7 @@ export default function Carousel({ user, post }) {
                 {index === current && (
                   <>
                     <div id="Carousel-title">{item.title.toLowerCase()}</div>
-                    <img id="image" alt="test" src={`/${item.image}`}></img>
+                    <img id="image" alt="test" src={`${item.image}`}></img>
                   </>
                 )}
               </div>
