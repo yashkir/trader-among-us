@@ -60,24 +60,24 @@ export default function PostIdPage({ match, user }) {
       <div>
         <PageTitle titleOne={"VIEW"} titleTwo={post.title} />
       </div>
-      <div class="PostIdPage post-page-column">
-        <div class="PostIdPage post-page-row"></div>
-        <div class="PostIdPage post-page-row">
+      <div className="PostIdPage post-page-column">
+        <div className="PostIdPage post-page-row"></div>
+        <div className="PostIdPage post-page-row">
           <div className="post-title">Posted By: {post.author.name}</div>
         </div>
-        <div class="PostIdPage post-page-row">
+        <div className="PostIdPage post-page-row">
           <p id="form-p-pink">{post.date}</p>
         </div>
-        <div class="PostIdPage post-page-row">
+        <div className="PostIdPage post-page-row">
           <div className="post-offering">{post.author.name} is offering:</div>
         </div>
-        <div class="PostIdPage post-page-row">
+        <div className="PostIdPage post-page-row">
           <Carousel post={post} />
         </div>
-        <div class="PostIdPage post-page-row">
+        <div className="PostIdPage post-page-row">
           <p className="flex-p">{post.text}</p>
         </div>
-        <div class="PostIdPage post-page-row">
+        <div className="PostIdPage post-page-row">
           {currentUser._id !== post.author._id ? (
             <Bid user={user} loadPosts={loadPosts} postId={match.params.id} />
           ) : (
@@ -85,14 +85,14 @@ export default function PostIdPage({ match, user }) {
           )}
         </div>
       </div>
-      <div class="PostIdPage post-page-column">
+      <div className="PostIdPage post-page-column">
         <div className="Post-post-title">
           {post.title}
           <br /> currently has {post.replies ? post.replies.length : 0} bid(s)
         </div>
         {post.replies
-          ? post.replies.map((reply) => {
-              return <Reply post={post} reply={reply} />;
+          ? post.replies.map((reply, idx) => {
+              return <Reply key={idx} post={post} reply={reply} />;
             })
           : null}
       </div>

@@ -33,9 +33,9 @@ export default function Reply(props) {
 
       <div className={`Reply-body ${hidden}`}>
         <div className="Reply-page-row">
-          {props.reply.itemsOffered.map((item) =>
+          {props.reply.itemsOffered.map((item, id) =>
           (
-            <div className="Reply-img-container">
+            <div className="Reply-img-container" key={id}>
               <img className="Reply-img" alt="reply-img" src={`${item.image}`}></img>
               <p className="Reply-item-title">{item.title}</p>
             </div>
