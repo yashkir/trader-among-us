@@ -3,7 +3,7 @@
   position: absolute;
   /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   /* background-color: rgba(0, 0, 0, 0.897); */
-  border-radius: 5px;
+  border-radius: 15px;
   width: 15rem;
   height: auto;
   display: flex;
@@ -16,9 +16,9 @@
   user-select: none;
   z-index: 3;
   background: rgba(26, 25, 25, 0.863);
-  box-shadow: 0 8px 32px 1px rgba(236, 54, 196, 0.178);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 

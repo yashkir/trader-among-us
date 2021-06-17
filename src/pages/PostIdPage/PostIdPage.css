@@ -24,8 +24,8 @@
 #form-p-pink {
   margin-bottom: 0.5rem;
   font-family: "Oleo Script", cursive;
-  font-size: 1.3rem;
-  color: rgb(209, 145, 188);
+  font-size: 1.1rem;
+  color: rgb(82, 82, 82);
 }
 
 .Reply-post-title {
@@ -41,4 +41,11 @@
   margin-bottom: 1rem;
   margin-left: 0.2rem;
   margin-right: 0.2rem;
+  text-transform: uppercase;
+}
+
+.post-offering {
+  font-family: "Oleo Script", cursive;
+  font-size: 1.5rem;
+  color: rgb(209, 145, 188);
 }

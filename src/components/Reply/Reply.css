@@ -42,6 +42,7 @@
   font-family: "Lilita One", cursive;
   font-size: 1.3rem;
   color: rgb(44, 44, 44);
+  text-transform: uppercase;
 }
 
 #Reply-icon {

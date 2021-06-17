@@ -9,6 +9,7 @@ const Posts = (props) => {
   const [posts, setPosts] = useState([]);
   const [errorMsg, setErrorMsg] = useState(null);
 
+
   // Load posts here with an API call on component mount.
   // Using a promise since useEffect must be synchronous.
   useEffect(() => {
@@ -35,9 +36,10 @@ const Posts = (props) => {
                   <div><img id="post-img" src={`/${post.itemsOffered[0].image}`} alt="placeholder"></img></div>
                 </div>
                 <div className="column-text">
-                  <div className="post-title">{post.title}</div>
+                  <div className="post-title-pink">{post.title}</div>
                   <p className='flex-p'>{post.text}</p>
-                  <p className='flex-p-two'>{`Offering${post.itemsOffered.length} Items up for trade`}</p>
+                  <p className='flex-p-two'>{`Offering: ${post.itemsOffered.length} Items`}</p>
+                  <p className='flex-p-two'>{`Replies: ${post.replies.length}`}</p>
                 </div>
                 <div className="column-btn">
                   <Link id="link" to={`/posts/${post._id}`}>

@@ -14,15 +14,15 @@ export default function PostIdPage({ match, user }) {
 
   // TODO API Calls and posts state are temporarily here, but should be moved up to a Page
   const [post, setPost] = useState({
-    title:"", 
-    text:"", 
-    itemsOffered: [], 
-    date: undefined, 
+    title: "",
+    text: "",
+    itemsOffered: [],
+    date: undefined,
     author: ""
   });
   const [errorMsg, setErrorMsg] = useState(null);
-  
-  
+
+
   const formatter = new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
     month: "long",
@@ -51,35 +51,34 @@ export default function PostIdPage({ match, user }) {
   return (
     <>
       <div>
-        <PageTitle titleOne={"VIEW"} titleTwo={"POST"} />
+        <PageTitle titleOne={"VIEW"} titleTwo={post.title} />
       </div>
       <div class='PostIdPage post-page-column'>
         <div class="PostIdPage post-page-row">
-          <div className="post-title">{post.title}</div>
+
         </div>
         <div class="PostIdPage post-page-row">
           <div className="post-title">Posted By: {post.author.name}</div>
         </div>
         <div class="PostIdPage post-page-row">
-          <p id="form-p-pink">Posted On: {post.date}</p>
+          <p id="form-p-pink">{post.date}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          {/* <img id="post-img" alt="#" src="https://i.stack.imgur.com/BOSno.jpg"></img>
-           */}
-          <Carousel post={post}/>
+          <div className="post-offering">{post.author.name} is offering:</div>
+          <Carousel post={post} />
         </div>
         <div class="PostIdPage post-page-row">
           <p className="flex-p">{post.text}</p>
         </div>
         <div class="PostIdPage post-page-row">
-        {currentUser._id !== post.author._id ? 
-          <Bid user={user} loadPosts={loadPosts} postId={match.params.id} /> : null}
-          
+          {currentUser._id !== post.author._id ?
+            <Bid user={user} loadPosts={loadPosts} postId={match.params.id} /> : null}
+
         </div>
       </div>
       <div class='PostIdPage post-page-column'>
         <div className="Post-post-title">
-          {post.title} currently has {post.replies ? post.replies.length : 0} bid(s)</div>
+          {post.title}<br /> currently has {post.replies ? post.replies.length : 0} bid(s)</div>
         {post.replies ? post.replies.map(reply => {
           return (
             <Reply post={post} reply={reply} />
