@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 const debug = require('debug')('auth');
+const User = require("../models/user");
 
 /**
  * Middleware that checks for a json web token and adds a user object to the
@@ -20,8 +21,17 @@ function authenticate(req, res, next) {
         debug(err);
         res.status(403).json({ message: "Invalid token." });
       } else {
-        req.user = decoded.user;
-        next();
+        User.findById(decoded.user._id)
+          .then(user => {
+            if (!user) {
+              req.user = null;
+            }
+            req.user = decoded.user;
+            next();
+          })
+          .catch(err => {
+            res.status(500).json({ message: "Internal Error, unable to authenticate." });
+          });
       }
     });
   } else {
