@@ -4,14 +4,16 @@ import { FaFileUpload } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle/PageTitle"
 import postsApi from "../../utils/posts-api";
 import { useHistory } from 'react-router';
+import ItemDrag from '../ItemDrag/ItemDrag';
 
-const Form = ({ name, description, image }) => {
+const Form = ({ name, description, image, user }) => {
 const history = useHistory()
 const [inputValues, setInputValues] = useState({
   title: "",
   text: "",
-  image: "",
 });
+
+const [itemsOffered, setItemsOffered] = useState(null);
 
 const [status, setStatus] = useState(null);
 
@@ -27,7 +29,7 @@ const handleSubmit = async (e) => {
     const response = await postsApi.create({
       title: inputValues.title,
       text: inputValues.text,
-
+      itemsOffered
     });
     history.push('/posts')
     setStatus(response);
@@ -64,7 +66,7 @@ return (
             value={inputValues.text}
             onChange={handleChange}
           />
-          <label for="image" className="form-label">Image</label>
+          {/* <label for="image" className="form-label">Image</label>
           <label id="image" class="custom-file-upload">
             <input
               type="file"
@@ -73,7 +75,8 @@ return (
               onChange={handleChange}
             />
             <FaFileUpload id="upload" />
-          </label><br />
+          </label><br /> */}
+          <ItemDrag setItemsOffered={setItemsOffered} user={user} />
         </div>
       </form>
     </section>

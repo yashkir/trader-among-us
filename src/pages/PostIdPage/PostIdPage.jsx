@@ -4,13 +4,25 @@ import PageTitle from "../../components/PageTitle/PageTitle"
 import Reply from "../../components/Reply/Reply"
 import "./PostIdPage.css"
 import Bid from "../../components/Bid/Bid"
+import Carousel from '../../components/Carousel/Carousel';
+import { getUser } from '../../utils/users-service';
 
 export default function PostIdPage({ match, user }) {
+  const currentUser = getUser()
+
+
 
   // TODO API Calls and posts state are temporarily here, but should be moved up to a Page
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState({
+    title:"", 
+    text:"", 
+    itemsOffered: [], 
+    date: undefined, 
+    author: ""
+  });
   const [errorMsg, setErrorMsg] = useState(null);
-
+  
+  
   const formatter = new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
     month: "long",
@@ -46,16 +58,23 @@ export default function PostIdPage({ match, user }) {
           <div className="post-title">{post.title}</div>
         </div>
         <div class="PostIdPage post-page-row">
+          <div className="post-title">Posted By: {post.author.name}</div>
+        </div>
+        <div class="PostIdPage post-page-row">
           <p id="form-p-pink">Posted On: {post.date}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <img id="post-img" alt="#" src="https://i.stack.imgur.com/BOSno.jpg"></img>
+          {/* <img id="post-img" alt="#" src="https://i.stack.imgur.com/BOSno.jpg"></img>
+           */}
+          <Carousel post={post}/>
         </div>
         <div class="PostIdPage post-page-row">
           <p className="flex-p">{post.text}</p>
         </div>
         <div class="PostIdPage post-page-row">
-          <Bid user={user} loadPosts={loadPosts} postId={match.params.id} />
+        {currentUser._id !== post.author._id ? 
+          <Bid user={user} loadPosts={loadPosts} postId={match.params.id} /> : null}
+          
         </div>
       </div>
       <div class='PostIdPage post-page-column'>

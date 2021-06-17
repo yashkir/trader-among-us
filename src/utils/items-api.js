@@ -4,7 +4,6 @@ const BASE_URL = "/api/items";
 
 async function show(userId) {
   const res = await fetch(`/api/users/${userId}/items`)
-  console.log(res);
   if (res.ok) {
     return res.json();
   }else{

@@ -34,6 +34,7 @@
   font-size: 1.5rem;
   font-family: "Lilita One", cursive;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .post-btn {
@@ -60,6 +61,7 @@
 .row {
   margin-top: 3rem;
   display: flex;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
@@ -108,4 +110,12 @@ hr {
   width: 80%;
   margin-left: 10%;
   opacity: 0.4;
+}
+
+.flex-p-two {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgb(70, 70, 70);
+  font-family: "Oleo Script", cursive;
 }

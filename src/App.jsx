@@ -50,7 +50,7 @@ const App = () => {
           <div>
             <Switch>
               <Route path="/posts/new" render={(props) => (
-                <NewPostPage {...props} />
+                <NewPostPage user={user} {...props} />
               )} />
               <Route path="/posts/:id" render={(props) => (
                 <PostIdPage user={user} {...props} />

@@ -13,7 +13,6 @@ async function getAllPosts() {
   }
 }
 
-
 async function getOnePost(id) {
   const res = await fetch(`${BASE_URL}/${id}`,
     { method: "GET" }
@@ -29,6 +28,7 @@ async function create(data) {
   const payload = {
     title: data.title,
     text: data.text,
+    itemsOffered: data.itemsOffered,
   };
 
   const res = await fetch(BASE_URL, {
