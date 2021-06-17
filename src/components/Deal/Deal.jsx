@@ -57,7 +57,6 @@ export default function Deal({ user, post, reply }) {
             ? <p className="Deal-p">DEAL IS DONE</p>
             :
             <>
-              <p className="Deal-progress">Deal in progress<span>...</span></p>
               <div className="Deal-poster">
                 {post.author.name}
                 {deal.posterHasConfirmed
@@ -65,7 +64,7 @@ export default function Deal({ user, post, reply }) {
                   : <span className="Deal-span"> has <b>not</b> confirmed</span>
                 }
               </div>
-              <FaHandshake id="Reply-deal" />
+              <FaHandshake id="Reply-deal-shake" />
               <span className="Deal-replier">
                 {reply.author.name}
                 {deal.replierHasConfirmed
