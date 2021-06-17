@@ -7,7 +7,7 @@ import Bid from "../../components/Bid/Bid";
 import Carousel from "../../components/Carousel/Carousel";
 import { getUser } from "../../utils/users-service";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 export default function PostIdPage({ match, user }) {
   const currentUser = getUser();
@@ -63,7 +63,7 @@ export default function PostIdPage({ match, user }) {
       <div className="PostIdPage post-page-column">
         <div className="PostIdPage post-page-row"></div>
         <div className="PostIdPage post-page-row">
-          <div className="post-title">Posted By: {post.author.name}</div>
+
         </div>
         <div className="PostIdPage post-page-row">
           <p id="form-p-pink">{post.date}</p>
@@ -81,7 +81,7 @@ export default function PostIdPage({ match, user }) {
           {currentUser._id !== post.author._id ? (
             <Bid user={user} loadPosts={loadPosts} postId={match.params.id} />
           ) : (
-            <DeleteButton handleDelete = {() => handleDelete(post._id)}/>
+            <DeleteButton handleDelete={() => handleDelete(post._id)} />
           )}
         </div>
       </div>
@@ -92,8 +92,8 @@ export default function PostIdPage({ match, user }) {
         </div>
         {post.replies
           ? post.replies.map((reply, idx) => {
-              return <Reply key={idx} post={post} reply={reply} />;
-            })
+            return <Reply key={idx} post={post} reply={reply} />;
+          })
           : null}
       </div>
     </>

@@ -35,6 +35,7 @@ const Posts = (props) => {
                   <div><img id="post-img" src={`${post.itemsOffered[0].image}`} alt="placeholder"></img></div>
                 </div>
                 <div className="column-text">
+                  <div className="post-title">Posted By: {post.author.name}</div>
                   <div className="post-title-pink">{post.title}</div>
                   <p className='flex-p'>{post.text}</p>
                   <p className='flex-p-two'>{`Offering: ${post.itemsOffered.length} Items`}</p>

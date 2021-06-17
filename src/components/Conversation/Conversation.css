@@ -1,8 +1,8 @@
 .Conversation-chat-box {
   border: 1px solid rgba(95, 95, 95, 0.13);
   border-radius: 15px;
-  height: 20rem;
-  width: 60vw;
+  height: 14rem;
+  width: 90vw;
   overflow: scroll;
   background-color: white;
 }
@@ -13,26 +13,27 @@
 }
 
 .Conversation-main-msg {
-  margin: 0.1rem;
+  margin: 0.3rem 0.3rem 0.3rem 0;
   padding: 0.2rem 0.5rem;
   border: 1px solid transparent;
   border-radius: 15px;
   align-self: flex-end;
   font-family: "Rubik", sans-serif;
   background-color: rgb(233, 195, 221);
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .Conversation-reply {
+  margin: 0.3rem 0rem 0.3rem 0.3rem;
   border: 1px solid transparent;
-  margin: 0.1rem;
   padding: 0.2rem 0.5rem;
   align-self: flex-start;
   border: 1px solid transparent;
   border-radius: 15px;
+  font-size: 1rem;
   font-family: "Rubik", sans-serif;
-  background-color: rgb(76, 93, 167);
-  color: white;
+  background-color: rgb(201, 209, 243);
+  color: rgb(0, 0, 0);
 }
 
 .Message-form-container {
@@ -41,7 +42,7 @@
 }
 
 .Message-form {
-  width: 40vw;
+  width: 70vw;
   padding: 0.5rem;
   border-radius: 15px;
   border: 1px solid rgba(77, 77, 77, 0.178);

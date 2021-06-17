@@ -45,16 +45,9 @@ export default function Deal({ user, post, reply }) {
     <div className="Deal">
       {deal ?
         <div className="Deal-container">
-          {user._id === post.author._id
-            ? <button
-              className="Deal-button"
-              onClick={handleCancelDeal}>
-              <TiCancel className="Deal-cancel-icon" />
-            </button>
-            : null
-          }
+
           {deal.posterHasConfirmed && deal.replierHasConfirmed
-            ? <p className="Deal-p">DEAL IS DONE</p>
+            ? <p className="Deal-p">DEAL CONFIRMED!</p>
             :
             <>
               <div className="Deal-poster">
@@ -75,7 +68,14 @@ export default function Deal({ user, post, reply }) {
               <br />
 
               <div className="Reply-btns-div">
-
+                {user._id === post.author._id
+                  ? <button
+                    className="Deal-button"
+                    onClick={handleCancelDeal}>
+                    <TiCancel className="Deal-cancel-icon" />
+                  </button>
+                  : null
+                }
                 <button
                   id="Deal-button-green"
                   className="Deal-button"

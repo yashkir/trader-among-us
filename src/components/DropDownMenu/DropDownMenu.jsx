@@ -30,10 +30,6 @@ const DropDownMenu = ({ setUser }) => {
         handleLogout={handleUserProfile}
       />
 
-      <DropDownMenuItem
-        icon={<FaUserEdit id="nav-icon-drop" />}
-        text={"Edit Profile"}
-      />
 
       <DropDownMenuItem
         icon={<FaShare id="nav-icon-drop" />}
