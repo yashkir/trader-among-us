@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaHandshake } from "react-icons/fa";
 import "./Reply.css";
+import Deal from "../Deal/Deal";
+import { getUser } from "../../utils/users-service";
 
 export default function Reply(props) {
   const [hidden, setHidden] = useState("");
@@ -38,8 +40,7 @@ export default function Reply(props) {
           <p id="Reply-p">{props.reply.text}</p>
         </div>
         <div className="Reply-page-col">
-          <FaHandshake id="Reply-deal" />
-          <div className="Reply-txt">Make Deal</div>
+          <Deal user={getUser()} post={props.post} reply={props.reply}/>
         </div>
       </div>
     </>

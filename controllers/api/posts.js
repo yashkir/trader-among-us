@@ -123,6 +123,11 @@ async function indexDeals(req, res) {
 
 async function createDeal(req, res) {
   try {
+    const foundDeal = await Deal.findOne({ reply: req.params.replyId });
+    if (foundDeal) {
+      return res.status(200).json(foundDeal);
+    }
+
     const post = await Post.findById(req.params.postId);
     const reply = await Reply.findById(req.params.replyId);
 
@@ -132,12 +137,10 @@ async function createDeal(req, res) {
       });
     }
 
-    const deal = await Deal.create({ reply });
-    post.deal = deal;
+    const deal = await Deal.create({ reply: reply._id });
 
     post.deals.push(deal);
     await post.save();
-    await deal.save();
 
     res.status(200).json(deal);
   } catch (err) {
@@ -146,7 +149,28 @@ async function createDeal(req, res) {
   }
 }
 
-async function confirmDeal(req, res) {
+async function checkIfDealDone(deal) {
+  if (deal.posterHasConfirmed && deal.replierHasConfirmed) {
+    const post = await Post.findOne({ deals: deal._id});
+    const reply = await Reply.findById(deal.reply)
+      .populate("itemsOffered");
+
+    // set all items to be sold, we are not handling locking of the Deal
+    // it can stil be toggled TODO
+    post.itemsOffered.forEach(item => {
+      item.isSold = true;
+      item.save();
+    });
+
+    reply.itemsOffered.forEach(item => {
+      item.isSold = true;
+      item.save();
+    });
+
+  }
+}
+
+async function confirmDealToggle(req, res) {
   try {
     const post = await Post.findById(req.params.postId)
       .populate("author")
@@ -161,9 +185,13 @@ async function confirmDeal(req, res) {
     });
 
     if (req.user._id === String(post.author._id)) {
-      deal.posterHasConfirmed = true;
+      deal.posterHasConfirmed = !deal.posterHasConfirmed;
+      await deal.save();
+      checkIfDealDone(deal);
     } else if (req.user._id === String(reply.author._id)) {
-      deal.replierHasConfirmed = true;
+      deal.replierHasConfirmed = !deal.replierHasConfirmed;
+      await deal.save();
+      checkIfDealDone(deal);
     } else {
       return res.status(403).json({
         message: "Update failed. You are not the author of this post or the author of the reply."
@@ -179,6 +207,36 @@ async function confirmDeal(req, res) {
   }
 }
 
+async function showDealForReply(req, res) {
+  try {
+    const deal = await Deal.findOne({ reply: req.params.replyId });
+    res.json(deal);
+  } catch (err) {
+    debug(err);
+    res.status(500).json("database query failed");
+  }
+}
+
+async function deleteDeal(req, res) {
+  try {
+    const deal = await Deal.findOne({ reply: req.params.replyId });
+    const post = await Post.findById(req.params.postId)
+      .populate("author")
+
+    if (req.user._id !== String(post.author._id)) {
+      return res.status(403).json({
+        message: "Deal delete failed. You are not the author of this post."
+      });
+    }
+
+    const result = await Deal.deleteOne({ _id: deal._id });
+    return res.status(200).json(result);
+  } catch (err) {
+    debug(err);
+    return res.status(500).json("Delete Failed. Internal Error.");
+  }
+}
+
 module.exports = {
   index,
   show,
@@ -189,5 +247,7 @@ module.exports = {
   createReply,
   indexDeals,
   createDeal,
-  confirmDeal,
+  confirmDealToggle,
+  showDealForReply,
+  deleteDeal,
 };
