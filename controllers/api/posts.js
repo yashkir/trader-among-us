@@ -155,7 +155,8 @@ async function createDeal(req, res) {
 
 async function checkIfDealDone(deal) {
   if (deal.posterHasConfirmed && deal.replierHasConfirmed) {
-    const post = await Post.findOne({ deals: deal._id});
+    const post = await Post.findOne({ deals: deal._id})
+      .populate("itemsOffered");
     const reply = await Reply.findById(deal.reply)
       .populate("itemsOffered");
 
