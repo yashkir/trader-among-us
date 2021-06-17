@@ -1,17 +1,35 @@
 .Conversation-chat-box {
-  border: 1px solid black;
+  border: 1px solid rgba(95, 95, 95, 0.13);
   border-radius: 15px;
-  text-align: left;
-  height: 7rem;
+  height: 20rem;
+  width: 60vw;
   overflow: scroll;
 }
 
-.Conversation-message-p:nth-child(odd) {
-  text-align: right;
+.Conversation-div {
+  display: flex;
+  flex-direction: column;
 }
 
-.Conversation-message-p {
+.Conversation-main-msg {
   margin: 0.1rem;
-  padding: 0 0.3rem;
-  border: 1px solid black;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  align-self: flex-end;
+  font-family: "Rubik", sans-serif;
+  background-color: rgb(233, 195, 221);
+  font-size: 1.1rem;
+}
+
+.Conversation-reply {
+  border: 1px solid transparent;
+  margin: 0.1rem;
+  padding: 0.2rem 0.5rem;
+  align-self: flex-start;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  font-family: "Rubik", sans-serif;
+  background-color: rgb(76, 93, 167);
+  color: white;
 }
