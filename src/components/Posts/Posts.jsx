@@ -23,7 +23,7 @@ const Posts = (props) => {
       <PageTitle titleOne={"VIEW"} titleTwo={"POSTS"} />
 
       {/* TODO style this or make a new Error component, simply shows any errors */}
-      {errorMsg ? (<p>{errorMsg}</p>) : null}
+      {errorMsg ? (<p className="post-error-message">{errorMsg}</p>) : null}
 
       {/* Showing all posts */}
       <div>
