@@ -62,13 +62,17 @@ b {
 }
 
 #Reply-deal-shake {
-  font-size: 0.5rem;
+  height: auto;
+  width: 2rem;
+  color: rgb(196, 132, 172);
+  transform: rotate(-25deg);
 }
 
 .Deal-p {
-  font-family: "Oleo Script", cursive;
-  text-transform: lowercase;
+  text-transform: uppercase;
   margin-bottom: 10px;
-  color: rgb(196, 132, 172);
-  font-size: 1.4rem;
+
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+  font-family: "Lilita One", cursive;
 }

@@ -1,11 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { getMessages, sendMessage } from "../../utils/messages-api";
 import { FiSend } from "react-icons/fi"
+import { getUser } from "../../utils/users-service"
+
 import socketIOClient from "socket.io-client";
 import "./Conversation.css"
 const ENDPOINT = "http://127.0.0.1:3001";
 
 export default function Conversation({ post, reply, deal }) {
+  const [user, setUser] = useState(getUser())
+
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
   const scroll = useRef(null);
@@ -13,6 +17,7 @@ export default function Conversation({ post, reply, deal }) {
   useEffect(() => {
     getMessages(post._id, reply._id)
       .then(res => setMessages(res));
+
 
     const socket = socketIOClient(ENDPOINT);
 
@@ -63,7 +68,7 @@ export default function Conversation({ post, reply, deal }) {
                 <div
                   className=
                   {
-                    post.author.name == message.slice(0, message.indexOf(':'))
+                    user.name == message.slice(0, message.indexOf(':'))
                       ?
                       "Conversation-main-msg"
                       :

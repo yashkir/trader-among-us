@@ -9,7 +9,7 @@ async function index(req, res) {
     const posts = await Post.find({})
       .populate("author", "name")
       .populate({
-        path: "itemsOffered"         
+        path: "itemsOffered"
       });
     res.json(posts);
   } catch (err) {
@@ -25,12 +25,14 @@ async function show(req, res) {
       .populate({
         path: "replies", populate: {
           path: "author", select: "name",
-        }})
+        }
+      })
       .populate({
         path: "replies", populate: {
           path: "itemsOffered",
-        }})
-      .populate({path: "itemsOffered"});
+        }
+      })
+      .populate({ path: "itemsOffered" });
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json("database query failed");
@@ -80,7 +82,7 @@ async function _delete(req, res) {
 
     const result = await Post.deleteOne({ _id: req.params.postId });
     return res.status(200).json(result);
-    
+
   } catch (err) {
     return res.status(500).json("Delete Failed. Internal Error.");
   }
@@ -157,7 +159,7 @@ async function createDeal(req, res) {
 
 async function checkIfDealDone(deal) {
   if (deal.posterHasConfirmed && deal.replierHasConfirmed) {
-    const post = await Post.findOne({ deals: deal._id})
+    const post = await Post.findOne({ deals: deal._id })
       .populate("itemsOffered");
     const reply = await Reply.findById(deal.reply)
       .populate("itemsOffered");
@@ -253,9 +255,8 @@ async function showDealMessages(req, res) {
       .populate("author");
     const deal = await Deal.findOne({ reply: req.params.replyId });
 
-    if (req.user._id === String(post.author._id) || 
-        req.user._id === String(reply.author._id))
-    {
+    if (req.user._id === String(post.author._id) ||
+      req.user._id === String(reply.author._id)) {
       res.status(200).json(deal.messages);
     } else {
       return res.status(403).json({
@@ -276,9 +277,8 @@ async function sendDealMessage(req, res) {
       .populate("author");
     const deal = await Deal.findOne({ reply: req.params.replyId });
 
-    if (req.user._id === String(post.author._id) || 
-        req.user._id === String(reply.author._id))
-    {
+    if (req.user._id === String(post.author._id) ||
+      req.user._id === String(reply.author._id)) {
       deal.messages.push(req.user.name + ": " + req.body.message);
       await deal.save();
 
