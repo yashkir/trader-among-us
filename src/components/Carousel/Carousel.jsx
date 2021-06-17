@@ -2,6 +2,7 @@ import "./Carousel.css";
 import React, { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import itemsApi from "../../utils/items-api";
+import DeleteButton from "../DeleteButton/DeleteButton";
 
 export default function Carousel({ user, post }) {
   let userId;
@@ -25,23 +26,28 @@ export default function Carousel({ user, post }) {
     if (post) setCurrent(current === 0 ? postLength - 1 : current - 1);
   };
 
-
+  const handleDelete = async (id) => {
+    if (user) {
+      itemsApi.deleteItem(id);
+      const items = await itemsApi.show(userId);
+      setItemData(items.item);
+    }
+  };
 
   const getItems = async () => {
     if (user) {
       const items = await itemsApi.show(userId);
       setItemData(items.item);
     }
-  }
+  };
 
   useEffect(() => {
     if (user) getItems();
-  }, [])
+  }, []);
 
   return (
-
     <div className="col-2-pics">
-      {user ?
+      {user ? (
         <>
           {itemData.map((item, index) => {
             return (
@@ -53,62 +59,42 @@ export default function Carousel({ user, post }) {
                   <>
                     <div id="Carousel-title">{item.title}</div>
                     <img id="image" alt="test" src={`${item.image}`}></img>
+                    <div className="user-profile-delete-item">
+                      <DeleteButton handleDelete={() => handleDelete(item._id)}/>
+                    </div>
                   </>
                 )}
               </div>
             );
           })}
         </>
-        :
+      ) : (
         <>
-          {post.itemsOffered.length ? post.itemsOffered.map((item, index) => {
-            return (
-              <div
-                className={index === current ? "slide active" : "slide"}
-                key={index}
-              >
-                {index === current && (
-                  <>
-                    <div id="Carousel-title">{item.title.toLowerCase()}</div>
-                    <img id="image" alt="test" src={`${item.image}`}></img>
-                  </>
-                )}
-              </div>
-            );
-          })
+          {post.itemsOffered.length
+            ? post.itemsOffered.map((item, index) => {
+                return (
+                  <div
+                    className={index === current ? "slide active" : "slide"}
+                    key={index}
+                  >
+                    {index === current && (
+                      <>
+                        <div id="Carousel-title">
+                          {item.title.toLowerCase()}
+                        </div>
+                        <img id="image" alt="test" src={`${item.image}`}></img>
+                      </>
+                    )}
+                  </div>
+                );
+              })
             : null}
-
         </>
-      }
-
-
-
+      )}
       <div className="img-slider-arrows">
         <FaArrowAltCircleLeft className="right-arr" onClick={prevSlide} />
         <FaArrowAltCircleRight className="right-arr" onClick={nextSlide} />
       </div>
-
     </div>
-
   );
 }
-
-
-
-
-// {itemData.map((item, index) => {
-//   return (
-//     <div
-//       className={index === current ? "slide active" : "slide"}
-//       key={index}
-//     >
-//       {index === current && (
-//         <>
-//           <div id="Carousel-title">{item.title}</div>
-//           <img id="image" alt="test" src={`/${item.image}`}></img>
-//           <div id="Carousel-txt">{item.description}</div>        
-//         </>
-//       )}
-//     </div>
-//   );
-// })}

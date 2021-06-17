@@ -34,6 +34,7 @@ async function _delete(req, res) {
 
     const result = await Item.deleteOne({_id: req.params.itemId});
     return res.status(200).json(result);
+    
   } catch (err) {
     debug(err);
     return res.status(500).json("Delete Failed. Internal Error.");

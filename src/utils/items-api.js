@@ -28,9 +28,28 @@ async function create(formData) {
     }
 }
 
+// /:itemId/delete
+async function deleteItem(itemId) {
+  const res = await fetch(`${BASE_URL}/${itemId}/delete`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken(),
+    },
+  });
+
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Unable to confirm deal.");
+  }
+}
+
+
 const itemsApi = {
   create,
   show,
+  deleteItem,
 };
 
 export default itemsApi;

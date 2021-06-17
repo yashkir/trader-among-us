@@ -79,6 +79,7 @@ async function _delete(req, res) {
 
     const result = await Post.deleteOne({ _id: req.params.postId });
     return res.status(200).json(result);
+    
   } catch (err) {
     return res.status(500).json("Delete Failed. Internal Error.");
   }

@@ -58,3 +58,8 @@
   user-select: none;
   margin-top: 0.5rem;
 }
+
+.user-profile-delete-item {
+  display: flex;
+  justify-content: center;
+}

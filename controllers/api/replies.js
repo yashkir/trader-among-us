@@ -47,9 +47,7 @@ async function _delete(req, res) {
         message: "Delete failed. You are not the author of this reply."
       });
     }
-
     const result = await Reply.deleteOne({_id: req.params.replyId});
-
     return res.status(200).json(result);
   } catch (err) {
     debug(err);
