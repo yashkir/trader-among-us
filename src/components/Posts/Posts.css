@@ -35,6 +35,22 @@
   font-family: "Lilita One", cursive;
   text-align: center;
   text-transform: uppercase;
+  color: rgb(0, 0, 0);
+}
+
+.post-title-pink {
+  font-size: 2rem;
+  font-family: "Oleo Script", cursive;
+  text-align: center;
+  text-transform: lowercase;
+  color: rgb(209, 145, 188);
+}
+
+.post-title-main {
+  font-size: 2.5rem;
+  font-family: "Lilita One", cursive;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .post-btn {
@@ -99,9 +115,8 @@
 }
 
 .flex-p {
-  margin-top: 1rem;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: rgb(139, 139, 139);
   font-family: "Rubik", sans-serif;
 }

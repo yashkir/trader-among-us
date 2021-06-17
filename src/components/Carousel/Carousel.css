@@ -1,6 +1,6 @@
 #image {
-  width: 20rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
   margin-top: 1rem;
   user-select: none;
   border-radius: 25px;
@@ -37,8 +37,9 @@
   justify-content: center;
   font-size: 2rem;
   user-select: none;
-  font-family: "Oleo Script", cursive;
-  color: rgb(192, 114, 166);
+  font-family: "Lilita One", cursive;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
 }
 
 .img-slider-arrows {
