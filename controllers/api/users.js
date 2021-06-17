@@ -7,7 +7,6 @@ const secret = process.env.SECRET;
 
 async function showItem(req,res) {
   const userId = req.params.id;
-  console.log(userId);
   try {
     const item = await Item.find({user: userId})
     res.status(200).json({item});

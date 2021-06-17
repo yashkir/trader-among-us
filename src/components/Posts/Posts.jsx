@@ -28,7 +28,6 @@ const Posts = (props) => {
       {/* Showing all posts */}
       <div>
         {posts.length ? posts.map(post => {
-          console.log("POST---->", post.itemsOffered.length)
           return (
             <div key={post._id}>
               <div className="row">

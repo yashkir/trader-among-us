@@ -18,7 +18,6 @@ export default function ItemCreateForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(inputValues);
     const formData = new FormData();
     formData.append("title", inputValues.title);
     formData.append("description", inputValues.description);
