@@ -1,11 +1,15 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const sockets = require("./helpers/sockets");
 
 require('dotenv').config();
 require('./config/database');
 
 const app = express();
+const server = require('http').createServer(app);
+
+sockets.configure(server);
 
 app.use(express.json());
 app.use(logger('dev'));
@@ -27,7 +31,6 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
+server.listen(port, function() {
   console.log(`Express app running on port ${port}`)
 });
-

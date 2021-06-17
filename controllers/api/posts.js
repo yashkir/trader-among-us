@@ -2,6 +2,7 @@ const Post = require('../../models/post');
 const Reply = require('../../models/reply');
 const Deal = require('../../models/deal');
 const debug = require("debug")("api");
+const sockets = require("../../helpers/sockets");
 
 async function index(req, res) {
   try {
@@ -279,7 +280,11 @@ async function sendDealMessage(req, res) {
         req.user._id === String(reply.author._id))
     {
       deal.messages.push(req.user.name + ": " + req.body.message);
-      deal.save();
+      await deal.save();
+
+      // Inform anyone watching that we have a new message
+      sockets.informNewMessages(deal._id, deal.messages);
+
       return res.status(200).json(deal.messages);
     } else {
       return res.status(403).json({

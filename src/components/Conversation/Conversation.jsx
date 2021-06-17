@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { getMessages, sendMessage } from "../../utils/messages-api";
+import socketIOClient from "socket.io-client";
+const ENDPOINT = "http://127.0.0.1:3001";
 
 export default function Conversation({ post, reply, deal }) {
   const [inputValue, setInputValue] = useState("");
@@ -8,6 +10,19 @@ export default function Conversation({ post, reply, deal }) {
   useEffect(() => {
     getMessages(post._id, reply._id)
       .then(res => setMessages(res));
+
+    const socket = socketIOClient(ENDPOINT);
+
+    socket.on("WhatDeal", () => {
+      socket.emit("WatchDeal", deal._id);
+    });
+
+    socket.on("NewMessage", socketMessages => {
+      setMessages(socketMessages);
+    });
+
+
+    return () => socket.disconnect();
   }, []);
 
   function handleMessageChange(e) {
