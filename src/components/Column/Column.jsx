@@ -9,6 +9,7 @@ height: 100%;
 background-color: ${props => (props.isDraggingOver ? 'rgba(42, 195, 73, 0.1)' : 'transparent')} ;
 padding: .5rem;
 border-radius: 20px
+margin: .5rem;
 `;
 export default function Column({ res, column }) {
 

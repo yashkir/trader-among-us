@@ -1,0 +1,63 @@
+.Deal-container {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Deal-progress {
+  font-family: "Oleo Script", cursive;
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: rgb(196, 132, 172);
+}
+
+#elip {
+  letter-spacing: 5px;
+  margin-left: 5px;
+}
+
+.Deal-poster {
+  font-size: 1.1rem;
+  color: rgb(0, 0, 0);
+  font-family: "Lilita One", cursive;
+  text-transform: uppercase;
+}
+
+.Deal-replier {
+  font-size: 1.1rem;
+  color: rgb(0, 0, 0);
+  font-family: "Lilita One", cursive;
+  text-transform: uppercase;
+}
+
+b {
+  color: rgb(196, 132, 172);
+}
+
+.Reply-btns-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0.5rem auto;
+}
+
+.Deal-button {
+  border: 2px solid transparent;
+  background-color: transparent;
+  color: rgb(110, 20, 20);
+  font-family: "Oleo Script", cursive;
+  font-size: 2rem;
+}
+
+#Deal-button-green {
+  color: green;
+}
+
+.Deal-cancel-icon {
+  display: flex;
+  justify-content: right;
+  flex-grow: 1;
+}

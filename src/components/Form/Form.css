@@ -88,7 +88,7 @@
 textarea {
   border: 1px solid rgba(46, 46, 46, 0.295);
   border-radius: 10px;
-  width: 85%;
+  width: 80vw;
   resize: none;
   font-family: "Rubik", sans-serif;
   padding: 0.4rem;
