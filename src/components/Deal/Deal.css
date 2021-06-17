@@ -20,14 +20,14 @@
 }
 
 .Deal-poster {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: rgb(0, 0, 0);
   font-family: "Lilita One", cursive;
   text-transform: uppercase;
 }
 
 .Deal-replier {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: rgb(0, 0, 0);
   font-family: "Lilita One", cursive;
   text-transform: uppercase;
@@ -63,4 +63,12 @@ b {
 
 #Reply-deal-shake {
   font-size: 0.5rem;
+}
+
+.Deal-p {
+  font-family: "Oleo Script", cursive;
+  text-transform: lowercase;
+  margin-bottom: 10px;
+  color: rgb(196, 132, 172);
+  font-size: 1.4rem;
 }

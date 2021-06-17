@@ -4,6 +4,7 @@
   height: 20rem;
   width: 60vw;
   overflow: scroll;
+  background-color: white;
 }
 
 .Conversation-div {
@@ -32,4 +33,35 @@
   font-family: "Rubik", sans-serif;
   background-color: rgb(76, 93, 167);
   color: white;
+}
+
+.Message-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.Message-form {
+  width: 40vw;
+  padding: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(77, 77, 77, 0.178);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Rubik", sans-serif;
+}
+
+.Message-form-container form button {
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: rgb(59, 59, 59);
+  border-color: transparent;
+}
+
+.Message-form-container form {
+  display: flex;
+  align-items: center;
+}
+
+.Message-send {
+  margin-left: 0.5rem;
 }
