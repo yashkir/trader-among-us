@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaHandshake } from "react-icons/fa";
 import postsApi from "../../utils/posts-api";
+import Conversation from "../Conversation/Conversation";
 
 export default function Deal({ user, post, reply }) {
   const [deal, setDeal] = useState(null);
@@ -63,6 +64,10 @@ export default function Deal({ user, post, reply }) {
                 : null}
               <button onClick={confirmDealToggle}>Confirm</button>
             </>
+          }
+          {user._id === post.author._id || user._id === reply.author._id
+            ? <Conversation post={post} reply={reply} deal={deal}/>
+            : null
           }
         </div>
         : user._id === post.author._id

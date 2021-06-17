@@ -13,6 +13,9 @@ const dealSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  messages: [{
+    type: String,
+  }]
 }, {
   timestamps: true,
 });
