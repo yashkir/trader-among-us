@@ -24,7 +24,7 @@ export default function Item({ item, index }) {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}
         >
-          <img className="Bid-image" alt="" src={`/${item.img}`} />
+          <img className="Bid-image" alt="" src={`${item.img}`} />
           <div className="Bid-name-txt ">{item.name.toLowerCase()}</div>
         </Container>
       )}

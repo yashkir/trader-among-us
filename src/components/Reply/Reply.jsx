@@ -29,7 +29,7 @@ export default function Reply(props) {
           {props.reply.itemsOffered.map((item) =>
           (
             <div className="Reply-img-container">
-              <img className="Reply-img" alt="reply-img" src={`/${item.image}`}></img>
+              <img className="Reply-img" alt="reply-img" src={`${item.image}`}></img>
               <p className="Reply-item-title">{item.title}</p>
             </div>
           ))}

@@ -7,7 +7,12 @@ async function create(req, res) {
     debug("got file", req.file);
 
     req.body.user = req.user._id;
-    req.body.image = req.file.filename;
+
+    if (process.env.USE_S3) {
+      req.body.image = req.file.location;
+    } else {
+      req.body.image = "/" + req.file.filename;
+    }
 
     const newItem = await Item.create(req.body);
     res.status(200).json(newItem);
