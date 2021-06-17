@@ -13,7 +13,6 @@ export default function Reply(props) {
     if (icon === "-") setIcon("+");
   };
 
-  console.log(props);
   return (
     <>
       <div className="Reply-header" onClick={handleHidden}>

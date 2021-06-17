@@ -122,9 +122,9 @@ export default function Bid(props) {
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
-
+    //Out of bounds
     if (!destination) return;
-
+    //Same Location
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -134,7 +134,7 @@ export default function Bid(props) {
 
     const start = items.columns[source.droppableId];
     const end = items.columns[destination.droppableId];
-
+    //Moving within same column
     if (start === end) {
       const newItemIds = Array.from(start.itemIds);
 
@@ -197,13 +197,13 @@ export default function Bid(props) {
             {columns.map((colId) => {
               const column = items.columns[colId];
               const res = column.itemIds.map(itemId => items.items[itemId]);
-              console.log(res);
               return <Column key={column.id} column={column} res={res} />;
             })}
           </DragDropContext>
         </div>
         <div className={`txt-area-col ${block}`}>
           <textarea
+            className="bid-text-area"
             onChange={handleBidChange}
             value={bid.description}
             style={{ height: "15vh" }}

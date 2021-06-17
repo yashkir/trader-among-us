@@ -22,10 +22,10 @@
 .Bid-body-row {
   /* border: 1px solid green; */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border-top: 0px;
   height: 0;
-  width: 100vw;
+  width: 70vw;
   overflow: hidden;
   transition: all 300ms ease-in-out;
   background-color: transparent;
@@ -123,7 +123,7 @@
 
 .Bid-name-txt {
   font-family: "Oleo Script", cursive;
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: rgb(83, 83, 83);
 }
 
@@ -187,4 +187,24 @@
 }
 .Bid-prompt {
   display: none;
+}
+
+.bid-text-area {
+  font-size: 1rem;
+}
+/* 
+.txt-area-col {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+} */
+
+@media screen and (max-width: 375px) {
+  .txt-area-col {
+    /* width: 80vw; */
+  }
+
+  .Bid-body-row {
+    width: 90vw;
+  }
 }

@@ -13,7 +13,6 @@ async function getAllPosts() {
   }
 }
 
-
 async function getOnePost(id) {
   const res = await fetch(`${BASE_URL}/${id}`,
     { method: "GET" }

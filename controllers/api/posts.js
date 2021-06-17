@@ -6,7 +6,10 @@ const debug = require("debug")("api");
 async function index(req, res) {
   try {
     const posts = await Post.find({})
-      .populate("author", "name");
+      .populate("author", "name")
+      .populate({
+        path: "itemsOffered"         
+      });
     res.json(posts);
   } catch (err) {
     res.status(400).json("database query failed");
@@ -25,7 +28,8 @@ async function show(req, res) {
       .populate({
         path: "replies", populate: {
           path: "itemsOffered",
-        }});
+        }})
+      .populate({path: "itemsOffered"});
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json("database query failed");

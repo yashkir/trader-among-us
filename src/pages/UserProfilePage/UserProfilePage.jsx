@@ -4,8 +4,7 @@ import PageTitle from "../../components/PageTitle/PageTitle"
 import { Route, Link, Switch } from 'react-router-dom';
 import './UserProfilePage.css';
 import Carousel from '../../components/Carousel/Carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import userEvent from '@testing-library/user-event';
+
 
 export default function UserProfilePage({ user }) {
   return (
@@ -20,9 +19,6 @@ export default function UserProfilePage({ user }) {
             <Link to="/users/items/new">Add Items</Link>
           </div>
         </div>
-        {/* <div className="user-profile-heading">
-          <h1>Test</h1>
-        </div> */}
         <div className="user-profile-body">
           <Switch>
             <Route path="/users/items/new" component={ItemCreateForm} />

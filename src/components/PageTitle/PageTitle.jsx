@@ -10,4 +10,5 @@ const PageTitle = ({ titleOne, titleTwo }) => {
   )
 }
 
+
 export default PageTitle
