@@ -60,7 +60,7 @@ export default function Carousel({ user, post }) {
                     <div id="Carousel-title">{item.title}</div>
                     <img id="image" alt="test" src={`${item.image}`}></img>
                     <div className="user-profile-delete-item">
-                      <DeleteButton handleDelete={() => handleDelete(item._id)}/>
+                      <DeleteButton handleDelete={() => handleDelete(item._id)} />
                     </div>
                   </>
                 )}
@@ -72,22 +72,22 @@ export default function Carousel({ user, post }) {
         <>
           {post.itemsOffered.length
             ? post.itemsOffered.map((item, index) => {
-                return (
-                  <div
-                    className={index === current ? "slide active" : "slide"}
-                    key={index}
-                  >
-                    {index === current && (
-                      <>
-                        <div id="Carousel-title">
-                          {item.title.toLowerCase()}
-                        </div>
-                        <img id="image" alt="test" src={`${item.image}`}></img>
-                      </>
-                    )}
-                  </div>
-                );
-              })
+              return (
+                <div
+                  className={index === current ? "slide active" : "slide"}
+                  key={index}
+                >
+                  {index === current && (
+                    <>
+                      <div id="Carousel-title">
+                        {item.title.toLowerCase()}
+                      </div>
+                      <img id="image" alt="test" src={`${item.image}`}></img>
+                    </>
+                  )}
+                </div>
+              );
+            })
             : null}
         </>
       )}

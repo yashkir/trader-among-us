@@ -1,0 +1,17 @@
+.Conversation-chat-box {
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: left;
+  height: 7rem;
+  overflow: scroll;
+}
+
+.Conversation-message-p:nth-child(odd) {
+  text-align: right;
+}
+
+.Conversation-message-p {
+  margin: 0.1rem;
+  padding: 0 0.3rem;
+  border: 1px solid black;
+}

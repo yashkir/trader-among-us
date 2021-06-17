@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { FaHandshake } from "react-icons/fa";
+import { TiCancel } from "react-icons/ti"
+import { GiCheckMark } from "react-icons/gi"
 import postsApi from "../../utils/posts-api";
 import Conversation from "../Conversation/Conversation";
+import "./Deal.css"
 
 export default function Deal({ user, post, reply }) {
   const [deal, setDeal] = useState(null);
+  const [confirmStatus, setConfirmStatus] = useState("Confirm")
 
   useEffect(() => {
     loadDeal();
   }, []);
 
-  function loadDeal () {
+  function loadDeal() {
     postsApi.getOneDeal(post._id, reply._id)
       .then(foundDeal => {
         setDeal(foundDeal);
@@ -27,57 +31,75 @@ export default function Deal({ user, post, reply }) {
     if (res.ok) {
       setDeal(null);
     }
+    setConfirmStatus("Confirm")
   }
 
   async function confirmDealToggle() {
     await postsApi.confirmDealToggle(post._id, reply._id);
     loadDeal();
+    if (confirmStatus === "Confirm") setConfirmStatus("Undo Confirm");
+    if (confirmStatus === "Undo Confirm") setConfirmStatus("Confirm");
   }
 
   return (
     <div className="Deal">
       {deal ?
-        <div>
+        <div className="Deal-container">
+          {user._id === post.author._id
+            ? <button
+              className="Deal-button"
+              onClick={handleCancelDeal}>
+              <TiCancel className="Deal-cancel-icon" />
+            </button>
+            : null
+          }
           {deal.posterHasConfirmed && deal.replierHasConfirmed
-            ? <p>DEAL IS DONE</p>
+            ? <p className="Deal-p">DEAL IS DONE</p>
             :
             <>
-              <p>Deal in progress...</p>
-              <span className="Deal-poster">
+              <p className="Deal-progress">Deal in progress<span>...</span></p>
+              <div className="Deal-poster">
                 {post.author.name}
                 {deal.posterHasConfirmed
-                  ? <span> has <b>confirmed</b></span>
-                  : <span> has <b>not</b> confirmed</span>
+                  ? <span className="Deal-span"> has <b>confirmed</b></span>
+                  : <span className="Deal-span"> has <b>not</b> confirmed</span>
                 }
-              </span>
+              </div>
               <FaHandshake id="Reply-deal" />
               <span className="Deal-replier">
                 {reply.author.name}
                 {deal.replierHasConfirmed
-                  ? <span> has <b>confirmed</b></span>
-                  : <span> has <b>not</b> confirmed</span>
+                  ? <span className="Deal-span"> has <b>confirmed</b></span>
+                  : <span className="Deal-span"> has <b>not</b> confirmed</span>
                 }
               </span>
               <br />
-              {user._id === post.author._id
-                ? <button onClick={handleCancelDeal}>Cancel</button>
-                : null}
-              <button onClick={confirmDealToggle}>Confirm</button>
+
+              <div className="Reply-btns-div">
+
+                <button
+                  id="Deal-button-green"
+                  className="Deal-button"
+                  onClick={confirmDealToggle}>
+                  <GiCheckMark />
+                </button>
+              </div>
             </>
           }
           {user._id === post.author._id || user._id === reply.author._id
-            ? <Conversation post={post} reply={reply} deal={deal}/>
+            ? <Conversation post={post} reply={reply} deal={deal} />
             : null
           }
+
         </div>
         : user._id === post.author._id
           ?
-            <div onClick={handleStartDeal}>
-              <FaHandshake id="Reply-deal" />
-              <div className="Reply-txt">Make Deal</div>
-            </div>
+          <div onClick={handleStartDeal}>
+            <FaHandshake id="Reply-deal" />
+            <div className="Reply-txt">Make Deal</div>
+          </div>
           :
-            null
+          null
       }
     </div>
   );
