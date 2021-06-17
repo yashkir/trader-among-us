@@ -11,6 +11,7 @@ import Posts from './components/Posts/Posts'
 import PostIdPage from './pages/PostIdPage/PostIdPage'
 import NewItemPage from "./pages/NewItemPage/NewItemPage"
 import UserProfilePage from './pages/UserProfilePage/UserProfilePage';
+import DeleteButton from "./components/DeleteButton/DeleteButton";
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -63,6 +64,9 @@ const App = () => {
               </Route>
               <Route path={`/users`}>
                 <UserProfilePage user={user} />
+              </Route>
+              <Route path={`/test`}>
+                <DeleteButton />
               </Route>
               <Redirect to="/posts" />
             </Switch>

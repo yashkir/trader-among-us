@@ -33,7 +33,7 @@ const Posts = (props) => {
             <div key={post._id}>
               <div className="row">
                 <div className="column-img">
-                  <div><img id="post-img" src={`/${post.itemsOffered[0].image}`} alt="placeholder"></img></div>
+                  <div><img id="post-img" src={`${post.itemsOffered[0].image}`} alt="placeholder"></img></div>
                 </div>
                 <div className="column-text">
                   <div className="post-title-pink">{post.title}</div>

@@ -8,7 +8,6 @@ import itemsApi from "../../utils/items-api";
 
 export default function UserProfilePage({ user }) {
   const [itemData, setItemData] = useState([]);
-  console.log(itemData.length)
 
   let userId;
   if (user) {

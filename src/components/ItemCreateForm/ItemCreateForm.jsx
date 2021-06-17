@@ -7,7 +7,6 @@ import "./ItemCreateForm.css"
 
 export default function ItemCreateForm() {
   let user = getUser()
-  console.log(user)
   const history = useHistory()
 
   const [inputValues, setInputValues] = useState({

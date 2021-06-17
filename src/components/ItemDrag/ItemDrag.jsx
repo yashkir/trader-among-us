@@ -72,7 +72,6 @@ export default function ItemDrag({ setItemsOffered }) {
 
   useEffect(() => {
     const itemsoffered = items.columns['col-2'].itemIds;
-    console.log(itemsoffered);
     setItemsOffered(itemsoffered);
   }, [items])
 

@@ -90,8 +90,6 @@ async function startDeal(postId, replyId) {
       "Authorization": "Bearer " + getToken(),
     },
   });
-
-  console.log(res);
   if (res.ok) {
     return true;
   } else {
@@ -131,6 +129,34 @@ async function deleteDeal(postId, replyId) {
   }
 }
 
+async function deletePost(postId) {
+  const res = await fetch(`${BASE_URL}/${postId}/delete`, {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer " + getToken(),
+    },
+  });
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Unable to delete Post")
+  }
+}
+
+async function deleteReply(replyId) {
+  const res = await fetch(`/api/replies/${replyId}/delete`, {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer " + getToken(),
+    },
+  })
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Unable to delete bid")
+  }
+}
+
 const postsApi = {
   getAllPosts,
   create,
@@ -140,6 +166,8 @@ const postsApi = {
   startDeal,
   confirmDealToggle,
   deleteDeal,
+  deletePost,
+  deleteReply,
 };
 
 export default postsApi;
