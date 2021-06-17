@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { getMessages, sendMessage } from "../../utils/messages-api";
+import { FiSend } from "react-icons/fi"
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://127.0.0.1:3001";
 import "./Conversation.css"
+const ENDPOINT = "http://127.0.0.1:3001";
 
 export default function Conversation({ post, reply, deal }) {
   const [inputValue, setInputValue] = useState("");
@@ -75,20 +76,25 @@ export default function Conversation({ post, reply, deal }) {
             ) : null}
         <div ref={scroll}></div>
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          className="Message-form"
-          type="text"
-          name="message"
-          id="message"
-          required="true"
-          value={inputValue}
-          onChange={handleMessageChange}
-        />
-        <button type="submit">Send</button>
-        <button className="send-btn" onClick={handleRefresh}>Refresh</button>
-      </form>
+      <div className="Message-form-container">
+        <form onSubmit={handleSubmit}>
+          <div className="Flex-form-message">
+            <input
+              className="Message-form"
+              type="text"
+              name="message"
+              id="message"
+              required="true"
+              value={inputValue}
+              onChange={handleMessageChange}
+              placeholder="Enter a message"
+            />
+          </div>
+          <div className="Flex-buttons-message">
+            <button type="submit"><FiSend className="Message-send" /></button>
+          </div>
+        </form>
+      </div>
 
     </div>
   );
