@@ -5,7 +5,7 @@ import { getUser } from "../../utils/users-service"
 
 import socketIOClient from "socket.io-client";
 import "./Conversation.css"
-const ENDPOINT = "http://127.0.0.1:3001";
+const ENDPOINT = "https://trader-among-us.herokuapp.com";
 
 export default function Conversation({ post, reply, deal }) {
   const [user, setUser] = useState(getUser())
