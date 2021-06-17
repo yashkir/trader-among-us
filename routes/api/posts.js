@@ -20,5 +20,7 @@ router.post('/:postId/reply', postsCtrl.createReply);
 router.post('/:postId/deals/:replyId', postsCtrl.createDeal);
 router.post('/:postId/deals/:replyId/confirm', postsCtrl.confirmDealToggle);
 router.post('/:postId/deals/:replyId/delete', postsCtrl.deleteDeal);
+router.get('/:postId/deals/:replyId/messages', postsCtrl.showDealMessages);
+router.post('/:postId/deals/:replyId/messages', postsCtrl.sendDealMessage);
 
 module.exports = router;

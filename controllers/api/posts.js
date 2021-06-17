@@ -242,6 +242,55 @@ async function deleteDeal(req, res) {
   }
 }
 
+async function showDealMessages(req, res) {
+  // TODO add check for user for privacy
+  try {
+    const post = await Post.findById(req.params.postId)
+      .populate("author")
+    const reply = await Reply.findById(req.params.replyId)
+      .populate("author");
+    const deal = await Deal.findOne({ reply: req.params.replyId });
+
+    if (req.user._id === String(post.author._id) || 
+        req.user._id === String(reply.author._id))
+    {
+      res.status(200).json(deal.messages);
+    } else {
+      return res.status(403).json({
+        message: "Messages retrieveal failed. You are not the author of this post or the author of the reply."
+      });
+    }
+  } catch (err) {
+    debug(err);
+    res.status(500).json("database query failed");
+  }
+}
+
+async function sendDealMessage(req, res) {
+  try {
+    const post = await Post.findById(req.params.postId)
+      .populate("author")
+    const reply = await Reply.findById(req.params.replyId)
+      .populate("author");
+    const deal = await Deal.findOne({ reply: req.params.replyId });
+
+    if (req.user._id === String(post.author._id) || 
+        req.user._id === String(reply.author._id))
+    {
+      deal.messages.push(req.user.name + ": " + req.body.message);
+      deal.save();
+      return res.status(200).json(deal.messages);
+    } else {
+      return res.status(403).json({
+        message: "Send failed. You are not the author of this post or the author of the reply."
+      });
+    }
+  } catch (err) {
+    debug(err);
+    res.status(500).json("database query failed");
+  }
+}
+
 module.exports = {
   index,
   show,
@@ -255,4 +304,6 @@ module.exports = {
   confirmDealToggle,
   showDealForReply,
   deleteDeal,
+  showDealMessages,
+  sendDealMessage,
 };
