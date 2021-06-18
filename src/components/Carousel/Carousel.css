@@ -5,7 +5,7 @@
   user-select: none;
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .right-arr {
