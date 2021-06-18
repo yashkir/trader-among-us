@@ -45,6 +45,7 @@
 .form-title > h1 {
   font-family: "Lilita One", cursive;
   font-size: 2.8rem;
+  text-transform: uppercase;
 }
 
 #shake-pink {
@@ -147,5 +148,5 @@ textarea {
   display: flex;
   justify-content: center;
   font-family: "Lilita One", cursive;
-  color: #ED4337;
+  color: #ed4337;
 }

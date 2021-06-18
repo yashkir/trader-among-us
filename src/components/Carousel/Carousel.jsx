@@ -47,7 +47,7 @@ export default function Carousel({ user, post }) {
 
   useEffect(() => {
     if (user) getItems();
-    console.log(post.itemsOffered.length)
+
 
 
   }, []);
