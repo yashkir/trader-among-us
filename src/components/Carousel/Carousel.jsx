@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import itemsApi from "../../utils/items-api";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import { getUser } from "../../utils/users-service";
 
 export default function Carousel({ user, post }) {
   let userId;
@@ -32,7 +33,7 @@ export default function Carousel({ user, post }) {
 
   const handleDelete = async (id) => {
     if (user) {
-      itemsApi.deleteItem(id);
+      await itemsApi.deleteItem(id);
       const items = await itemsApi.show(userId);
       setItemData(items.item);
     }
@@ -46,10 +47,7 @@ export default function Carousel({ user, post }) {
   };
 
   useEffect(() => {
-    if (user) getItems();
-    console.log(post.itemsOffered.length)
-
-
+    if (getUser()) getItems();
   }, []);
 
   return (
