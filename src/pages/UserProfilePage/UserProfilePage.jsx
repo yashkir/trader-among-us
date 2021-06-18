@@ -8,6 +8,8 @@ import itemsApi from "../../utils/items-api";
 
 export default function UserProfilePage({ user }) {
   const [itemData, setItemData] = useState([]);
+  const [addSelected, setAddSelected] = useState("");
+  const [viewSelected, setViewSelected] = useState("");
 
   const getItems = async () => {
     if (user) {
@@ -15,6 +17,16 @@ export default function UserProfilePage({ user }) {
       setItemData(items.item);
     }
   };
+
+  const handleClickAdd = () => {
+    setAddSelected("user-link-selected");
+    setViewSelected("");
+  }
+
+  const handleClickView = () => {
+    setAddSelected("");
+    setViewSelected("user-link-selected");
+  }
 
   useEffect(() => {
     getItems();
@@ -26,10 +38,16 @@ export default function UserProfilePage({ user }) {
       <div className="user-profile-container">
         <div className="user-profile-nav">
           <div>
-            <Link to={{ pathname: `/users/${user._id}/items`, state: user }} exact >View Items</Link>
+            <Link 
+              to={{ pathname: `/users/${user._id}/items`, state: user }} 
+              exact 
+              className={`${viewSelected}`}
+              onClick={handleClickView}
+            >View Items
+            </Link>
           </div>
           <div>
-            <Link to="/users/items/new">Add Items</Link>
+            <Link to="/users/items/new" className={`${addSelected}`} onClick={handleClickAdd}>Add Items</Link>
           </div>
         </div>
         {itemData.length === 0 ? <p className="UserProfilePage-prompt">You currently have no items!</p> : ''}
