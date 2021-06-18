@@ -29,6 +29,7 @@
 .form-title > h1 {
   font-family: "Lilita One", cursive;
   font-size: 2.8rem;
+  text-transform: uppercase;
 }
 
 #shake-pink {
