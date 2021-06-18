@@ -58,7 +58,7 @@ export default function ItemDrag({ setItemsOffered }) {
       };     
     })
     
-    setItems(data);
+    setItems({...data});
     
   }
 
