@@ -5,3 +5,10 @@
   object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.new-item-error-message {
+  display: flex;
+  justify-content: center;
+  font-family: "Lilita One", cursive;
+  color: #ED4337;
+}

@@ -142,3 +142,10 @@ textarea {
 .btn-div {
   text-align: center;
 }
+
+.new-post-error-message {
+  display: flex;
+  justify-content: center;
+  font-family: "Lilita One", cursive;
+  color: #ED4337;
+}

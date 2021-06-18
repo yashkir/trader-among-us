@@ -8,7 +8,10 @@ const secret = process.env.SECRET;
 async function showItem(req,res) {
   const userId = req.params.id;
   try {
-    const item = await Item.find({user: userId})
+    const item = await Item.find({
+      user: userId, 
+      isSold: false
+    })
     res.status(200).json({item});
   }catch(err){
     res.status(400).json("Query failed")

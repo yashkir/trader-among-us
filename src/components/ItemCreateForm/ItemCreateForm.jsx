@@ -45,7 +45,7 @@ export default function ItemCreateForm() {
 
   return (
     <div className="ImageUpload">
-      <p>{message}</p>
+      <p className="new-item-error-message">{message}</p>
       <form action="/api/items" method="post" onSubmit={handleSubmit}>
         <section id="form-sec">
           <div className="form-border">

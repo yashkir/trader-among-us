@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import "./Form.css"
-import { FaFileUpload } from "react-icons/fa";
 import PageTitle from "../../components/PageTitle/PageTitle"
 import postsApi from "../../utils/posts-api";
 import { useHistory } from 'react-router';
@@ -26,17 +25,17 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
+    if(!itemsOffered.length) throw new Error("Please add items");
     const response = await postsApi.create({
       title: inputValues.title,
       text: inputValues.text,
       itemsOffered
     });
-    history.push('/posts')
     setStatus(response);
+    history.push('/posts')
   } catch (err) {
     setStatus(err.message);
   }
-
 }
 
 return (
@@ -45,12 +44,12 @@ return (
     <PageTitle titleOne={"NEW"} titleTwo={"POST"} />
 
     {/* TODO style this error message */}
-    {status ? <p>{status}</p> : null}
+    {status ? <p className="new-post-error-message">{status}</p> : null}
 
     <section id="form-sec">
       <form onSubmit={handleSubmit}>
         <div className="form-border">
-          <label for="title" className="form-label">Title</label>
+          <label htmlFor="title" className="form-label">Title</label>
           <input id="title"
             name="title"
             type="text"
@@ -58,7 +57,7 @@ return (
             value={inputValues.title}
             onChange={handleChange}
           />
-          <label for="description" className="form-label">Description</label>
+          <label htmlFor="description" className="form-label">Description</label>
           <textarea
             id="text"
             rows="6"
@@ -66,16 +65,6 @@ return (
             value={inputValues.text}
             onChange={handleChange}
           />
-          {/* <label for="image" className="form-label">Image</label>
-          <label id="image" class="custom-file-upload">
-            <input
-              type="file"
-              name="image"
-              value={inputValues.image}
-              onChange={handleChange}
-            />
-            <FaFileUpload id="upload" />
-          </label><br /> */}
           <ItemDrag setItemsOffered={setItemsOffered} user={user} />
         </div>
       </form>
