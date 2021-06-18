@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import * as usersService from '../../utils/users-service';
+import './LoginForm.css'
 
 export default function LoginForm({ setUser }) {
   const history = useHistory()
@@ -52,7 +53,7 @@ export default function LoginForm({ setUser }) {
           </form>
         </section>
       </div>
-      <p className="error-message">&nbsp;{error}</p>
+      <p className="login-error-message">&nbsp;{error}</p>
     </div>
   );
 }
