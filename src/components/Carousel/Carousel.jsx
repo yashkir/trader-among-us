@@ -13,7 +13,11 @@ export default function Carousel({ user, post }) {
 
   const [current, setCurrent] = useState(0);
   let postLength;
+
+
+
   const length = itemData.length;
+
   if (post) postLength = post.itemsOffered.length;
 
   const nextSlide = () => {
@@ -43,6 +47,9 @@ export default function Carousel({ user, post }) {
 
   useEffect(() => {
     if (user) getItems();
+    console.log(post.itemsOffered.length)
+
+
   }, []);
 
   return (
@@ -58,6 +65,7 @@ export default function Carousel({ user, post }) {
                 {index === current && (
                   <>
                     <div id="Carousel-title">{item.title}</div>
+
                     <img id="image" alt="test" src={`${item.image}`}></img>
                     <div className="user-profile-delete-item">
                       <DeleteButton handleDelete={() => handleDelete(item._id)} />
@@ -67,6 +75,13 @@ export default function Carousel({ user, post }) {
               </div>
             );
           })}
+
+          {length === 1 ? null :
+            <div className="img-slider-arrows">
+              <FaArrowAltCircleLeft className="right-arr" onClick={prevSlide} />
+              <FaArrowAltCircleRight className="right-arr" onClick={nextSlide} />
+            </div>
+          }
         </>
       ) : (
         <>
@@ -82,6 +97,7 @@ export default function Carousel({ user, post }) {
                       <div id="Carousel-title">
                         {item.title.toLowerCase()}
                       </div>
+
                       <img id="image" alt="test" src={`${item.image}`}></img>
                     </>
                   )}
@@ -89,12 +105,18 @@ export default function Carousel({ user, post }) {
               );
             })
             : null}
+
+          {post.itemsOffered.length === 1 ? null :
+            <div className="img-slider-arrows">
+              <FaArrowAltCircleLeft className="right-arr" onClick={prevSlide} />
+              <FaArrowAltCircleRight className="right-arr" onClick={nextSlide} />
+            </div>
+          }
         </>
       )}
-      <div className="img-slider-arrows">
-        <FaArrowAltCircleLeft className="right-arr" onClick={prevSlide} />
-        <FaArrowAltCircleRight className="right-arr" onClick={nextSlide} />
-      </div>
+
+
+
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaHandshake } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom"
 import "./Reply.css";
 import Deal from "../Deal/Deal";
 import { getUser } from "../../utils/users-service";
@@ -10,6 +10,12 @@ export default function Reply(props) {
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
   const [user, setUser] = useState(getUser());
+  const history = useHistory()
+
+
+  useEffect(() => {
+    console.log('POSTID  --->', props.post._id)
+  })
 
   const handleHidden = () => {
     if (hidden === "reply-hidden") setHidden("");
@@ -18,8 +24,14 @@ export default function Reply(props) {
     if (icon === "-") setIcon("+");
   };
 
-  const handleDelete = (reply) => {
-    PostsApi.deleteReply(reply);
+  const handleDelete = async (reply) => {
+    try {
+      reply = await PostsApi.deleteReply(reply)
+      history.push(`/posts`)
+
+    } catch (err) {
+
+    }
   }
 
   return (
@@ -46,9 +58,9 @@ export default function Reply(props) {
           <p id="Reply-p">{props.reply.text}</p>
         </div>
         <div className="Reply-page-col">
-          {user._id === props.reply.author._id ? 
-          <DeleteButton handleDelete={() => handleDelete(props.reply._id)}/> : null}
-          <Deal user={getUser()} post={props.post} reply={props.reply}/>
+          {user._id === props.reply.author._id ?
+            <DeleteButton handleDelete={() => handleDelete(props.reply._id)} /> : null}
+          <Deal user={getUser()} post={props.post} reply={props.reply} />
         </div>
       </div>
     </>
