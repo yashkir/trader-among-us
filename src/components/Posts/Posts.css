@@ -157,3 +157,13 @@ hr {
 .Posts-done {
   opacity: 0.3;
 }
+
+.status-post {
+  color: rgba(155, 0, 0, 0.76);
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  font-family: "Oleo Script", cursive;
+  font-size: 1.4rem;
+}
