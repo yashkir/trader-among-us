@@ -21,6 +21,7 @@ async function show(req, res) {
   try {
     // TODO there may be a way to populate replies in one line
     Post.findById(req.params.postId)
+      .populate("author", "name")
       .populate({
         path: "replies", populate: {
           path: "author", select: "name",

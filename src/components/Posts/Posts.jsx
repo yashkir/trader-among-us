@@ -27,12 +27,14 @@ const Posts = (props) => {
 
       {/* Showing all posts */}
       <div>
-        {posts.length ? posts.map(post => {
+        {posts.length ? posts.slice(0).reverse().map(post => {
           return (
             <div key={post._id}>
               <div className="row">
                 <div className="column-img">
-                  <div><img id="post-img" src={`${post.itemsOffered[0].image}`} alt="placeholder"></img></div>
+                  <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
+                    <img id="post-img" src={`${post.itemsOffered[0].image}`} alt="placeholder"></img>
+                  </div>
                 </div>
                 <div className="column-text">
                   <div className="post-title">Posted By: {post.author.name}</div>

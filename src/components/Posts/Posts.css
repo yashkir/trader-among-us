@@ -141,3 +141,7 @@ hr {
   text-align: center;
   font-family: "Oleo Script", cursive;
 }
+
+.Posts-done {
+  opacity: 0.4;
+}
