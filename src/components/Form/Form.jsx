@@ -25,6 +25,9 @@ const Form = ({ name, description, image, user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (inputValues.text.indexOf("$") > -1) {
+        throw new Error('Please Be Respectful of Trade eRs strict no currency policy')
+      }
       const response = await postsApi.create({
         title: inputValues.title,
         text: inputValues.text,
@@ -44,7 +47,7 @@ const Form = ({ name, description, image, user }) => {
       <PageTitle titleOne={"NEW"} titleTwo={"POST"} />
 
       {/* TODO style this error message */}
-      {status ? <p>{status}</p> : null}
+      {status ? <p className="status-post">{status}</p> : null}
 
       <section id="form-sec">
         <form onSubmit={handleSubmit}>

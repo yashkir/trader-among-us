@@ -31,17 +31,30 @@ const Posts = (props) => {
           return (
             <div key={post._id}>
               <div className="row">
+                <div className="row">
+                  {post.itemsOffered[0].isSold ? <div className="post-confirmed">ITEM TRADED</div> : null}
+                </div>
                 <div className="column-img">
                   <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
                     <img id="post-img" src={`${post.itemsOffered[0].image}`} alt="placeholder"></img>
                   </div>
                 </div>
                 <div className="column-text">
-                  <div className="post-title">Posted By: {post.author.name}</div>
-                  <div className="post-title-pink">{post.title}</div>
-                  <p className='flex-p'>{post.text}</p>
-                  <p className='flex-p-two'>{`Offering: ${post.itemsOffered.length} Items`}</p>
-                  <p className='flex-p-two'>{`Replies: ${post.replies.length}`}</p>
+                  <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
+                    <div className="post-title">Posted By: {post.author.name}</div>
+                  </div>
+                  <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
+                    <div className="post-title-pink">{post.title}</div>
+                  </div>
+                  <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
+                    <p className='flex-p'>{post.text}</p>
+                  </div>
+                  <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
+                    <p className='flex-p-two'>{`Offering: ${post.itemsOffered.length} Items`}</p>
+                  </div>
+                  <div className={post.itemsOffered[0].isSold ? "Posts-done" : null}>
+                    <p className='flex-p-two'>{`Replies: ${post.replies.length}`}</p>
+                  </div>
                 </div>
                 <div className="column-btn">
                   <Link id="link" to={`/posts/${post._id}`}>
