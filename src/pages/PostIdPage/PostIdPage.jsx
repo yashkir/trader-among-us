@@ -27,8 +27,8 @@ export default function PostIdPage({ match, user }) {
   const [errorMsg, setErrorMsg] = useState(null);
 
   const handleDelete = (id) => {
-    PostsApi.deletePost(id);
-    history.push("/posts");
+    PostsApi.deletePost(id)
+      .then(history.push("/posts"));
   };
 
   const formatter = new Intl.DateTimeFormat("en-GB", {
