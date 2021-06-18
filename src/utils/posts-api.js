@@ -137,7 +137,7 @@ async function deletePost(postId) {
     },
   });
   if (res.ok) {
-    return res;
+    return await res.json();
   } else {
     throw new Error("Unable to delete Post")
   }
