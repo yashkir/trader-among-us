@@ -24,10 +24,11 @@
 }
 
 #post-img {
-  height: auto;
+  height: 10rem;
   width: 10rem;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  object-fit: cover;
 }
 
 .post-title {
