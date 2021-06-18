@@ -32,8 +32,13 @@ async function _delete(req, res) {
       });
     }
 
-    const result = await Item.deleteOne({_id: req.params.itemId});
-    return res.status(200).json(result);
+    // We are simply unlinking here from user, not deleting
+    // TODO clean up orphan items after they are no longer needed
+    // be careful of posts and replies that still need the item.
+    // const result = await Item.deleteOne({_id: req.params.itemId});
+    item.user = null;
+    await item.save();
+    return res.status(200).json("ok");
     
   } catch (err) {
     debug(err);
