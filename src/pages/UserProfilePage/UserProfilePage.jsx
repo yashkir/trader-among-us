@@ -9,20 +9,15 @@ import itemsApi from "../../utils/items-api";
 export default function UserProfilePage({ user }) {
   const [itemData, setItemData] = useState([]);
 
-  let userId;
-  if (user) {
-    userId = user._id;
-  }
-
   const getItems = async () => {
     if (user) {
-      const items = await itemsApi.show(userId);
+      const items = await itemsApi.show(user._id);
       setItemData(items.item);
     }
-  }
+  };
 
   useEffect(() => {
-    if (user) getItems();
+    getItems();
   }, [])
 
   return (

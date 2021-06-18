@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { FaFileUpload } from "react-icons/fa";
 import itemsApi from "../../utils/items-api.js"
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { getUser } from "../../utils/users-service"
 import "./ItemCreateForm.css"
 
 export default function ItemCreateForm() {
   let user = getUser()
-  const history = useHistory()
 
   const [inputValues, setInputValues] = useState({
     title: "",
@@ -15,6 +14,7 @@ export default function ItemCreateForm() {
   });
   const [file, setFile] = useState({ preview: "", raw: "" });
   const [message, setMessage] = useState("");
+  const [itemCreated, setItemCreated] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,8 +25,7 @@ export default function ItemCreateForm() {
     try {
       await itemsApi.create(formData);
       setMessage("Item created");
-
-      history.push(`/users/${user._id}/items`)
+      setItemCreated(true);
     } catch (err) {
       setMessage("Error creating Item");
     }
@@ -44,7 +43,9 @@ export default function ItemCreateForm() {
   }
 
   return (
+
     <div className="ImageUpload">
+      {itemCreated ? <Redirect to={`/users/${user._id}/items`} /> : null}
       <p className="new-item-error-message">{message}</p>
       <form action="/api/items" method="post" onSubmit={handleSubmit}>
         <section id="form-sec">

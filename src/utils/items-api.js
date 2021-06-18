@@ -22,10 +22,10 @@ async function create(formData) {
   });
 
   if (res.ok) {
-    return res.json;
+    return res.json();
   } else {
     throw new Error("Unable to create Item");
-    }
+  }
 }
 
 // /:itemId/delete
