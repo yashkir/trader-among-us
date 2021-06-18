@@ -191,7 +191,9 @@
 }
 
 .bid-text-area {
+  margin-top: 10px;
   font-size: 1rem;
+  width:60vw;
 }
 /* 
 .txt-area-col {

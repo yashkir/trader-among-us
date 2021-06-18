@@ -14,7 +14,7 @@ export default function Reply(props) {
 
 
   useEffect(() => {
-    console.log('POSTID  --->', props.post._id)
+    
   })
 
   const handleHidden = () => {
