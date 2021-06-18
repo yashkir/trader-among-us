@@ -1,6 +1,6 @@
 const Item = require('../../models/item');
 const debug = require("debug")("api");
-
+const Post = require('../../models/post');
 
 async function create(req, res) {
   try {
@@ -25,7 +25,7 @@ async function create(req, res) {
 async function _delete(req, res) {
   try {
     let item = await Item.findById(req.params.itemId);
-
+    
     if (req.user._id !== String(item.user._id)) {
       return res.status(403).json({
         message: "Delete failed. You are not the owner of this item."

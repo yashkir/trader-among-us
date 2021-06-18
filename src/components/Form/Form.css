@@ -1,31 +1,15 @@
-@media only screen and (max-width: 300px) {
-  #form-sec {
-    width: 100%;
-  }
-  #form-border {
-    width: 90%;
-  }
-}
-
-.form-container {
-  width: 100vw;
-}
-
 #form-sec {
-  /* height: 50vh; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
-  /* margin-bottom: 0.5rem; */
-  /* border: 1px solid red; */
 }
 .form-border {
   border: 1px solid transparent;
   border-radius: 10px;
   height: auto;
-  width: 95vw;
+  width: 55vw;
+  height: auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: rgba(253, 253, 253, 0.712);
   text-align: center;
@@ -85,10 +69,10 @@
   padding: 0.2rem;
 }
 
-textarea {
+.form-border textarea {
   border: 1px solid rgba(46, 46, 46, 0.295);
   border-radius: 10px;
-  width: 80vw;
+  width: 85%;
   resize: none;
   font-family: "Rubik", sans-serif;
   padding: 0.4rem;
@@ -148,4 +132,10 @@ textarea {
   justify-content: center;
   font-family: "Lilita One", cursive;
   color: #ED4337;
+}
+
+@media screen and (max-width: 768px) {
+  .form-border{
+    width: 85vw;
+  }
 }
