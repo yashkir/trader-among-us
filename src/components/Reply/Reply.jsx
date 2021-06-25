@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import "./Reply.css";
 import Deal from "../Deal/Deal";
 import { getUser } from "../../utils/users-service";
-import DeleteButton from "../../components/DeleteButton/DeleteButton"
+import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import PostsApi from "../../utils/posts-api";
 
 export default function Reply(props) {
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
   const [user, setUser] = useState(getUser());
-  const history = useHistory()
+  const history = useHistory();
 
 
   useEffect(() => {
     
-  })
+  });
 
   const handleHidden = () => {
     if (hidden === "reply-hidden") setHidden("");
@@ -26,13 +26,13 @@ export default function Reply(props) {
 
   const handleDelete = async (reply) => {
     try {
-      reply = await PostsApi.deleteReply(reply)
-      history.push(`/posts`)
+      reply = await PostsApi.deleteReply(reply);
+      history.push("/posts");
 
     } catch (err) {
 
     }
-  }
+  };
 
   return (
     <>

@@ -3,14 +3,14 @@ import DropDownMenu from "./components/DropDownMenu/DropDownMenu";
 import DropDownMenuTwo from "./components/DropDownMenu/DropDownMenuTwo";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { getUser } from './utils/users-service';
+import { getUser } from "./utils/users-service";
 import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import NewPostPage from "./pages/NewPostPage/NewPostPage";
-import Posts from './components/Posts/Posts'
-import PostIdPage from './pages/PostIdPage/PostIdPage'
-import NewItemPage from "./pages/NewItemPage/NewItemPage"
-import UserProfilePage from './pages/UserProfilePage/UserProfilePage';
+import Posts from "./components/Posts/Posts";
+import PostIdPage from "./pages/PostIdPage/PostIdPage";
+import NewItemPage from "./pages/NewItemPage/NewItemPage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 import DeleteButton from "./components/DeleteButton/DeleteButton";
 
 const App = () => {
@@ -57,15 +57,15 @@ const App = () => {
                 <PostIdPage user={user} {...props} />
               )} />
               <Route path="/posts">
-                <Posts title={'OLD BIKE FROM MY GRANDMA'} />
+                <Posts title={"OLD BIKE FROM MY GRANDMA"} />
               </Route>
               <Route path="/items/new">
                 <NewItemPage user={user} />
               </Route>
-              <Route path={`/users`}>
+              <Route path={"/users"}>
                 <UserProfilePage user={user} />
               </Route>
-              <Route path={`/test`}>
+              <Route path={"/test"}>
                 <DeleteButton />
               </Route>
               <Redirect to="/posts" />

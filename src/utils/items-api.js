@@ -3,11 +3,11 @@ import { getToken } from "./users-service";
 const BASE_URL = "/api/items";
 
 async function show(userId) {
-  const res = await fetch(`/api/users/${userId}/items`)
+  const res = await fetch(`/api/users/${userId}/items`);
   if (res.ok) {
     return res.json();
   }else{
-    throw new Error ("Unable to retrieve Items. Sorry :(")
+    throw new Error ("Unable to retrieve Items. Sorry :(");
   }
 }
 

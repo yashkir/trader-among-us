@@ -7,7 +7,7 @@ import Bid from "../../components/Bid/Bid";
 import Carousel from "../../components/Carousel/Carousel";
 import { getUser } from "../../utils/users-service";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
 export default function PostIdPage({ match, user }) {
   const currentUser = getUser();

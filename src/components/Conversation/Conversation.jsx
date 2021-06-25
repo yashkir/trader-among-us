@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { getMessages, sendMessage } from "../../utils/messages-api";
-import { FiSend } from "react-icons/fi"
-import { getUser } from "../../utils/users-service"
+import { FiSend } from "react-icons/fi";
+import { getUser } from "../../utils/users-service";
 
 import socketIOClient from "socket.io-client";
-import "./Conversation.css"
+import "./Conversation.css";
 const ENDPOINT = "https://trader-among-us.herokuapp.com";
 
 export default function Conversation({ post, reply, deal }) {
-  const [user, setUser] = useState(getUser())
+  const [user, setUser] = useState(getUser());
 
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
@@ -34,7 +34,7 @@ export default function Conversation({ post, reply, deal }) {
   }, []);
 
   useEffect(() => {
-    scroll.current.scrollIntoView({ behavior: 'smooth' });
+    scroll.current.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   function handleMessageChange(e) {
@@ -68,14 +68,14 @@ export default function Conversation({ post, reply, deal }) {
                 <div
                   className=
                   {
-                    user.name == message.slice(0, message.indexOf(':'))
+                    user.name == message.slice(0, message.indexOf(":"))
                       ?
                       "Conversation-main-msg"
                       :
                       "Conversation-reply"
                   }
                 >
-                  {message.slice(message.indexOf(':') + 1).trim()}
+                  {message.slice(message.indexOf(":") + 1).trim()}
                 </div>
               </div>
             ) : null}

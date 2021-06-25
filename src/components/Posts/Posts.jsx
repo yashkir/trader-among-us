@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import './Posts.css'
-import PageTitle from "../../components/PageTitle/PageTitle"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react";
+import "./Posts.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import { Link } from "react-router-dom";
 import postsApi from "../../utils/posts-api";
 
 const Posts = (props) => {
@@ -15,7 +15,7 @@ const Posts = (props) => {
   useEffect(() => {
     const fetchedPosts = postsApi.getAllPosts()
       .then(data => setPosts(data))
-      .catch(err => setErrorMsg(err.message))
+      .catch(err => setErrorMsg(err.message));
   }, []);
 
   return (
@@ -64,11 +64,11 @@ const Posts = (props) => {
               </div>
               <hr />
             </div>
-          )
+          );
         }) : null}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Posts
+export default Posts;

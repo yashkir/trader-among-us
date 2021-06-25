@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FaFileUpload } from "react-icons/fa";
-import itemsApi from "../../utils/items-api.js"
+import itemsApi from "../../utils/items-api.js";
 import { Redirect } from "react-router-dom";
-import { getUser } from "../../utils/users-service"
-import "./ItemCreateForm.css"
+import { getUser } from "../../utils/users-service";
+import "./ItemCreateForm.css";
 
 export default function ItemCreateForm() {
-  let user = getUser()
+  let user = getUser();
 
   const [inputValues, setInputValues] = useState({
     title: "",
@@ -62,7 +62,7 @@ export default function ItemCreateForm() {
               onChange={handleChange}
             />
             <br />
-            <label for="description" className="form-label">
+            <label htmlFor="description" className="form-label">
               Description
             </label>
             <textarea
@@ -72,7 +72,7 @@ export default function ItemCreateForm() {
               value={inputValues.description}
               onChange={handleChange}
             />
-            <label for="image" className="form-label">
+            <label htmlFor="image" className="form-label">
               Image
             </label>
             <label htmlFor="image">
