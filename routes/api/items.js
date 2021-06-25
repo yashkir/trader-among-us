@@ -28,7 +28,7 @@ if (process.env.USE_S3) {
     })
   });
 } else {
-  var upload = multer({ dest: "uploads/" });
+  var upload = multer({ dest: "uploads/" }); // eslint-disable-line no-redeclare
 }
 
 router.use(authenticate);

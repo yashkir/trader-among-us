@@ -1,5 +1,5 @@
 import DropDownMenuItem from "../DropDownMenuItem/DropDownMenuItem";
-import { FaUser, FaShare, FaUserEdit } from "react-icons/fa";
+import { FaUser, FaShare } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import * as userService from "../../utils/users-service";
 import { getUser } from "../../utils/users-service";

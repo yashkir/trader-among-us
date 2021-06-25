@@ -27,6 +27,7 @@ module.exports = {
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": "off",
     "semi": 1,
     "quotes": [
       1,

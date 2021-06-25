@@ -73,7 +73,7 @@ export default function ItemDrag({ setItemsOffered }) {
   useEffect(() => {
     const itemsoffered = items.columns["col-2"].itemIds;
     setItemsOffered(itemsoffered);
-  }, [items]);
+  }, [items, setItemsOffered]);
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -147,7 +147,7 @@ export default function ItemDrag({ setItemsOffered }) {
             {columns.map((colId) => {
               const column = items.columns[colId];
               const res = column.itemIds.map(itemId => items.items[itemId]);
-              return (<div className="Bid-list"><Column key={column.id} column={column} res={res} /></div>);
+              return (<div key={`col-${column.id}`} className="Bid-list"><Column column={column} res={res} /></div>);
             })}
           </DragDropContext>
     </div>

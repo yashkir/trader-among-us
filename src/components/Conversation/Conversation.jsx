@@ -8,7 +8,7 @@ import "./Conversation.css";
 const ENDPOINT = "https://trader-among-us.herokuapp.com";
 
 export default function Conversation({ post, reply, deal }) {
-  const [user, setUser] = useState(getUser());
+  const [user] = useState(getUser());
 
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
@@ -51,24 +51,17 @@ export default function Conversation({ post, reply, deal }) {
       .then(setInputValue(""));
   }
 
-  function handleRefresh(e) {
-    e.preventDefault();
-
-    getMessages(post._id, reply._id)
-      .then(res => setMessages(res));
-  }
-
   return (
     <div>
       <div className="Conversation-chat-box">
         {messages.length ?
-          messages.map
-            (message =>
-              <div className="Conversation-div">
+          messages.map(
+            (message, idx) =>
+              <div key={`message-${deal._id}-${idx}`} className="Conversation-div">
                 <div
                   className=
                   {
-                    user.name == message.slice(0, message.indexOf(":"))
+                    user.name === message.slice(0, message.indexOf(":"))
                       ?
                       "Conversation-main-msg"
                       :
