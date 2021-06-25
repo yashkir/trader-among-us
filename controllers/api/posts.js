@@ -198,7 +198,7 @@ async function confirmDealToggle(req, res) {
 
     // FIXME there may be a better way of doing the below query
     const deal = post.deals.find(deal => {
-      return deal.reply == String(reply._id);
+      return deal.reply === String(reply._id);
     });
 
     if (req.user._id === String(post.author._id)) {

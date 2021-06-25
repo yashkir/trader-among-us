@@ -1,5 +1,5 @@
 import DropDownMenuItem from "../DropDownMenuItem/DropDownMenuItem";
-import { FaPlusCircle, FaListUl } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import "./DropDownMenu.css";
 

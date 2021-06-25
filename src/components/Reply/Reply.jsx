@@ -9,7 +9,7 @@ import PostsApi from "../../utils/posts-api";
 export default function Reply(props) {
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
-  const [user, setUser] = useState(getUser());
+  const [user] = useState(getUser());
   const history = useHistory();
 
 
@@ -28,9 +28,8 @@ export default function Reply(props) {
     try {
       reply = await PostsApi.deleteReply(reply);
       history.push("/posts");
-
     } catch (err) {
-
+      return; //TODO handle delete error
     }
   };
 

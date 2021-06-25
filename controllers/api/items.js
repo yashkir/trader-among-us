@@ -1,6 +1,5 @@
 const Item = require("../../models/item");
 const debug = require("debug")("api");
-const Post = require("../../models/post");
 
 async function create(req, res) {
   try {

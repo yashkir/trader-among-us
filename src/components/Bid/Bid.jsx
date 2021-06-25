@@ -89,7 +89,7 @@ export default function Bid(props) {
       return;
     } else {
       bid.itemsOffered = items.columns["col-2"].itemIds;
-      const res = await postsApi.makeBid(props.postId, bid);
+      await postsApi.makeBid(props.postId, bid);
       props.loadPosts();
       handleHidden();
       setMessage("");

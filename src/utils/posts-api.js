@@ -20,7 +20,7 @@ async function getOnePost(id) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Unable to retrieve posts.");
+    throw new Error("Unable to retrieve post.");
   }
 }
 
