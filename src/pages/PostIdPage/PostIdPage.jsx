@@ -45,23 +45,23 @@ export default function PostIdPage({ match, user }) {
   // Using a promise since useEffect must be synchronous.
   function loadPosts() {
     PostsApi.getOnePost(match.params.id)
-      .then((data) => setPost(data));
-    //PostsApi.getOnePost(match.params.id)
-      //.then((data) =>
-        //setPost({
-          //...data,
-          //title: data.title.toUpperCase(),
-          //date: formatter.format(Date.parse(data.createdAt)),
-        //})
-      //)
-      //.catch((err) => setErrorMsg(err.message));
+      .then((data) =>
+        setPost({
+          ...data,
+          title: data.title.toUpperCase(),
+          date: formatter.format(Date.parse(data.createdAt)),
+        })
+      )
+      .catch((err) => setErrorMsg(err.message));
   }
+
   useEffect(() => {
     loadPosts();
   }, []);
 
   return (
     <>
+      <span>{errorMsg}</span>
       <div>
         <PageTitle titleOne={"VIEW"} titleTwo={post.title} />
       </div>
