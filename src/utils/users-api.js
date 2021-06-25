@@ -22,7 +22,7 @@ export async function login(credentials) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error('Bad Request');
+    throw new Error("Bad Request");
   }
 }
 

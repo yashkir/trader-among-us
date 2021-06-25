@@ -1,4 +1,4 @@
-import { getToken } from './users-service';
+import { getToken } from "./users-service";
 
 const BASE_URL = "/api/posts";
 
@@ -41,7 +41,7 @@ async function create(data) {
   });
 
   if (res.ok) {
-    return "Post created successfully."
+    return "Post created successfully.";
   } else {
     throw new Error("Unable to create post.");
   }
@@ -139,7 +139,7 @@ async function deletePost(postId) {
   if (res.ok) {
     return await res.json();
   } else {
-    throw new Error("Unable to delete Post")
+    throw new Error("Unable to delete Post");
   }
 }
 
@@ -149,11 +149,11 @@ async function deleteReply(replyId) {
     headers: {
       "Authorization": "Bearer " + getToken(),
     },
-  })
+  });
   if (res.ok) {
     return res;
   } else {
-    throw new Error("Unable to delete bid")
+    throw new Error("Unable to delete bid");
   }
 }
 

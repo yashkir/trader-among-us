@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import ItemCreateForm from '../../components/ItemCreateForm/ItemCreateForm';
-import PageTitle from "../../components/PageTitle/PageTitle"
-import { Route, Link, Switch } from 'react-router-dom';
-import './UserProfilePage.css';
-import Carousel from '../../components/Carousel/Carousel';
+import React, { useState, useEffect } from "react";
+import ItemCreateForm from "../../components/ItemCreateForm/ItemCreateForm";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import { Route, Link, Switch } from "react-router-dom";
+import "./UserProfilePage.css";
+import Carousel from "../../components/Carousel/Carousel";
 import itemsApi from "../../utils/items-api";
 
 export default function UserProfilePage({ user }) {
@@ -21,16 +21,16 @@ export default function UserProfilePage({ user }) {
   const handleClickAdd = () => {
     setAddSelected("user-link-selected");
     setViewSelected("");
-  }
+  };
 
   const handleClickView = () => {
     setAddSelected("");
     setViewSelected("user-link-selected");
-  }
+  };
 
   useEffect(() => {
     getItems();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -50,16 +50,16 @@ export default function UserProfilePage({ user }) {
             <Link to="/users/items/new" className={`${addSelected}`} onClick={handleClickAdd}>Add Items</Link>
           </div>
         </div>
-        {itemData.length === 0 ? <p className="UserProfilePage-prompt">You currently have no items!</p> : ''}
+        {itemData.length === 0 ? <p className="UserProfilePage-prompt">You currently have no items!</p> : ""}
 
         <div className="user-profile-body">
           <Switch>
             <Route path="/users/items/new" component={ItemCreateForm} />
-            {itemData.length > 0 ? <Route path={`/users/:id/items`} render={() => <Carousel user={user} />} /> : ''}
+            {itemData.length > 0 ? <Route path={"/users/:id/items"} render={() => <Carousel user={user} />} /> : ""}
           </Switch>
         </div>
       </div>
 
     </>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-const Post = require('../../models/post');
-const Reply = require('../../models/reply');
-const Deal = require('../../models/deal');
+const Post = require("../../models/post");
+const Reply = require("../../models/reply");
+const Deal = require("../../models/deal");
 const debug = require("debug")("api");
 const sockets = require("../../helpers/sockets");
 
@@ -100,7 +100,7 @@ async function _delete(req, res) {
  * leave it here in case we need it. */
 async function indexReplies(req, res) {
   try {
-    const post = await Post.findById(req.params.postId).populate('replies');
+    const post = await Post.findById(req.params.postId).populate("replies");
     res.status(200).json(post.replies);
   } catch (err) {
     debug(err);
@@ -238,7 +238,7 @@ async function deleteDeal(req, res) {
   try {
     const deal = await Deal.findOne({ reply: req.params.replyId });
     const post = await Post.findById(req.params.postId)
-      .populate("author")
+      .populate("author");
 
     if (req.user._id !== String(post.author._id)) {
       return res.status(403).json({
@@ -258,7 +258,7 @@ async function showDealMessages(req, res) {
   // TODO add check for user for privacy
   try {
     const post = await Post.findById(req.params.postId)
-      .populate("author")
+      .populate("author");
     const reply = await Reply.findById(req.params.replyId)
       .populate("author");
     const deal = await Deal.findOne({ reply: req.params.replyId });
@@ -280,7 +280,7 @@ async function showDealMessages(req, res) {
 async function sendDealMessage(req, res) {
   try {
     const post = await Post.findById(req.params.postId)
-      .populate("author")
+      .populate("author");
     const reply = await Reply.findById(req.params.replyId)
       .populate("author");
     const deal = await Deal.findOne({ reply: req.params.replyId });

@@ -1,45 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import "./Bid.css";
-import Column from "../../components/Column/Column"
+import Column from "../../components/Column/Column";
 import postsApi from "../../utils/posts-api";
 import itemsApi from "../../utils/items-api";
 
 const data = {
   items: {
-    'itm-1': {
+    "itm-1": {
       id: "itm-1",
       name: "item1",
       description: "somedes",
-      img: 'https://cdn.greatlifepublishing.net/wp-content/uploads/sites/4/2015/10/23150611/coffee-grinder-715170_960_720.jpg'
+      img: "https://cdn.greatlifepublishing.net/wp-content/uploads/sites/4/2015/10/23150611/coffee-grinder-715170_960_720.jpg"
     },
-    'itm-2': {
+    "itm-2": {
       id: "itm-2",
       name: "item2",
       description: "somedes",
-      img: 'https://wl-brightside.cf.tsp.li/resize/728x/jpg/181/4fb/2a0b6e52e29e3ba58697034db7.jpg'
+      img: "https://wl-brightside.cf.tsp.li/resize/728x/jpg/181/4fb/2a0b6e52e29e3ba58697034db7.jpg"
     },
-    'itm-3': {
+    "itm-3": {
       id: "itm-3",
       name: "item3",
       description: "somedes",
-      img: 'https://thumbs.dreamstime.com/b/kitchen-antique-items-rural-life-composition-objects-dark-background-194158844.jpg'
+      img: "https://thumbs.dreamstime.com/b/kitchen-antique-items-rural-life-composition-objects-dark-background-194158844.jpg"
     },
   },
   columns: {
-    'col-1': {
-      id: 'col-1',
-      title: 'Your Items',
-      itemIds: ['itm-1', 'itm-2', 'itm-3']
+    "col-1": {
+      id: "col-1",
+      title: "Your Items",
+      itemIds: ["itm-1", "itm-2", "itm-3"]
     },
-    'col-2': {
-      id: 'col-2',
-      title: 'Bid Items',
+    "col-2": {
+      id: "col-2",
+      title: "Bid Items",
       itemIds: [],
     },
   },
-  columnOrder: ['col-1', 'col-2'],
-}
+  columnOrder: ["col-1", "col-2"],
+};
 
 
 export default function Bid(props) {
@@ -68,19 +68,19 @@ export default function Bid(props) {
     */
 
     let itemIds = itemsForDrag.map(item => item._id);
-    data.columns['col-1'].itemIds = itemIds;
+    data.columns["col-1"].itemIds = itemIds;
     itemsForDrag.forEach(item => {
       data.items[item._id] = {
         id: item._id,
         name: item.title,
         img: item.image,
       };
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     loadItems();
-  }, [])
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -92,7 +92,7 @@ export default function Bid(props) {
       const res = await postsApi.makeBid(props.postId, bid);
       props.loadPosts();
       handleHidden();
-      setMessage("")
+      setMessage("");
     }
   }
 
@@ -109,7 +109,7 @@ export default function Bid(props) {
 
   const [hidden, setHidden] = useState("");
   const [icon, setIcon] = useState("+");
-  const [block, setBlock] = useState('');
+  const [block, setBlock] = useState("");
 
   const handleHidden = () => {
     if (hidden === "hidden") setHidden("");
@@ -164,7 +164,7 @@ export default function Bid(props) {
     const newStart = {
       ...start,
       itemIds: startItemIds,
-    }
+    };
 
     const endItemIds = Array.from(end.itemIds);
     endItemIds.splice(destination.index, 0, draggableId);
@@ -180,9 +180,9 @@ export default function Bid(props) {
         [newStart.id]: newStart,
         [newEnd.id]: newEnd,
       }
-    }
+    };
     setItems(newState);
-  }
+  };
 
   return (
     <>
@@ -190,7 +190,7 @@ export default function Bid(props) {
         <h3 onClick={handleHidden} className="post-btn">Make A Bid</h3>
       </div>
 
-      <div className={`bid-container `}>
+      <div className={"bid-container "}>
         <p className={`txt-area-col ${block}`}>Drag and drop to make a bid</p>
         <div className={`Bid-body-row ${hidden}`}>
           <DragDropContext className="Bid-list" onDragEnd={onDragEnd}>
@@ -213,7 +213,7 @@ export default function Bid(props) {
           />
         </div>
         <div className={`txt-area-col ${block}`}>
-          <h3 onClick={handleSubmit} className={`post-btn`}>Confirm Bid</h3>
+          <h3 onClick={handleSubmit} className={"post-btn"}>Confirm Bid</h3>
         </div>
         <h3 className="bid-message">{message}</h3>
       </div>

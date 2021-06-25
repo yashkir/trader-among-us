@@ -1,5 +1,5 @@
 import { FaUser, FaHandshake, FaPen, FaHome } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = ({ handleMenu, handleSecondMenu, user }) => {

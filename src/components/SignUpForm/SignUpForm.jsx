@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { signUp } from "../../utils/users-service";
-import './SignUpForm.css'
+import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
   state = {

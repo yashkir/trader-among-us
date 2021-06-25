@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 
 const Container = styled.div`
@@ -7,7 +7,7 @@ display: flex;
 flex-direction: row;
 justify-content: flex-start;
 align-items: center;
-opacity: ${props => (props.isDragging ? '.7' : '1')} ;
+opacity: ${props => (props.isDragging ? ".7" : "1")} ;
 border-radius: 20px;
 margin-bottom: 0.5rem;
 
@@ -29,5 +29,5 @@ export default function Item({ item, index }) {
         </Container>
       )}
     </Draggable>
-  )
+  );
 }

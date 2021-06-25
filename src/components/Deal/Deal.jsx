@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaHandshake } from "react-icons/fa";
-import { TiCancel } from "react-icons/ti"
-import { GiCheckMark } from "react-icons/gi"
+import { TiCancel } from "react-icons/ti";
+import { GiCheckMark } from "react-icons/gi";
 import postsApi from "../../utils/posts-api";
 import Conversation from "../Conversation/Conversation";
-import "./Deal.css"
+import "./Deal.css";
 
 export default function Deal({ user, post, reply }) {
   const [deal, setDeal] = useState(null);
-  const [confirmStatus, setConfirmStatus] = useState("Confirm")
+  const [confirmStatus, setConfirmStatus] = useState("Confirm");
 
   useEffect(() => {
     loadDeal();
@@ -31,7 +31,7 @@ export default function Deal({ user, post, reply }) {
     if (res.ok) {
       setDeal(null);
     }
-    setConfirmStatus("Confirm")
+    setConfirmStatus("Confirm");
   }
 
   async function confirmDealToggle() {

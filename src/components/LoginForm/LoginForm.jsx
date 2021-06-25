@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import * as usersService from '../../utils/users-service';
-import './LoginForm.css'
+import * as usersService from "../../utils/users-service";
+import "./LoginForm.css";
 
 export default function LoginForm({ setUser }) {
-  const history = useHistory()
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
+  const history = useHistory();
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
-    setError('');
+    setError("");
   }
 
   async function handleSubmit(evt) {
@@ -18,9 +18,9 @@ export default function LoginForm({ setUser }) {
     try {
       const user = await usersService.login(credentials);
       setUser(user);
-      history.push('/posts')
+      history.push("/posts");
     } catch {
-      setError('Log In Failed - Try Again');
+      setError("Log In Failed - Try Again");
     }
   }
 

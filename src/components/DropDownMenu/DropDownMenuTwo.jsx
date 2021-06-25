@@ -4,15 +4,15 @@ import { useHistory } from "react-router-dom";
 import "./DropDownMenu.css";
 
 const DropDownMenuTwo = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   const handleHistory = () => {
-    history.push('/posts/new')
-  }
+    history.push("/posts/new");
+  };
 
   const handleNewItem = () => {
-    history.push('/items/new')
-  }
+    history.push("/items/new");
+  };
   return (
     <div className="dropdown">
       <DropDownMenuItem
